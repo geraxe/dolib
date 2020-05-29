@@ -1,0 +1,67 @@
+interactions:
+- request:
+    body: '{}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '2'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.23.0
+    method: GET
+    uri: https://api.digitalocean.com/v2/account
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAAzTMQQqDMBAF0H2P8dehxGiqZtWbhNGMMhC1xEQo4t27qdu3eCdoHLeyZrgTIW2f
+        yNlHWSTDGaswxY2yrLOXz821wrHFsvANldYKvJBEOHxLkvdAkdYg6zMVKJQiAQ5N29rBDh1PlaZK
+        v/oQiLuhq6gx1hjD3cjU1xr/zB+cZBIOcDkVVtgz5bLDgcYsB+MWv/C+08xwwHU9fgAAAP//AwD4
+        7EmR0wAAAA==
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 59a0d9f8280a7b6f-DME
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 27 May 2020 15:43:26 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4996'
+      Ratelimit-Reset:
+      - '1590593959'
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cfduid=d861f0e20961f1cc203949c0f9704cb9a1590594205; expires=Fri, 26-Jun-20
+        15:43:25 GMT; path=/; domain=.digitalocean.com; HttpOnly; SameSite=Lax
+      Transfer-Encoding:
+      - chunked
+      X-Gateway:
+      - Edge-Gateway
+      X-Request-Id:
+      - a108799f-5b7b-4e4a-898d-bd0deb537a41
+      X-Response-From:
+      - service
+      X-Runtime:
+      - '0.012284'
+      cf-request-id:
+      - 02f8668f1500007b6f7586f200000001
+    status:
+      code: 200
+      message: OK
+version: 1

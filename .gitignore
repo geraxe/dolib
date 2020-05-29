@@ -1,0 +1,16 @@
+*.pyc
+.tox
+.cache
+.pytest_cache/
+.mypy_cache/
+build/
+dist/
+*.egg/
+.coverage
+coverage.xml
+htmlcov/
+*.egg-info/
+pytestdebug.log
+pip-wheel-metadata/
+.python-version
+/docs/_build
