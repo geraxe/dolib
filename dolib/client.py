@@ -9,6 +9,28 @@ class Client:
     API_DOMAIN = "api.digitalocean.com"
     API_VERSION = "v2"
 
+    account: Optional[do_managers.AccountManager] = None
+    actions: Optional[do_managers.ActionsManager] = None
+    cdn_endpoints: Optional[do_managers.CDNEndpointsManager] = None
+    certificates: Optional[do_managers.CertificatesManager] = None
+    databases: Optional[do_managers.DatabasesManager] = None
+    domains: Optional[do_managers.DomainsManager] = None
+    droplets: Optional[do_managers.DropletsManager] = None
+    firewalls: Optional[do_managers.FirewallsManager] = None
+    floating_ips: Optional[do_managers.FloatingIPsManager] = None
+    images: Optional[do_managers.ImagesManager] = None
+    invoices: Optional[do_managers.InvoicesManager] = None
+    kubernetes: Optional[do_managers.KubernetesManager] = None
+    load_balancers: Optional[do_managers.LoadBalancersManager] = None
+    projects: Optional[do_managers.ProjectsManager] = None
+    regions: Optional[do_managers.RegionsManager] = None
+    registry: Optional[do_managers.RegistryManager] = None
+    snapshots: Optional[do_managers.SnapshotsManager] = None
+    ssh_keys: Optional[do_managers.SSHKeysManager] = None
+    tags: Optional[do_managers.TagsManager] = None
+    volumes: Optional[do_managers.VolumesManager] = None
+    vpcs: Optional[do_managers.VPCsManager] = None
+
     def __init__(self, token: str = None):
         if token is None:
             raise NotImplementedError("Need you api token.")
@@ -28,7 +50,7 @@ class Client:
             "Content-Type": "application/json",
         }
 
-    def _process_response(self, response):
+    def _process_response(self, response: requests.models.Response) -> None:
         if "Ratelimit-Limit" in response.headers:
             self._ratelimit_limit = int(response.headers.get("Ratelimit-Limit"))
         if "Ratelimit-Remaining" in response.headers:
@@ -43,7 +65,7 @@ class Client:
         params: dict = {},
         json: dict = None,
         data: str = None,
-    ):
+    ) -> requests.models.Response:
         assert method in [
             "get",
             "post",
@@ -75,8 +97,15 @@ class Client:
 
         return response
 
-    def request(self, *args, **kwargs) -> Dict[str, Any]:
-        response = self.request_raw(*args, **kwargs)
+    def request(
+        self,
+        endpoint: str = "account",
+        method: str = "get",
+        params: dict = {},
+        json: dict = None,
+        data: str = None,
+    ) -> Dict[str, Any]:
+        response = self.request_raw(endpoint, method, params, json, data)
         if response.status_code in [
             requests.codes["no_content"],
             requests.codes["accepted"],
@@ -87,7 +116,7 @@ class Client:
     def fetch_all(
         self, endpoint: str, key: str, params: dict = {},
     ) -> List[Dict[str, Any]]:
-        def get_next_page(result={}):
+        def get_next_page(result: dict = {}) -> str:
             if (
                 "links" not in result
                 or "pages" not in result["links"]

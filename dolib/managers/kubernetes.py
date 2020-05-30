@@ -21,7 +21,7 @@ class KubernetesManager(BaseManager):
         )
         return models.K8SCluster(**res["kubernetes_cluster"])
 
-    def create(self, cluster: models.K8SCluster = None):
+    def create(self, cluster: models.K8SCluster = None) -> models.K8SCluster:
         assert cluster is not None, "kubernetes cluster object must be set"
 
         res = self._client.request(
@@ -42,7 +42,7 @@ class KubernetesManager(BaseManager):
         )
         return models.K8SCluster(**res["kubernetes_cluster"])
 
-    def update(self, cluster: models.K8SCluster = None):
+    def update(self, cluster: models.K8SCluster = None) -> models.K8SCluster:
         assert cluster is not None, "cluster object must be set"
         self._client.request(
             endpoint="kubernetes/clusters/{id}".format(id=cluster.id),
@@ -55,7 +55,7 @@ class KubernetesManager(BaseManager):
         return cluster
         # return models.K8SCluster(**res["kubernetes_cluster"])
 
-    def delete(self, cluster: models.K8SCluster = None):
+    def delete(self, cluster: models.K8SCluster = None) -> None:
         assert cluster is not None, "cluster object must be set"
 
         self._client.request(
@@ -133,7 +133,9 @@ class KubernetesManager(BaseManager):
         return pool
         # return models.K8SCluster.Pool(**res["node_pool"])
 
-    def delete_node_pool(self, id: str = None, pool: models.K8SCluster.Pool = None):
+    def delete_node_pool(
+        self, id: str = None, pool: models.K8SCluster.Pool = None
+    ) -> None:
         assert id is not None, "database cluster id must be set"
         assert pool is not None, "pool must be set"
 
@@ -151,13 +153,13 @@ class KubernetesManager(BaseManager):
         )
         return res.content
 
-    def credentials(self, id: str = None) -> bytes:
+    def credentials(self, id: str = None) -> dict:
         assert id is not None, "cluster id must be set"
         res = self._client.request(
             endpoint="kubernetes/clusters/{id}/credentials".format(id=id), method="get"
         )
         return res
 
-    def options(self):
+    def options(self) -> dict:
         res = self._client.request(endpoint="kubernetes/options", method="get")
         return res["options"]

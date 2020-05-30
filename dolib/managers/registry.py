@@ -1,4 +1,4 @@
-from typing import List
+from typing import Any, Dict, List
 
 from .. import models
 from .base import BaseManager
@@ -8,7 +8,7 @@ class RegistryManager(BaseManager):
     endpoint: str = "registry"
     name: str = "registry"
 
-    def get(self):
+    def get(self) -> models.Registry:
         res = self._client.request(endpoint="registry", method="get",)
         return models.Registry(**res["registry"])
 
@@ -20,7 +20,7 @@ class RegistryManager(BaseManager):
         )
         return models.Registry(**res["registry"])
 
-    def delete(self, registry: models.Registry = None):
+    def delete(self, registry: models.Registry = None) -> None:
         # may be in future account will be have multiple repository
         assert registry is not None, "registry object must be set"
 
@@ -31,7 +31,7 @@ class RegistryManager(BaseManager):
     def docker_credentials(
         self, read_write: bool = None, expiry_seconds: int = None
     ) -> dict:
-        params = {}
+        params: Dict[str, Any] = {}
         if expiry_seconds is not None:
             params["expiry_seconds"] = expiry_seconds
         if read_write is not None:
@@ -41,7 +41,7 @@ class RegistryManager(BaseManager):
         )
         return res
 
-    def validate_name(self, name: str = None):
+    def validate_name(self, name: str = None) -> None:
         assert name is not None, "name must be set"
         self._client.request(
             endpoint="registry/validate-name", method="post", json={"name": name}
@@ -73,7 +73,7 @@ class RegistryManager(BaseManager):
 
     def delete_tag(
         self, name: str = None, repository_name: str = None, tag: str = None
-    ):
+    ) -> None:
         assert name is not None, "name must be set"
         assert repository_name is not None, "repository_name must be set"
         assert tag is not None, "tag must be set"
@@ -87,7 +87,7 @@ class RegistryManager(BaseManager):
 
     def delete_manifest(
         self, name: str = None, repository_name: str = None, manifest: str = None
-    ):
+    ) -> None:
         assert name is not None, "name must be set"
         assert repository_name is not None, "repository_name must be set"
         assert manifest is not None, "manifest must be set"

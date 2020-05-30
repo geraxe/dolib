@@ -16,10 +16,9 @@ class ImagesManager(BaseManager):
         return images
 
     def filter(
-        self, private=None, type=None, tag_name=None,
-    ):
+        self, private: str = None, type: str = None, tag_name: str = None,
+    ) -> List[models.Image]:
         params = dict()
-        images = list()
         if private is not None:
             params["private"] = str(bool(private)).lower()
         if type is not None:
@@ -28,17 +27,15 @@ class ImagesManager(BaseManager):
             params["tag_name"] = tag_name
 
         res = self._client.fetch_all(endpoint="images", key="images", params=params)
-        for image in res:
-            images.append(models.Image(**image))
-        return images
+        return [models.Image(**image) for image in res]
 
-    def get(self, id: str = None):
+    def get(self, id: str = None) -> models.Image:
         assert id is not None, "id must be set"
 
         res = self._client.request(endpoint="images/{id}".format(id=id), method="get",)
         return models.Image(**res["image"])
 
-    def create(self, image: models.Image = None):
+    def create(self, image: models.Image = None) -> models.Image:
         assert image is not None, "image object must be set"
 
         res = self._client.request(
@@ -48,7 +45,7 @@ class ImagesManager(BaseManager):
         )
         return models.Image(**res["image"])
 
-    def update(self, image: models.Image = None):
+    def update(self, image: models.Image = None) -> models.Image:
         assert image is not None, "image object must be set"
         res = self._client.request(
             endpoint="images/{id}".format(id=image.id),
@@ -57,7 +54,7 @@ class ImagesManager(BaseManager):
         )
         return models.Image(**res["image"])
 
-    def delete(self, image: models.Image = None):
+    def delete(self, image: models.Image = None) -> None:
         assert image is not None, "image object must be set"
 
         self._client.request(

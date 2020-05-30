@@ -5,5 +5,5 @@ class BaseManager:
     name = "base"
     is_abstract = True
 
-    def __init__(self, client: "client.Client", *args, **kwargs):
+    def __init__(self, client: "client.Client") -> None:
         self._client = client

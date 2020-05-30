@@ -9,19 +9,16 @@ class VolumesManager(BaseManager):
     name: str = "volumes"
 
     def all(self) -> List[models.Volume]:
-        volumes = list()
         res = self._client.request(endpoint="volumes", method="get")
-        for volume in res["volumes"]:
-            volumes.append(models.Volume(**volume))
-        return volumes
+        return [models.Volume(**volume) for volume in res["volumes"]]
 
-    def get(self, id: str = None):
+    def get(self, id: str = None) -> models.Volume:
         assert id is not None, "id must be set"
 
         res = self._client.request(endpoint="volumes/{id}".format(id=id), method="get",)
         return models.Volume(**res["volume"])
 
-    def create(self, volume: models.Volume = None):
+    def create(self, volume: models.Volume = None) -> models.Volume:
         assert volume is not None, "volume object must be set"
 
         res = self._client.request(
@@ -29,7 +26,7 @@ class VolumesManager(BaseManager):
         )
         return models.Volume(**res["volume"])
 
-    def delete(self, volume: models.Volume = None):
+    def delete(self, volume: models.Volume = None) -> None:
         assert volume is not None, "volume object must be set"
 
         self._client.request(
@@ -59,9 +56,9 @@ class VolumesManager(BaseManager):
             "droplet_id": droplet_id,
         }
         if volume.region is not None:
-            if type(volume.region) == str:
+            if isinstance(volume.region, str):
                 action["region"] = volume.region
-            elif type(volume.region) == models.Region:
+            elif isinstance(volume.region, models.Region):
                 action["region"] = volume.region.slug
 
         if volume.id is not None:

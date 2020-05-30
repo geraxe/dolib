@@ -23,17 +23,13 @@ class SnapshotsManager(BaseManager):
             snapshots.append(models.Snapshot(**snapshot))
         return snapshots
 
-    def get(self, id: str = None) -> models.Snapshot:
-        assert id is not None, "snapshot id must be set"
-
+    def get(self, id: str) -> models.Snapshot:
         res = self._client.request(
             endpoint="snapshots/{id}".format(id=id), method="get"
         )
         return models.Snapshot(**res["snapshot"])
 
-    def delete(self, snapshot: models.Snapshot = None):
-        assert snapshot is not None, "snapshot object must be set"
-
+    def delete(self, snapshot: models.Snapshot) -> None:
         self._client.request(
             endpoint="snapshots/{id}".format(id=snapshot.id), method="delete",
         )

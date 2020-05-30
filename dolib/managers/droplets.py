@@ -1,4 +1,4 @@
-from typing import List, Union
+from typing import Any, Dict, List, Union
 
 from .. import models
 from .base import BaseManager
@@ -8,11 +8,11 @@ class DropletsManager(BaseManager):
     endpoint = "droplets"
     name = "droplets"
 
-    def all(self):
+    def all(self) -> List[models.Droplet]:
         res = self._client.fetch_all(endpoint="droplets", key="droplets")
         return [models.Droplet(**droplet) for droplet in res]
 
-    def filter(self, tag_name: str = None):
+    def filter(self, tag_name: str = None) -> List[models.Droplet]:
         params = {}
         if tag_name is not None:
             params["tag_name"] = tag_name
@@ -21,12 +21,12 @@ class DropletsManager(BaseManager):
         )
         return [models.Droplet(**droplet) for droplet in res]
 
-    def get(self, id: str = None):
+    def get(self, id: str = None) -> models.Droplet:
         assert id is not None, "id must be set"
         res = self._client.request(endpoint="droplets/{id}".format(id=id), method="get")
         return models.Droplet(**res["droplet"])
 
-    def create(self, droplet: models.Droplet = None):
+    def create(self, droplet: models.Droplet = None) -> models.Droplet:
         assert droplet is not None, "droplet object must be set"
 
         res = self._client.request(
@@ -52,7 +52,7 @@ class DropletsManager(BaseManager):
         )
         return models.Droplet(**res["droplet"])
 
-    def delete(self, droplet: models.Droplet = None):
+    def delete(self, droplet: models.Droplet = None) -> None:
         assert droplet is not None, "droplet object must be set"
 
         self._client.request(
@@ -74,7 +74,7 @@ class DropletsManager(BaseManager):
         )
         return [models.Droplet.Kernel(**kernel) for kernel in res]
 
-    def shapshots(self, id: str = None):
+    def shapshots(self, id: str = None) -> List[models.Snapshot]:
         assert id is not None, "droplet id must be set"
 
         res = self._client.fetch_all(
@@ -100,7 +100,7 @@ class DropletsManager(BaseManager):
         )
         return models.Action(**res["action"])
 
-    def sizes(self):
+    def sizes(self) -> List[models.Droplet.Size]:
         res = self._client.fetch_all(endpoint="sizes", key="sizes")
         return [models.Droplet.Size(**size) for size in res]
 
@@ -110,9 +110,11 @@ class DropletsManager(BaseManager):
         assert id is not None, "droplet id must be set"
         assert action is not None, "action must be set"
 
-        action = {"type": action}
+        post_json = {"type": action}
         res = self._client.request(
-            endpoint="droplets/{id}/actions".format(id=id), method="post", json=action
+            endpoint="droplets/{id}/actions".format(id=id),
+            method="post",
+            json=post_json,
         )
         return models.Action(**res["action"])
 
@@ -159,14 +161,17 @@ class DropletsManager(BaseManager):
         assert id is not None, "droplet id must be set"
         assert size is not None, "size must be set"
 
-        action = {
+        post_json: Dict[str, Any] = {
             "type": "resize",
             "size": size,
         }
         if disk is not None:
-            action["disk"] = disk
+            post_json["disk"] = disk
+
         res = self._client.request(
-            endpoint="droplets/{id}/actions".format(id=id), method="post", json=action
+            endpoint="droplets/{id}/actions".format(id=id),
+            method="post",
+            json=post_json,
         )
         return models.Action(**res["action"])
 
@@ -225,10 +230,10 @@ class DropletsManager(BaseManager):
         if tag_name is not None:
             params["tag_name"] = tag_name
 
-        action = {"type": action}
+        post_json = {"type": action}
 
         res = self._client.request(
-            endpoint="droplets/actions", method="post", json=action, params=params,
+            endpoint="droplets/actions", method="post", json=post_json, params=params,
         )
         return [models.Action(**action) for action in res["actions"]]
 

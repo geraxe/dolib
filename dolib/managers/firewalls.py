@@ -37,7 +37,7 @@ class FirewallsManager(BaseManager):
         )
         return models.Firewall(**res["firewall"])
 
-    def update(self, firewall: models.Firewall = None):
+    def update(self, firewall: models.Firewall = None) -> models.Firewall:
         assert firewall is not None, "firewall object must be set"
         res = self._client.request(
             endpoint="firewalls/{id}".format(id=firewall.id),
@@ -54,14 +54,14 @@ class FirewallsManager(BaseManager):
         )
         return models.Firewall(**res["firewall"])
 
-    def delete(self, firewall: models.Firewall = None):
+    def delete(self, firewall: models.Firewall = None) -> None:
         assert firewall is not None, "firewall object must be set"
 
         self._client.request(
             endpoint="firewalls/{id}".format(id=firewall.id), method="delete"
         )
 
-    def add_droplets(self, id: str = None, droplet_ids: List[int] = None):
+    def add_droplets(self, id: str = None, droplet_ids: List[int] = None) -> None:
         assert id is not None, "id must be set"
         assert droplet_ids is not None, "droplet_ids must be set"
 
@@ -71,7 +71,7 @@ class FirewallsManager(BaseManager):
             json={"droplet_ids": droplet_ids},
         )
 
-    def remove_droplets(self, id: str = None, droplet_ids: List[int] = None):
+    def remove_droplets(self, id: str = None, droplet_ids: List[int] = None) -> None:
         assert id is not None, "id must be set"
         assert droplet_ids is not None, "droplet_ids must be set"
 
@@ -81,7 +81,7 @@ class FirewallsManager(BaseManager):
             json={"droplet_ids": droplet_ids},
         )
 
-    def add_tags(self, id: str = None, tags: List[str] = None):
+    def add_tags(self, id: str = None, tags: List[str] = None) -> None:
         assert id is not None, "id must be set"
         assert tags is not None, "tags must be set"
 
@@ -91,7 +91,7 @@ class FirewallsManager(BaseManager):
             json={"tags": tags},
         )
 
-    def remove_tags(self, id: str = None, tags: List[str] = None):
+    def remove_tags(self, id: str = None, tags: List[str] = None) -> None:
         assert id is not None, "id must be set"
         assert tags is not None, "tags must be set"
 
@@ -106,7 +106,7 @@ class FirewallsManager(BaseManager):
         id: str = None,
         inbound_rules: List[models.Firewall.InboundRule] = None,
         outbound_rules: List[models.Firewall.OutboundRule] = None,
-    ):
+    ) -> None:
         assert id is not None, "id must be set"
         assert (
             inbound_rules is not None or outbound_rules is not None
@@ -129,7 +129,7 @@ class FirewallsManager(BaseManager):
         id: str = None,
         inbound_rules: List[models.Firewall.InboundRule] = None,
         outbound_rules: List[models.Firewall.OutboundRule] = None,
-    ):
+    ) -> None:
         assert id is not None, "id must be set"
         assert (
             inbound_rules is not None or outbound_rules is not None

@@ -5,7 +5,7 @@ from dolib.models import Domain
 
 @pytest.mark.vcr()
 @pytest.mark.block_network()
-def test_crud_domain():
+def test_crud_domain() -> None:
     client = Client(token="fake_token")
 
     domain = Domain(name="test.dolib.io")
@@ -26,7 +26,7 @@ def test_crud_domain():
 
 @pytest.mark.vcr()
 @pytest.mark.block_network()
-def test_crud_domain_records():
+def test_crud_domain_records() -> None:
     client = Client(token="fake_token")
 
     domain = Domain(name="test-records.dolib.io")
