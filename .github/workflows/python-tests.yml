@@ -26,7 +26,7 @@ jobs:
           - 3.6
     env:
       PY_COLORS: 1
-      PYTEST_ADDOPTS: --cov-report=xml
+      PYTEST_ADDOPTS: --strict --cov --cov-report=term-missing --cov-report=xml
     steps:
       - uses: actions/checkout@master
       - name: Set up Python ${{ matrix.python-version }}
@@ -40,6 +40,9 @@ jobs:
       - name: Test
         run: tox
       - name: Upload coverage to Codecov
+        # Uploading on macOS hangs until timeout, see:
+        # https://community.codecov.io/t/coverage-upload-hanging-until-timeout/883
+        if: "matrix.os != 'macOS'"
         uses: codecov/codecov-action@v1.0.6
         with:
           file: ./coverage.xml
