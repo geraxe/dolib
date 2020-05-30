@@ -7,7 +7,7 @@ import requests
 from . import managers as do_managers
 
 
-class Client:
+class BaseClient:
     API_DOMAIN = "api.digitalocean.com"
     API_VERSION = "v2"
 
@@ -36,7 +36,6 @@ class Client:
     def __init__(self, token: str = None):
         if token is None:
             raise NotImplementedError("Need you api token.")
-
         self._token = token
         self._ratelimit_limit: Optional[int] = None
         self._ratelimit_remaining: Optional[int] = None
@@ -62,6 +61,15 @@ class Client:
             self._ratelimit_remaining = int(response.headers.get("Ratelimit-Remaining"))
         if "Ratelimit-Reset" in response.headers:
             self._ratelimit_reset = int(response.headers.get("Ratelimit-Reset"))
+
+
+class Client(BaseClient):
+    def _load_managers(self):
+        for manager in do_managers.__sync_managers__:
+            klass = getattr(do_managers, manager)
+            if issubclass(klass, do_managers.base.BaseManager):
+                obj = klass(client=self)
+                setattr(self, klass.endpoint, obj)
 
     def request_raw(
         self,
@@ -154,7 +162,7 @@ class Client:
         return result
 
 
-class AsyncClient(Client):
+class AsyncClient(BaseClient):
     def __init__(self, token: str = None):
         super().__init__(token)
         self._rclient = httpx.AsyncClient()
@@ -246,9 +254,6 @@ class AsyncClient(Client):
 
         return result
 
-    async def aclose(self) -> None:
-        pass
-
     async def __aenter__(self) -> "AsyncClient":
         return self
 
@@ -258,4 +263,4 @@ class AsyncClient(Client):
         exc_value: BaseException = None,
         traceback: TracebackType = None,
     ) -> None:
-        await self.aclose()
+        pass
