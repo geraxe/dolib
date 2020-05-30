@@ -23,7 +23,7 @@ DOLib uses these awesome libraries:
 ## Installation
 
 ```shell
-$ pip install dolib
+pip install dolib
 ```
 
 ## Example
@@ -42,7 +42,11 @@ client.volumes.attach(volume, droplet_id=droplets[0].id)
 
 ## Contributing
 
-See the [CONTRIBUTING.md](CONTRIBUTING.md) document for details.
+To run the tests:
+
+```shell
+tox -p all
+```
 
 ## Versioning
 
