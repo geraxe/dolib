@@ -15,7 +15,7 @@
 
 Python 3.6+
 
-DOLib use this awesome libraries:
+DOLib uses these awesome libraries:
 
 * <a href="https://requests.readthedocs.io/" class="external-link" target="_blank">Requests</a> for network.
 * <a href="https://pydantic-docs.helpmanual.io/" class="external-link" target="_blank">Pydantic</a> for the data parts.
