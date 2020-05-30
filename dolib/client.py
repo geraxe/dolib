@@ -1,5 +1,7 @@
-from typing import Any, Dict, List, Optional
+from types import TracebackType
+from typing import Any, Dict, List, Optional, Type
 
+import httpx
 import requests
 
 from . import managers as do_managers
@@ -39,16 +41,19 @@ class Client:
         self._ratelimit_limit: Optional[int] = None
         self._ratelimit_remaining: Optional[int] = None
         self._ratelimit_reset: Optional[int] = None
-        for manager in do_managers.__all__:
-            klass = getattr(do_managers, manager)
-            if issubclass(klass, do_managers.base.BaseManager):
-                obj = klass(client=self)
-                setattr(self, klass.endpoint, obj)
+        self._load_managers()
 
         self.headers = {
             "Authorization": "Bearer {token}".format(token=self._token),
             "Content-Type": "application/json",
         }
+
+    def _load_managers(self):
+        for manager in do_managers.__all__:
+            klass = getattr(do_managers, manager)
+            if issubclass(klass, do_managers.base.BaseManager):
+                obj = klass(client=self)
+                setattr(self, klass.endpoint, obj)
 
     def _process_response(self, response: requests.models.Response) -> None:
         if "Ratelimit-Limit" in response.headers:
@@ -147,3 +152,110 @@ class Client:
             result += response[key]
 
         return result
+
+
+class AsyncClient(Client):
+    def __init__(self, token: str = None):
+        super().__init__(token)
+        self._rclient = httpx.AsyncClient()
+
+    def _load_managers(self):
+        for manager in do_managers.__async_managers__:
+            klass = getattr(do_managers, manager)
+            if issubclass(klass, do_managers.base.BaseManager):
+                obj = klass(client=self)
+                setattr(self, klass.endpoint, obj)
+
+    async def request_raw(
+        self,
+        endpoint: str = "account",
+        method: str = "get",
+        params: dict = {},
+        json: dict = None,
+        data: str = None,
+    ):
+        assert method in [
+            "get",
+            "post",
+            "put",
+            "delete",
+            "head",
+        ], "Invalid method {method}".format(method=method)
+
+        url = "https://{domain}/{version}/{endpoint}".format(
+            domain=self.API_DOMAIN, version=self.API_VERSION, endpoint=endpoint,
+        )
+
+        response = await self._rclient.request(
+            method=method,
+            url=url,
+            headers=self.headers,
+            params=params,
+            json=json,
+            data=data,
+        )
+
+        # raise exceptions in case of errors
+        response.raise_for_status()
+
+        # save data to client from response
+        self._process_response(response)
+
+        return response
+
+    async def request(self, *args, **kwargs) -> Dict[str, Any]:
+        response = await self.request_raw(*args, **kwargs)
+        if response.status_code in [
+            requests.codes["no_content"],
+            requests.codes["accepted"],
+        ]:
+            return {}
+        return response.json()
+
+    async def fetch_all(
+        self, endpoint: str, key: str, params: dict = {},
+    ) -> List[Dict[str, Any]]:
+        def get_next_page(result={}):
+            if (
+                "links" not in result
+                or "pages" not in result["links"]
+                or "next" not in result["links"]["pages"]
+            ):
+                return None
+            return result["links"]["pages"]["next"]
+
+        params["per_page"] = 200
+        response = await self.request(endpoint=endpoint, params=params)
+
+        # in case of strange result like " "firewalls": null "
+        if response[key] is None:
+            result = []
+        elif isinstance(response[key], list):
+            result = response[key]
+        else:
+            result = list(response[key])
+        while True:
+            next_url = get_next_page(response)
+            if next_url is None:
+                break
+            res = requests.get(next_url, headers=self.headers)
+
+            res.raise_for_status()
+            response = res.json()
+            result += response[key]
+
+        return result
+
+    async def aclose(self) -> None:
+        pass
+
+    async def __aenter__(self) -> "AsyncClient":
+        return self
+
+    async def __aexit__(
+        self,
+        exc_type: Type[BaseException] = None,
+        exc_value: BaseException = None,
+        traceback: TracebackType = None,
+    ) -> None:
+        await self.aclose()

@@ -24,3 +24,12 @@ class AccountManager(BaseManager):
         for history in res["billing_history"]:
             histories.append(models.BillingHistory(**history))
         return histories
+
+
+class AsyncAccountManager(BaseManager):
+    endpoint = "account"
+    name = "account"
+
+    async def get(self) -> models.Account:
+        res = await self._client.request(endpoint="account", method="get")
+        return models.Account(**res["account"])

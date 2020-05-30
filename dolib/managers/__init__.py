@@ -1,4 +1,4 @@
-from .account import AccountManager
+from .account import AccountManager, AsyncAccountManager
 from .actions import ActionsManager
 from .cdns import CDNEndpointsManager
 from .certificates import CertificatesManager
@@ -22,6 +22,7 @@ from .vpcs import VPCsManager
 
 __all__ = [
     "AccountManager",
+    "AsyncAccountManager",
     "ActionsManager",
     "CDNEndpointsManager",
     "CertificatesManager",
@@ -42,4 +43,32 @@ __all__ = [
     "TagsManager",
     "VolumesManager",
     "VPCsManager",
+]
+
+__sync_managers__ = [
+    "AccountManager",
+    "ActionsManager",
+    "CDNEndpointsManager",
+    "CertificatesManager",
+    "DatabasesManager",
+    "DomainsManager",
+    "DropletsManager",
+    "FirewallsManager",
+    "FloatingIPsManager",
+    "ImagesManager",
+    "InvoicesManager",
+    "KubernetesManager",
+    "LoadBalancersManager",
+    "ProjectsManager",
+    "RegionsManager",
+    "RegistryManager",
+    "SnapshotsManager",
+    "SSHKeysManager",
+    "TagsManager",
+    "VolumesManager",
+    "VPCsManager",
+]
+
+__async_managers__ = [
+    "AsyncAccountManager",
 ]
