@@ -1,5 +1,9 @@
 # Python Digital Ocean Library
 
+[![PyPI version](https://badge.fury.io/py/dolib.svg)](https://badge.fury.io/py/dolib)
+![Supported Python Versions](https://img.shields.io/pypi/pyversions/dolib)
+![Tests](https://github.com/geraxe/dolib/workflows/Tests/badge.svg)
+[![Coverage](https://codecov.io/gh/geraxe/dolib/branch/master/graph/badge.svg)](https://codecov.io/gh/geraxe/dolib)
 
 ## Description
 
