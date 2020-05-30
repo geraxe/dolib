@@ -18,12 +18,8 @@ jobs:
       matrix:
         os:
           - Ubuntu
-          - macOS
-          - Windows
         python-version:
           - 3.8
-          - 3.7
-          - 3.6
     env:
       PY_COLORS: 1
       PYTEST_ADDOPTS: --strict --cov --cov-report=term-missing --cov-report=xml
@@ -50,7 +46,6 @@ jobs:
   deploy:
     # TODO: uncomment after tests
     # if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
-    needs: tests
     name: Deploy
     runs-on: ubuntu-latest
     steps:
@@ -66,8 +61,7 @@ jobs:
       - name: Check
         run: twine check dist/*
       - name: Publish to Test PyPI
-        uses: pypa/gh-action-pypi-publish@master
-        with:
-          username: __token__
-          password: ${{ secrets.TESTPYPI_TOKEN }}
-          repository_url: https://test.pypi.org/legacy/
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.TESTPYPI_TOKEN }}
+        run: twine upload --repository-url https://test.pypi.org/legacy/ dist/*
