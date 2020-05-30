@@ -119,8 +119,6 @@ interactions:
       Set-Cookie:
       - __cfduid=d3da90c2deb0b23c2e188dbfcc3b0accb1590668120; expires=Sat, 27-Jun-20
         12:15:20 GMT; path=/; domain=.digitalocean.com; HttpOnly; SameSite=Lax
-      Transfer-Encoding:
-      - chunked
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
@@ -208,4 +206,66 @@ interactions:
     status:
       code: 204
       message: No Content
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.23.0
+    method: GET
+    uri: https://api.digitalocean.com/v2/domains?per_page=200
+  response:
+    body:
+      string: '{"domains":[{"name":"dolib.io","ttl":1800,"zone_file":"$ORIGIN
+        dolib.io.\n$TTL 1800\ndolib.io. IN SOA ns1.digitalocean.com. hostmaster.dolib.io.
+        1590666272 10800 3600 604800 1800\ndolib.io. 1800 IN NS ns1.digitalocean.com.\ndolib.io.
+        1800 IN NS ns2.digitalocean.com.\ndolib.io. 1800 IN NS ns3.digitalocean.com.\n"},{"name":"test.dolib.io","ttl":1800,"zone_file":"$ORIGIN
+        test.dolib.io.\n$TTL 1800\ntest.dolib.io. IN SOA ns1.digitalocean.com.
+        hostmaster.test.dolib.io. 1590762055 10800 3600 604800 1800\ntest.dolib.io.
+        1800 IN NS ns1.digitalocean.com.\ntest.dolib.io. 1800 IN NS ns2.digitalocean.com.\ntest.dolib.io.
+        1800 IN NS ns3.digitalocean.com.\n_acme-challenge.test.dolib.io. 60 IN
+        TXT PM4wsRpoRWCTLYj-j5LHVsqHyU6aX976w0GczXuy_UU\n"}],"links":{},"meta":{"total":2}}'
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 30 May 2020 16:38:55 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4999'
+      Ratelimit-Reset:
+      - '1590856735'
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Gateway:
+      - Edge-Gateway
+      X-Runtime:
+      - '0.105389'
+      X-Xss-Protection:
+      - 1; mode=block
+      content-length:
+      - '770'
+    status:
+      code: 200
+      message: OK
 version: 1

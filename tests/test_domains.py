@@ -9,10 +9,17 @@ from dolib.models import Domain
 def test_crud_domain() -> None:
     client = Client(token="fake_token")
 
+    # list all domains
+    domains = client.domains.all()
+    assert len(domains) > 0
+    assert isinstance(domains, list)
+    assert isinstance(domains[0], Domain)
+
     domain = Domain(name="test.dolib.io")
 
     # create domain
     domain = client.domains.create(domain=domain)
+    assert isinstance(domain, Domain)
     assert domain.name == "test.dolib.io"
 
     # read domain
@@ -20,6 +27,7 @@ def test_crud_domain() -> None:
     assert domain.name == "test.dolib.io"
     assert domain.ttl > 0
     assert len(domain.zone_file) > 0
+    assert isinstance(domain, Domain)
 
     # delete domain
     client.domains.delete(domain=domain)
