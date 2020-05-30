@@ -18,12 +18,12 @@ jobs:
       matrix:
         os:
           - Ubuntu
-          - macOS
-          - Windows
+        #  - macOS
+        #  - Windows
         python-version:
           - 3.8
-          - 3.7
-          - 3.6
+        #  - 3.7
+        #  - 3.6
     env:
       PY_COLORS: 1
       PYTEST_ADDOPTS: --strict --cov --cov-report=term-missing --cov-report=xml
@@ -50,7 +50,7 @@ jobs:
   deploy:
     # TODO: uncomment after tests
     # if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
-    needs: tests
+    #needs: tests
     name: Deploy
     runs-on: ubuntu-latest
     steps:
