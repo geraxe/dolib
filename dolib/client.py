@@ -102,7 +102,7 @@ class Client:
         # in case of strange result like " "firewalls": null "
         if response[key] is None:
             result = []
-        elif type(response[key]) == list:
+        elif isninstance(response[key], list):
             result = response[key]
         else:
             result = list(response[key])
