@@ -38,7 +38,7 @@ class CertificatesManager(BaseManager):
         )
         return models.Certificate(**res["certificate"])
 
-    def delete(self, certificate: models.Certificate = None):
+    def delete(self, certificate: models.Certificate = None) -> None:
         assert certificate is not None, "certificate object must be set"
 
         self._client.request(

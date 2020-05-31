@@ -28,7 +28,7 @@ class DatabasesManager(BaseManager):
         )
         return models.DBCluster(**res["database"])
 
-    def create(self, database: models.DBCluster = None):
+    def create(self, database: models.DBCluster = None) -> models.DBCluster:
         assert database is not None, "database object must be set"
 
         res = self._client.request(
@@ -49,7 +49,7 @@ class DatabasesManager(BaseManager):
         )
         return models.DBCluster(**res["database"])
 
-    def delete(self, database: models.DBCluster = None):
+    def delete(self, database: models.DBCluster = None) -> None:
         assert database is not None, "database cluster object must be set"
 
         self._client.request(
@@ -87,7 +87,7 @@ class DatabasesManager(BaseManager):
         )
         return models.DBReplica(**res["replica"])
 
-    def delete_replica(self, id: str = None, replica: models.DBReplica = None):
+    def delete_replica(self, id: str = None, replica: models.DBReplica = None) -> None:
         assert id is not None, "database cluster id must be set"
         assert replica is not None, "replica must be set"
 
@@ -125,7 +125,7 @@ class DatabasesManager(BaseManager):
         )
         return models.DBCluster.User(**res["user"])
 
-    def delete_user(self, id: str = None, user: models.DBCluster.User = None):
+    def delete_user(self, id: str = None, user: models.DBCluster.User = None) -> None:
         assert id is not None, "database cluster id must be set"
         assert user is not None, "user must be set"
 
@@ -160,7 +160,7 @@ class DatabasesManager(BaseManager):
         )
         return models.DBCluster.DB(**res["db"])
 
-    def delete_db(self, id: str = None, db: models.DBCluster.DB = None):
+    def delete_db(self, id: str = None, db: models.DBCluster.DB = None) -> None:
         assert id is not None, "database cluster id must be set"
         assert db is not None, "db must be set"
 
@@ -170,7 +170,7 @@ class DatabasesManager(BaseManager):
         )
 
     # Actions
-    def resize(self, id: str = None, size: str = None, num_nodes: int = None):
+    def resize(self, id: str = None, size: str = None, num_nodes: int = None) -> None:
         assert id is not None, "database cluster id must be set"
         assert size is not None, "size must be set"
         assert num_nodes is not None, "num_nodes must be set"
@@ -181,7 +181,7 @@ class DatabasesManager(BaseManager):
             json={"size": size, "num_nodes": num_nodes},
         )
 
-    def migrate(self, id: str = None, region: str = None):
+    def migrate(self, id: str = None, region: str = None) -> None:
         assert id is not None, "droplet id must be set"
         assert region is not None, "region must be set"
 

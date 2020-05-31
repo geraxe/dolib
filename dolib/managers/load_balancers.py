@@ -12,7 +12,7 @@ class LoadBalancersManager(BaseManager):
         res = self._client.fetch_all(endpoint="load_balancers", key="load_balancers")
         return [models.LoadBalancer(**lb) for lb in res]
 
-    def get(self, id: str = None):
+    def get(self, id: str = None) -> models.LoadBalancer:
         assert id is not None, "id must be set"
         res = self._client.request(
             endpoint="load_balancers/{id}".format(id=id), method="get"
@@ -27,10 +27,10 @@ class LoadBalancersManager(BaseManager):
         )
         return models.LoadBalancer(**res["load_balancer"])
 
-    def update(self, load_balancer: models.LoadBalancer = None):
+    def update(self, load_balancer: models.LoadBalancer = None) -> models.LoadBalancer:
         assert load_balancer is not None, "load_balancer object must be set"
 
-        if type(load_balancer.region) == models.Region:
+        if isinstance(load_balancer.region, models.Region):
             load_balancer.region = load_balancer.region.slug
 
         res = self._client.request(
@@ -55,7 +55,7 @@ class LoadBalancersManager(BaseManager):
         )
         return models.LoadBalancer(**res["load_balancer"])
 
-    def delete(self, load_balancer: models.LoadBalancer = None):
+    def delete(self, load_balancer: models.LoadBalancer = None) -> None:
         assert load_balancer is not None, "load_balancer object must be set"
 
         self._client.request(

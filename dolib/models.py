@@ -13,7 +13,7 @@ class Region(BaseModel):
     available: bool
     features: List[str]
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return "Region({slug})".format(slug=self.slug)
 
 
@@ -23,7 +23,7 @@ class Network(BaseModel):
     gateway: str
     type: str
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return "Network({ip}/{netmask} [{type}])".format(
             ip=self.ip_address, netmask=self.netmask, type=self.type,
         )

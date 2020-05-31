@@ -1,4 +1,4 @@
-from typing import List
+from typing import Any, Dict, List
 
 from .. import models
 from .base import BaseManager
@@ -22,12 +22,9 @@ class FloatingIPsManager(BaseManager):
     def create(self, ip: models.FloatingIP = None) -> models.FloatingIP:
         assert ip is not None, "ip object must be set"
 
-        post_data = {}
-        if ip.region is not None:
-            if type(ip) == models.Region:
-                post_data["region"] = ip.region.slug
-            else:
-                post_data["region"] = ip.region
+        post_data: Dict[str, Any] = {}
+        if ip.region is not None and isinstance(ip.region, str):
+            post_data["region"] = ip.region
         elif ip.droplet is not None:
             post_data["droplet_id"] = ip.droplet.id
 
@@ -36,7 +33,7 @@ class FloatingIPsManager(BaseManager):
         )
         return models.FloatingIP(**res["floating_ip"])
 
-    def delete(self, ip: models.FloatingIP = None):
+    def delete(self, ip: models.FloatingIP = None) -> None:
         assert ip is not None, "ip object must be set"
 
         self._client.request(

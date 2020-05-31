@@ -28,7 +28,7 @@ class TagsManager(BaseManager):
         )
         return models.Tag(**res["tag"])
 
-    def delete(self, tag: models.Tag = None):
+    def delete(self, tag: models.Tag = None) -> None:
         assert tag is not None, "tag object must be set"
 
         self._client.request(
@@ -37,7 +37,7 @@ class TagsManager(BaseManager):
 
     def tag_resources(
         self, name: str = None, resources: List[models.Tag.Resource] = None
-    ):
+    ) -> None:
         assert name is not None, "tag name must be set"
         assert resources is not None, "resources must be set"
 
@@ -51,7 +51,7 @@ class TagsManager(BaseManager):
 
     def untag_resources(
         self, name: str = None, resources: List[models.Tag.Resource] = None
-    ):
+    ) -> None:
         assert name is not None, "tag name must be set"
         assert resources is not None, "resources must be set"
 

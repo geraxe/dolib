@@ -31,7 +31,7 @@ class CDNEndpointsManager(BaseManager):
         )
         return models.CDNEndpoint(**res["endpoint"])
 
-    def update(self, endpoint: models.CDNEndpoint = None):
+    def update(self, endpoint: models.CDNEndpoint = None) -> models.CDNEndpoint:
         assert endpoint is not None, "endpoint object must be set"
         res = self._client.request(
             endpoint="cdn/endpoints/{id}".format(id=endpoint.id),
@@ -40,14 +40,14 @@ class CDNEndpointsManager(BaseManager):
         )
         return models.CDNEndpoint(**res["endpoint"])
 
-    def delete(self, endpoint: models.CDNEndpoint = None):
+    def delete(self, endpoint: models.CDNEndpoint = None) -> None:
         assert endpoint is not None, "endpoint object must be set"
 
         self._client.request(
             endpoint="cdn/endpoints/{id}".format(id=endpoint.id), method="delete"
         )
 
-    def flush_cache(self, id: str = None, files: List[str] = ["*"]):
+    def flush_cache(self, id: str = None, files: List[str] = ["*"]) -> None:
         assert id is not None, "id must be set"
 
         self._client.request(

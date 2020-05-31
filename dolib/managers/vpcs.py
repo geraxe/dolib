@@ -8,7 +8,7 @@ class VPCsManager(BaseManager):
     endpoint = "vpcs"
     name = "vpcs"
 
-    def all(self) -> List[models.Domain]:
+    def all(self) -> List[models.VPC]:
         res = self._client.fetch_all(endpoint="vpcs", key="vpcs")
         return [models.VPC(**vpc) for vpc in res]
 
@@ -37,7 +37,7 @@ class VPCsManager(BaseManager):
         )
         return models.VPC(**res["vpc"])
 
-    def delete(self, vpc: models.VPC = None):
+    def delete(self, vpc: models.VPC = None) -> None:
         assert vpc is not None, "vpc object must be set"
 
         self._client.request(endpoint="vpcs/{id}".format(id=vpc.id), method="delete")

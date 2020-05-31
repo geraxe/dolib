@@ -27,7 +27,7 @@ class DomainsManager(BaseManager):
         )
         return models.Domain(**res["domain"])
 
-    def delete(self, domain: models.Domain = None):
+    def delete(self, domain: models.Domain = None) -> None:
         assert domain is not None, "domain object must be set"
 
         self._client.request(
@@ -70,7 +70,9 @@ class DomainsManager(BaseManager):
         )
         return models.Domain.Record(**res["domain_record"])
 
-    def delete_record(self, name: str = None, record: models.Domain.Record = None):
+    def delete_record(
+        self, name: str = None, record: models.Domain.Record = None
+    ) -> None:
         assert name is not None, "name must be set"
         assert record is not None, "record must be set"
 

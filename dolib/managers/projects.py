@@ -12,13 +12,13 @@ class ProjectsManager(BaseManager):
         res = self._client.fetch_all(endpoint="projects", key="projects")
         return [models.Project(**proj) for proj in res]
 
-    def get(self, id: str = None):
+    def get(self, id: str = None) -> models.Project:
         assert id is not None, "id must be set"
 
         res = self._client.request(endpoint="projects/{id}".format(id=id), method="get")
         return models.Project(**res["project"])
 
-    def create(self, project: models.Project = None):
+    def create(self, project: models.Project = None) -> models.Project:
         assert project is not None, "project object must be set"
 
         res = self._client.request(
@@ -30,7 +30,7 @@ class ProjectsManager(BaseManager):
         )
         return models.Project(**res["project"])
 
-    def update(self, project: models.Project = None):
+    def update(self, project: models.Project = None) -> models.Project:
         assert project is not None, "project object must be set"
         res = self._client.request(
             endpoint="projects/{id}".format(id=project.id),
@@ -41,7 +41,7 @@ class ProjectsManager(BaseManager):
         )
         return models.Project(**res["project"])
 
-    def delete(self, project: models.Project = None):
+    def delete(self, project: models.Project = None) -> None:
         assert project is not None, "project object must be set"
 
         self._client.request(
