@@ -1,7 +1,7 @@
 from typing import List
 
 from .. import models
-from .base import BaseManager
+from .base import AsyncBaseManager, BaseManager
 
 
 class KubernetesManager(BaseManager):
@@ -14,16 +14,13 @@ class KubernetesManager(BaseManager):
         )
         return [models.K8SCluster(**cluster) for cluster in res]
 
-    def get(self, id: str = None) -> models.K8SCluster:
-        assert id is not None, "id must be set"
+    def get(self, id: str) -> models.K8SCluster:
         res = self._client.request(
             endpoint="kubernetes/clusters/{id}".format(id=id), method="get"
         )
         return models.K8SCluster(**res["kubernetes_cluster"])
 
-    def create(self, cluster: models.K8SCluster = None) -> models.K8SCluster:
-        assert cluster is not None, "kubernetes cluster object must be set"
-
+    def create(self, cluster: models.K8SCluster) -> models.K8SCluster:
         res = self._client.request(
             endpoint="kubernetes/clusters",
             method="post",
@@ -42,8 +39,7 @@ class KubernetesManager(BaseManager):
         )
         return models.K8SCluster(**res["kubernetes_cluster"])
 
-    def update(self, cluster: models.K8SCluster = None) -> models.K8SCluster:
-        assert cluster is not None, "cluster object must be set"
+    def update(self, cluster: models.K8SCluster) -> models.K8SCluster:
         self._client.request(
             endpoint="kubernetes/clusters/{id}".format(id=cluster.id),
             method="put",
@@ -55,15 +51,12 @@ class KubernetesManager(BaseManager):
         return cluster
         # return models.K8SCluster(**res["kubernetes_cluster"])
 
-    def delete(self, cluster: models.K8SCluster = None) -> None:
-        assert cluster is not None, "cluster object must be set"
-
+    def delete(self, cluster: models.K8SCluster) -> None:
         self._client.request(
             endpoint="kubernetes/clusters/{id}".format(id=cluster.id), method="delete"
         )
 
-    def node_pools(self, id: str = None) -> List[models.K8SCluster.Pool]:
-        assert id is not None, "cluster id must be set"
+    def node_pools(self, id: str) -> List[models.K8SCluster.Pool]:
         res = self._client.fetch_all(
             endpoint="kubernetes/clusters/{id}/node_pools".format(id=id),
             key="node_pools",
@@ -71,10 +64,8 @@ class KubernetesManager(BaseManager):
         return [models.K8SCluster.Pool(**pool) for pool in res]
 
     def add_node_pool(
-        self, id: str = None, pool: models.K8SCluster.Pool = None
+        self, id: str, pool: models.K8SCluster.Pool
     ) -> models.K8SCluster.Pool:
-        assert id is not None, "cluster id must be set"
-        assert pool is not None, "pool must be set"
 
         res = self._client.request(
             endpoint="kubernetes/clusters/{id}/node_pools".format(id=id),
@@ -93,12 +84,7 @@ class KubernetesManager(BaseManager):
         )
         return models.K8SCluster.Pool(**res["node_pool"])
 
-    def get_node_pool(
-        self, id: str = None, pool_id: str = None
-    ) -> models.K8SCluster.Pool:
-        assert id is not None, "cluster id must be set"
-        assert pool_id is not None, "pool_id name must be set"
-
+    def get_node_pool(self, id: str, pool_id: str) -> models.K8SCluster.Pool:
         res = self._client.request(
             endpoint="kubernetes/clusters/{id}/node_pools/{pool_id}".format(
                 id=id, pool_id=pool_id
@@ -108,11 +94,8 @@ class KubernetesManager(BaseManager):
         return models.K8SCluster.Pool(**res["node_pool"])
 
     def update_node_pool(
-        self, id: str = None, pool: models.K8SCluster.Pool = None
+        self, id: str, pool: models.K8SCluster.Pool
     ) -> models.K8SCluster.Pool:
-        assert id is not None, "cluster id must be set"
-        assert pool is not None, "pool must be set"
-
         self._client.request(
             endpoint="kubernetes/clusters/{id}/node_pools/{pool_id}".format(
                 id=id, pool_id=pool.id
@@ -133,12 +116,7 @@ class KubernetesManager(BaseManager):
         return pool
         # return models.K8SCluster.Pool(**res["node_pool"])
 
-    def delete_node_pool(
-        self, id: str = None, pool: models.K8SCluster.Pool = None
-    ) -> None:
-        assert id is not None, "database cluster id must be set"
-        assert pool is not None, "pool must be set"
-
+    def delete_node_pool(self, id: str, pool: models.K8SCluster.Pool) -> None:
         self._client.request(
             endpoint="kubernetes/clusters/{id}/node_pools/{pool_id}".format(
                 id=id, pool_id=pool.id
@@ -146,15 +124,13 @@ class KubernetesManager(BaseManager):
             method="delete",
         )
 
-    def kubeconfig(self, id: str = None) -> bytes:
-        assert id is not None, "cluster id must be set"
+    def kubeconfig(self, id: str) -> bytes:
         res = self._client.request_raw(
             endpoint="kubernetes/clusters/{id}/kubeconfig".format(id=id), method="get"
         )
         return res.content
 
-    def credentials(self, id: str = None) -> dict:
-        assert id is not None, "cluster id must be set"
+    def credentials(self, id: str) -> dict:
         res = self._client.request(
             endpoint="kubernetes/clusters/{id}/credentials".format(id=id), method="get"
         )
@@ -162,4 +138,141 @@ class KubernetesManager(BaseManager):
 
     def options(self) -> dict:
         res = self._client.request(endpoint="kubernetes/options", method="get")
+        return res["options"]
+
+
+class AsyncKubernetesManager(AsyncBaseManager):
+    endpoint = "kubernetes"
+    name = "kubernetes"
+
+    async def all(self) -> List[models.K8SCluster]:
+        res = await self._client.fetch_all(
+            endpoint="kubernetes/clusters", key="kubernetes_clusters"
+        )
+        return [models.K8SCluster(**cluster) for cluster in res]
+
+    async def get(self, id: str) -> models.K8SCluster:
+        res = await self._client.request(
+            endpoint="kubernetes/clusters/{id}".format(id=id), method="get"
+        )
+        return models.K8SCluster(**res["kubernetes_cluster"])
+
+    async def create(self, cluster: models.K8SCluster) -> models.K8SCluster:
+        res = await self._client.request(
+            endpoint="kubernetes/clusters",
+            method="post",
+            data=cluster.json(
+                include={
+                    "name",
+                    "region",
+                    "version",
+                    "auto_upgrade",
+                    "tags",
+                    "maintenance_policy",
+                    "node_pools",
+                    "vpc_uuid",
+                }
+            ),
+        )
+        return models.K8SCluster(**res["kubernetes_cluster"])
+
+    async def update(self, cluster: models.K8SCluster) -> models.K8SCluster:
+        await self._client.request(
+            endpoint="kubernetes/clusters/{id}".format(id=cluster.id),
+            method="put",
+            data=cluster.json(
+                include={"name", "auto_upgrade", "tags", "maintenance_policy"}
+            ),
+        )
+        # DO api method not return anything
+        return cluster
+        # return models.K8SCluster(**res["kubernetes_cluster"])
+
+    async def delete(self, cluster: models.K8SCluster) -> None:
+        await self._client.request(
+            endpoint="kubernetes/clusters/{id}".format(id=cluster.id), method="delete"
+        )
+
+    async def node_pools(self, id: str) -> List[models.K8SCluster.Pool]:
+        res = await self._client.fetch_all(
+            endpoint="kubernetes/clusters/{id}/node_pools".format(id=id),
+            key="node_pools",
+        )
+        return [models.K8SCluster.Pool(**pool) for pool in res]
+
+    async def add_node_pool(
+        self, id: str, pool: models.K8SCluster.Pool
+    ) -> models.K8SCluster.Pool:
+
+        res = await self._client.request(
+            endpoint="kubernetes/clusters/{id}/node_pools".format(id=id),
+            method="post",
+            data=pool.json(
+                include={
+                    "size",
+                    "name",
+                    "count",
+                    "labels",
+                    "auto_scale",
+                    "min_nodes",
+                    "max_nodes",
+                }
+            ),
+        )
+        return models.K8SCluster.Pool(**res["node_pool"])
+
+    async def get_node_pool(self, id: str, pool_id: str) -> models.K8SCluster.Pool:
+        res = await self._client.request(
+            endpoint="kubernetes/clusters/{id}/node_pools/{pool_id}".format(
+                id=id, pool_id=pool_id
+            ),
+            method="get",
+        )
+        return models.K8SCluster.Pool(**res["node_pool"])
+
+    async def update_node_pool(
+        self, id: str, pool: models.K8SCluster.Pool
+    ) -> models.K8SCluster.Pool:
+        await self._client.request(
+            endpoint="kubernetes/clusters/{id}/node_pools/{pool_id}".format(
+                id=id, pool_id=pool.id
+            ),
+            method="put",
+            data=pool.json(
+                include={
+                    "name",
+                    "count",
+                    "labels",
+                    "auto_scale",
+                    "min_nodes",
+                    "max_nodes",
+                }
+            ),
+        )
+        # DO api method not return anything
+        return pool
+        # return models.K8SCluster.Pool(**res["node_pool"])
+
+    async def delete_node_pool(self, id: str, pool: models.K8SCluster.Pool) -> None:
+        await self._client.request(
+            endpoint="kubernetes/clusters/{id}/node_pools/{pool_id}".format(
+                id=id, pool_id=pool.id
+            ),
+            method="delete",
+        )
+
+    async def kubeconfig(self, id: str) -> bytes:
+        res = await self._client.request_raw(
+            endpoint="kubernetes/clusters/{id}/kubeconfig".format(id=id), method="get"
+        )
+        return res.content
+
+    async def credentials(self, id: str) -> dict:
+        res = await self._client.request(
+            endpoint="kubernetes/clusters/{id}/credentials".format(id=id), method="get"
+        )
+        return res
+
+    async def options(self) -> dict:
+        res = await self._client.request(endpoint="kubernetes/options", method="get")
         return res["options"]
