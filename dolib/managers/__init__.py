@@ -1,5 +1,5 @@
 from .account import AccountManager, AsyncAccountManager
-from .actions import ActionsManager
+from .actions import ActionsManager, AsyncActionsManager
 from .cdns import CDNEndpointsManager
 from .certificates import CertificatesManager
 from .databases import DatabasesManager
@@ -24,6 +24,7 @@ __all__ = [
     "AccountManager",
     "AsyncAccountManager",
     "ActionsManager",
+    "AsyncActionsManager",
     "CDNEndpointsManager",
     "CertificatesManager",
     "DatabasesManager",
@@ -71,4 +72,5 @@ __sync_managers__ = [
 
 __async_managers__ = [
     "AsyncAccountManager",
+    "AsyncActionsManager",
 ]

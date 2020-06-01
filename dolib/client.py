@@ -1,5 +1,5 @@
+import typing as t
 from types import TracebackType
-from typing import Any, Dict, List, Optional, Type
 
 import httpx
 import requests
@@ -11,35 +11,35 @@ class BaseClient:
     API_DOMAIN = "api.digitalocean.com"
     API_VERSION = "v2"
 
-    account: Optional[do_managers.AccountManager] = None
-    actions: Optional[do_managers.ActionsManager] = None
-    cdn_endpoints: Optional[do_managers.CDNEndpointsManager] = None
-    certificates: Optional[do_managers.CertificatesManager] = None
-    databases: Optional[do_managers.DatabasesManager] = None
-    domains: Optional[do_managers.DomainsManager] = None
-    droplets: Optional[do_managers.DropletsManager] = None
-    firewalls: Optional[do_managers.FirewallsManager] = None
-    floating_ips: Optional[do_managers.FloatingIPsManager] = None
-    images: Optional[do_managers.ImagesManager] = None
-    invoices: Optional[do_managers.InvoicesManager] = None
-    kubernetes: Optional[do_managers.KubernetesManager] = None
-    load_balancers: Optional[do_managers.LoadBalancersManager] = None
-    projects: Optional[do_managers.ProjectsManager] = None
-    regions: Optional[do_managers.RegionsManager] = None
-    registry: Optional[do_managers.RegistryManager] = None
-    snapshots: Optional[do_managers.SnapshotsManager] = None
-    ssh_keys: Optional[do_managers.SSHKeysManager] = None
-    tags: Optional[do_managers.TagsManager] = None
-    volumes: Optional[do_managers.VolumesManager] = None
-    vpcs: Optional[do_managers.VPCsManager] = None
+    account: t.Optional[do_managers.AccountManager] = None
+    actions: t.Optional[do_managers.ActionsManager] = None
+    cdn_endpoints: t.Optional[do_managers.CDNEndpointsManager] = None
+    certificates: t.Optional[do_managers.CertificatesManager] = None
+    databases: t.Optional[do_managers.DatabasesManager] = None
+    domains: t.Optional[do_managers.DomainsManager] = None
+    droplets: t.Optional[do_managers.DropletsManager] = None
+    firewalls: t.Optional[do_managers.FirewallsManager] = None
+    floating_ips: t.Optional[do_managers.FloatingIPsManager] = None
+    images: t.Optional[do_managers.ImagesManager] = None
+    invoices: t.Optional[do_managers.InvoicesManager] = None
+    kubernetes: t.Optional[do_managers.KubernetesManager] = None
+    load_balancers: t.Optional[do_managers.LoadBalancersManager] = None
+    projects: t.Optional[do_managers.ProjectsManager] = None
+    regions: t.Optional[do_managers.RegionsManager] = None
+    registry: t.Optional[do_managers.RegistryManager] = None
+    snapshots: t.Optional[do_managers.SnapshotsManager] = None
+    ssh_keys: t.Optional[do_managers.SSHKeysManager] = None
+    tags: t.Optional[do_managers.TagsManager] = None
+    volumes: t.Optional[do_managers.VolumesManager] = None
+    vpcs: t.Optional[do_managers.VPCsManager] = None
 
     def __init__(self, token: str = None):
         if token is None:
             raise NotImplementedError("Need you api token.")
         self._token = token
-        self._ratelimit_limit: Optional[int] = None
-        self._ratelimit_remaining: Optional[int] = None
-        self._ratelimit_reset: Optional[int] = None
+        self._ratelimit_limit: t.Optional[int] = None
+        self._ratelimit_remaining: t.Optional[int] = None
+        self._ratelimit_reset: t.Optional[int] = None
         self._load_managers()
 
         self.headers = {
@@ -47,14 +47,16 @@ class BaseClient:
             "Content-Type": "application/json",
         }
 
-    def _load_managers(self):
+    def _load_managers(self) -> None:
         for manager in do_managers.__all__:
             klass = getattr(do_managers, manager)
             if issubclass(klass, do_managers.base.BaseManager):
                 obj = klass(client=self)
                 setattr(self, klass.endpoint, obj)
 
-    def _process_response(self, response: requests.models.Response) -> None:
+    def _process_response(
+        self, response: t.Union[httpx._models.Response, requests.models.Response]
+    ) -> None:
         if "Ratelimit-Limit" in response.headers:
             self._ratelimit_limit = int(response.headers.get("Ratelimit-Limit"))
         if "Ratelimit-Remaining" in response.headers:
@@ -64,7 +66,7 @@ class BaseClient:
 
 
 class Client(BaseClient):
-    def _load_managers(self):
+    def _load_managers(self) -> None:
         for manager in do_managers.__sync_managers__:
             klass = getattr(do_managers, manager)
             if issubclass(klass, do_managers.base.BaseManager):
@@ -117,7 +119,7 @@ class Client(BaseClient):
         params: dict = {},
         json: dict = None,
         data: str = None,
-    ) -> Dict[str, Any]:
+    ) -> t.Dict[str, t.Any]:
         response = self.request_raw(endpoint, method, params, json, data)
         if response.status_code in [
             requests.codes["no_content"],
@@ -128,10 +130,11 @@ class Client(BaseClient):
 
     def fetch_all(
         self, endpoint: str, key: str, params: dict = {},
-    ) -> List[Dict[str, Any]]:
-        def get_next_page(result: dict = {}) -> str:
+    ) -> t.List[t.Dict[str, t.Any]]:
+        def get_next_page(result: t.Dict[str, t.Any] = None) -> t.Optional[str]:
             if (
-                "links" not in result
+                result is None
+                or "links" not in result
                 or "pages" not in result["links"]
                 or "next" not in result["links"]["pages"]
             ):
@@ -167,10 +170,10 @@ class AsyncClient(BaseClient):
         super().__init__(token)
         self._rclient = httpx.AsyncClient()
 
-    def _load_managers(self):
+    def _load_managers(self) -> None:
         for manager in do_managers.__async_managers__:
             klass = getattr(do_managers, manager)
-            if issubclass(klass, do_managers.base.BaseManager):
+            if issubclass(klass, do_managers.base.AsyncBaseManager):
                 obj = klass(client=self)
                 setattr(self, klass.endpoint, obj)
 
@@ -181,7 +184,7 @@ class AsyncClient(BaseClient):
         params: dict = {},
         json: dict = None,
         data: str = None,
-    ):
+    ) -> httpx.Response:
         assert method in [
             "get",
             "post",
@@ -211,8 +214,15 @@ class AsyncClient(BaseClient):
 
         return response
 
-    async def request(self, *args, **kwargs) -> Dict[str, Any]:
-        response = await self.request_raw(*args, **kwargs)
+    async def request(
+        self,
+        endpoint: str = "account",
+        method: str = "get",
+        params: dict = {},
+        json: dict = None,
+        data: str = None,
+    ) -> t.Dict[str, t.Any]:
+        response = await self.request_raw(endpoint, method, params, json, data)
         if response.status_code in [
             requests.codes["no_content"],
             requests.codes["accepted"],
@@ -222,10 +232,11 @@ class AsyncClient(BaseClient):
 
     async def fetch_all(
         self, endpoint: str, key: str, params: dict = {},
-    ) -> List[Dict[str, Any]]:
-        def get_next_page(result={}):
+    ) -> t.List[t.Dict[str, t.Any]]:
+        def get_next_page(result: t.Dict[str, t.Any] = None) -> t.Optional[str]:
             if (
-                "links" not in result
+                result is None
+                or "links" not in result
                 or "pages" not in result["links"]
                 or "next" not in result["links"]["pages"]
             ):
@@ -259,7 +270,7 @@ class AsyncClient(BaseClient):
 
     async def __aexit__(
         self,
-        exc_type: Type[BaseException] = None,
+        exc_type: t.Type[BaseException] = None,
         exc_value: BaseException = None,
         traceback: TracebackType = None,
     ) -> None:

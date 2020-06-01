@@ -1,7 +1,7 @@
-from typing import Tuple
+from typing import List
 
 from .. import models
-from .base import BaseManager
+from .base import AsyncBaseManager, BaseManager
 
 
 class AccountManager(BaseManager):
@@ -16,29 +16,28 @@ class AccountManager(BaseManager):
         res = self._client.request(endpoint="customers/my/balance", method="get")
         return models.Balance(**res)
 
-    def billing_history(self) -> Tuple[models.BillingHistory]:
+    def billing_history(self) -> List[models.BillingHistory]:
         res = self._client.fetch_all(
             endpoint="customers/my/billing_history", key="billing_history"
         )
-        return tuple(
-            models.BillingHistory(**history) for history in res["billing_history"]
-        )
+        return [models.BillingHistory(**history) for history in res]
 
 
-class AsyncAccountManager(BaseManager):
+class AsyncAccountManager(AsyncBaseManager):
     endpoint = "account"
     name = "account"
 
     async def get(self) -> models.Account:
         res = await self._client.request(endpoint="account", method="get")
+        print(type(res))
         return models.Account(**res["account"])
 
     async def balance(self) -> models.Balance:
         res = await self._client.request(endpoint="customers/my/balance", method="get")
         return models.Balance(**res)
 
-    async def billing_history(self) -> Tuple[models.BillingHistory]:
+    async def billing_history(self) -> List[models.BillingHistory]:
         res = await self._client.fetch_all(
             endpoint="customers/my/billing_history", key="billing_history"
         )
-        return tuple(models.BillingHistory(**history) for history in res)
+        return [models.BillingHistory(**history) for history in res]
