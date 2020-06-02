@@ -29,7 +29,6 @@ class AsyncAccountManager(AsyncBaseManager):
 
     async def get(self) -> models.Account:
         res = await self._client.request(endpoint="account", method="get")
-        print(type(res))
         return models.Account(**res["account"])
 
     async def balance(self) -> models.Balance:
