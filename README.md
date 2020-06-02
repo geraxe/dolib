@@ -28,6 +28,7 @@ pip install dolib
 
 ## Example
 
+Sync client
 ```Python
 from dolib import Client
 
@@ -38,6 +39,19 @@ volume = client.volumes.get("53cf7120-9d5b-11ea-aed1-0a58ac14d008")
 
 client.volumes.attach(volume, droplet_id=droplets[0].id)
 ```
+
+Async client
+```Python
+from dolib import AsyncClient
+from dolib.models import Droplet
+
+await with Client(token="60c13d47f17dbed9f7293cf8c82d18fece3439a54f88e6c52c2df07f87bd8dd9") as client:
+    droplet = Droplet(name="dolib-droplet", region="fra1", size="s-1vcpu-1gb", image="ubuntu-18-04-x64")
+    droplet = await client.droplets.create(droplet)
+
+```
+
+
 
 
 ## Contributing

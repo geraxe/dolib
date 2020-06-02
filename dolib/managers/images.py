@@ -1,7 +1,7 @@
 from typing import List
 
 from .. import models
-from .base import BaseManager
+from .base import AsyncBaseManager, BaseManager
 
 
 class ImagesManager(BaseManager):
@@ -9,11 +9,8 @@ class ImagesManager(BaseManager):
     name: str = "images"
 
     def all(self) -> List[models.Image]:
-        images = list()
         res = self._client.fetch_all(endpoint="images", key="images")
-        for image in res:
-            images.append(models.Image(**image))
-        return images
+        return [models.Image(**image) for image in res]
 
     def filter(
         self, private: str = None, type: str = None, tag_name: str = None,
@@ -29,15 +26,11 @@ class ImagesManager(BaseManager):
         res = self._client.fetch_all(endpoint="images", key="images", params=params)
         return [models.Image(**image) for image in res]
 
-    def get(self, id: str = None) -> models.Image:
-        assert id is not None, "id must be set"
-
+    def get(self, id: str) -> models.Image:
         res = self._client.request(endpoint="images/{id}".format(id=id), method="get",)
         return models.Image(**res["image"])
 
-    def create(self, image: models.Image = None) -> models.Image:
-        assert image is not None, "image object must be set"
-
+    def create(self, image: models.Image) -> models.Image:
         res = self._client.request(
             endpoint="images",
             method="post",
@@ -45,8 +38,7 @@ class ImagesManager(BaseManager):
         )
         return models.Image(**res["image"])
 
-    def update(self, image: models.Image = None) -> models.Image:
-        assert image is not None, "image object must be set"
+    def update(self, image: models.Image) -> models.Image:
         res = self._client.request(
             endpoint="images/{id}".format(id=image.id),
             method="put",
@@ -54,17 +46,12 @@ class ImagesManager(BaseManager):
         )
         return models.Image(**res["image"])
 
-    def delete(self, image: models.Image = None) -> None:
-        assert image is not None, "image object must be set"
-
+    def delete(self, image: models.Image) -> None:
         self._client.request(
             endpoint="images/{id}".format(id=image.id), method="delete",
         )
 
-    def transfer(self, id: str = None, region: str = None) -> models.Action:
-        assert id is not None, "droplet id must be set"
-        assert region is not None, "region must be set"
-
+    def transfer(self, id: str, region: str) -> models.Action:
         action = {
             "type": "transfer",
             "region": region,
@@ -75,8 +62,7 @@ class ImagesManager(BaseManager):
         )
         return models.Action(**res["action"])
 
-    def convert(self, id: str = None) -> models.Action:
-        assert id is not None, "droplet id must be set"
+    def convert(self, id: str) -> models.Action:
         action = {
             "type": "convert",
         }
@@ -86,13 +72,87 @@ class ImagesManager(BaseManager):
         )
         return models.Action(**res["action"])
 
-    def actions(self, id: str = None) -> List[models.Action]:
-        assert id is not None, "id must be set"
-
-        actions = list()
+    def actions(self, id: str) -> List[models.Action]:
         res = self._client.fetch_all(
             endpoint="images/{id}/actions".format(id=id), key="actions",
         )
-        for action in res:
-            actions.append(models.Action(**action))
-        return actions
+        return [models.Action(**action) for action in res]
+
+
+class AsyncImagesManager(AsyncBaseManager):
+    endpoint: str = "images"
+    name: str = "images"
+
+    async def all(self) -> List[models.Image]:
+        res = await self._client.fetch_all(endpoint="images", key="images")
+        return [models.Image(**image) for image in res]
+
+    async def filter(
+        self, private: str = None, type: str = None, tag_name: str = None,
+    ) -> List[models.Image]:
+        params = dict()
+        if private is not None:
+            params["private"] = str(bool(private)).lower()
+        if type is not None:
+            params["type"] = type
+        if tag_name is not None:
+            params["tag_name"] = tag_name
+
+        res = await self._client.fetch_all(
+            endpoint="images", key="images", params=params
+        )
+        return [models.Image(**image) for image in res]
+
+    async def get(self, id: str) -> models.Image:
+        res = await self._client.request(
+            endpoint="images/{id}".format(id=id), method="get",
+        )
+        return models.Image(**res["image"])
+
+    async def create(self, image: models.Image) -> models.Image:
+        res = await self._client.request(
+            endpoint="images",
+            method="post",
+            data=image.json(include={"name", "url", "region", "distribution", "tags"}),
+        )
+        return models.Image(**res["image"])
+
+    async def update(self, image: models.Image) -> models.Image:
+        res = await self._client.request(
+            endpoint="images/{id}".format(id=image.id),
+            method="put",
+            data=image.json(include={"name", "distribution", "description"}),
+        )
+        return models.Image(**res["image"])
+
+    async def delete(self, image: models.Image) -> None:
+        await self._client.request(
+            endpoint="images/{id}".format(id=image.id), method="delete",
+        )
+
+    async def transfer(self, id: str, region: str) -> models.Action:
+        action = {
+            "type": "transfer",
+            "region": region,
+        }
+
+        res = await self._client.request(
+            endpoint="images/{id}/actions".format(id=id), method="post", json=action,
+        )
+        return models.Action(**res["action"])
+
+    async def convert(self, id: str) -> models.Action:
+        action = {
+            "type": "convert",
+        }
+
+        res = await self._client.request(
+            endpoint="images/{id}/actions".format(id=id), method="post", json=action,
+        )
+        return models.Action(**res["action"])
+
+    async def actions(self, id: str) -> List[models.Action]:
+        res = await self._client.fetch_all(
+            endpoint="images/{id}/actions".format(id=id), key="actions",
+        )
+        return [models.Action(**action) for action in res]

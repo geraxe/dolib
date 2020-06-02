@@ -1,7 +1,7 @@
 from typing import List
 
 from .. import models
-from .base import BaseManager
+from .base import AsyncBaseManager, BaseManager
 
 
 class SSHKeysManager(BaseManager):
@@ -9,25 +9,17 @@ class SSHKeysManager(BaseManager):
     name = "ssh_keys"
 
     def all(self) -> List[models.SSHKey]:
-        res = self._client.request(endpoint="account/keys", method="get")
-        return [models.SSHKey(**key) for key in res["ssh_keys"]]
+        res = self._client.fetch_all(endpoint="account/keys", key="ssh_keys")
+        return [models.SSHKey(**key) for key in res]
 
-    def get(self, id: str = None, fingerprint: str = None) -> models.SSHKey:
-        assert (
-            id is not None or fingerprint is not None
-        ), "id or fingerprint must be defined"
-
-        iid = id
-        if iid is None and fingerprint is not None:
-            iid = fingerprint
+    def get(self, id: str) -> models.SSHKey:
         res = self._client.request(
-            endpoint="account/keys/{iid}".format(iid=iid), method="get"
+            endpoint="account/keys/{id}".format(id=id), method="get"
         )
         return models.SSHKey(**res["ssh_key"])
 
     def create(self, key: models.SSHKey) -> models.SSHKey:
         assert isinstance(key, models.SSHKey), "key must be models.SSHKey type"
-
         res = self._client.request(
             endpoint="account/keys",
             method="post",
@@ -37,7 +29,6 @@ class SSHKeysManager(BaseManager):
 
     def update(self, key: models.SSHKey) -> models.SSHKey:
         assert isinstance(key, models.SSHKey), "key must be models.SSHKey type"
-
         res = self._client.request(
             endpoint="account/keys/{id}".format(id=key.id),
             method="put",
@@ -47,7 +38,45 @@ class SSHKeysManager(BaseManager):
 
     def delete(self, key: models.SSHKey) -> None:
         assert isinstance(key, models.SSHKey), "key must be models.SSHKey type"
-
         self._client.request(
-            endpoint="account/keys/{id}".format(id=key.id), method="delete",
+            endpoint="account/keys/{id}".format(id=key.id), method="delete"
+        )
+
+
+class AsyncSSHKeysManager(AsyncBaseManager):
+    endpoint = "ssh_keys"
+    name = "ssh_keys"
+
+    async def all(self) -> List[models.SSHKey]:
+        res = await self._client.fetch_all(endpoint="account/keys", key="ssh_keys")
+        return [models.SSHKey(**key) for key in res]
+
+    async def get(self, id: str) -> models.SSHKey:
+        res = await self._client.request(
+            endpoint="account/keys/{id}".format(id=id), method="get"
+        )
+        return models.SSHKey(**res["ssh_key"])
+
+    async def create(self, key: models.SSHKey) -> models.SSHKey:
+        assert isinstance(key, models.SSHKey), "key must be models.SSHKey type"
+        res = await self._client.request(
+            endpoint="account/keys",
+            method="post",
+            data=key.json(include={"name", "public_key"}),
+        )
+        return models.SSHKey(**res["ssh_key"])
+
+    async def update(self, key: models.SSHKey) -> models.SSHKey:
+        assert isinstance(key, models.SSHKey), "key must be models.SSHKey type"
+        res = await self._client.request(
+            endpoint="account/keys/{id}".format(id=key.id),
+            method="put",
+            data=key.json(include={"name"}),
+        )
+        return models.SSHKey(**res["ssh_key"])
+
+    async def delete(self, key: models.SSHKey) -> None:
+        assert isinstance(key, models.SSHKey), "key must be models.SSHKey type"
+        await self._client.request(
+            endpoint="account/keys/{id}".format(id=key.id), method="delete"
         )
