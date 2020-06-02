@@ -47,7 +47,7 @@ class KubernetesManager(BaseManager):
                 include={"name", "auto_upgrade", "tags", "maintenance_policy"}
             ),
         )
-        # DO api method not return anything
+        # DO api method return nothing
         return cluster
         # return models.K8SCluster(**res["kubernetes_cluster"])
 
@@ -112,7 +112,7 @@ class KubernetesManager(BaseManager):
                 }
             ),
         )
-        # DO api method not return anything
+        # DO api method return nothing
         return pool
         # return models.K8SCluster.Pool(**res["node_pool"])
 
@@ -184,7 +184,7 @@ class AsyncKubernetesManager(AsyncBaseManager):
                 include={"name", "auto_upgrade", "tags", "maintenance_policy"}
             ),
         )
-        # DO api method not return anything
+        # DO api method return nothing
         return cluster
         # return models.K8SCluster(**res["kubernetes_cluster"])
 
@@ -249,7 +249,7 @@ class AsyncKubernetesManager(AsyncBaseManager):
                 }
             ),
         )
-        # DO api method not return anything
+        # DO api method return nothing
         return pool
         # return models.K8SCluster.Pool(**res["node_pool"])
 
