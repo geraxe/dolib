@@ -4,7 +4,7 @@ from dolib.client import Client
 
 @pytest.mark.vcr
 @pytest.mark.block_network()
-def test_client():
+def test_client() -> None:
     with pytest.raises(NotImplementedError):
         client = Client()
 

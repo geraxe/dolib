@@ -1,0 +1,195 @@
+interactions:
+- request:
+    body: '{"name": "dolib", "private_key": null, "leaf_certificate": null, "certificate_chain":
+      null, "dns_names": ["dolib.io"], "type": "lets_encrypt"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '142'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.23.0
+    method: POST
+    uri: https://api.digitalocean.com/v2/certificates
+  response:
+    body:
+      string: '{"certificate":{"id":"d441296a-ec7a-4013-8a4c-6ff3d3540053","name":"dolib","not_after":"0001-01-01T00:00:00Z","sha1_fingerprint":"","created_at":"2020-06-03T15:18:02Z","dns_names":["dolib.io"],"state":"pending","type":"lets_encrypt"}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '234'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 03 Jun 2020 15:18:07 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4999'
+      Ratelimit-Reset:
+      - '1591197482'
+      Server:
+      - cloudflare
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+    status:
+      code: 202
+      message: Accepted
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.23.0
+    method: GET
+    uri: https://api.digitalocean.com/v2/certificates?per_page=200
+  response:
+    body:
+      string: '{"certificates":[{"id":"d441296a-ec7a-4013-8a4c-6ff3d3540053","name":"dolib","not_after":"0001-01-01T00:00:00Z","sha1_fingerprint":"","created_at":"2020-06-03T15:18:07Z","dns_names":["dolib.io"],"state":"pending","type":"lets_encrypt"}],"links":{},"meta":{"total":1}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 03 Jun 2020 15:18:07 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4998'
+      Ratelimit-Reset:
+      - '1591197482'
+      Server:
+      - cloudflare
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+      content-length:
+      - '267'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.23.0
+    method: GET
+    uri: https://api.digitalocean.com/v2/certificates/d441296a-ec7a-4013-8a4c-6ff3d3540053
+  response:
+    body:
+      string: '{"certificate":{"id":"d441296a-ec7a-4013-8a4c-6ff3d3540053","name":"dolib","not_after":"0001-01-01T00:00:00Z","sha1_fingerprint":"","created_at":"2020-06-03T15:18:07Z","dns_names":["dolib.io"],"state":"pending","type":"lets_encrypt"}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 03 Jun 2020 15:18:08 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4997'
+      Ratelimit-Reset:
+      - '1591197482'
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+      content-length:
+      - '245'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.23.0
+    method: DELETE
+    uri: https://api.digitalocean.com/v2/certificates/d441296a-ec7a-4013-8a4c-6ff3d3540053
+  response:
+    body:
+      string: ''
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Date:
+      - Wed, 03 Jun 2020 15:18:09 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4996'
+      Ratelimit-Reset:
+      - '1591197482'
+      Server:
+      - cloudflare
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+    status:
+      code: 204
+      message: No Content
+version: 1

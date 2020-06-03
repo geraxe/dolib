@@ -1,4 +1,5 @@
-from typing import List
+import uuid
+from typing import List, Union
 
 from .. import models
 from .base import AsyncBaseManager, BaseManager
@@ -12,25 +13,25 @@ class InvoicesManager(BaseManager):
         res = self._client.fetch_all(endpoint="customers/my/invoices", key="invoices")
         return [models.Invoice(**invoice) for invoice in res]
 
-    def get(self, id: str) -> models.Invoice:
+    def get(self, id: Union[str, uuid.UUID]) -> models.Invoice:
         res = self._client.request(
             endpoint="customers/my/invoices/{id}/summary".format(id=id), method="get"
         )
         return models.Invoice(**res)
 
-    def items(self, id: str) -> List[models.Invoice.Item]:
+    def items(self, id: Union[str, uuid.UUID]) -> List[models.Invoice.Item]:
         res = self._client.fetch_all(
             endpoint="customers/my/invoices/{id}".format(id=id), key="invoice_items"
         )
         return [models.Invoice.Item(**item) for item in res]
 
-    def csv(self, id: str) -> bytes:
+    def csv(self, id: Union[str, uuid.UUID]) -> bytes:
         res = self._client.request_raw(
             endpoint="customers/my/invoices/{id}/csv".format(id=id), method="get"
         )
         return res.content
 
-    def pdf(self, id: str) -> bytes:
+    def pdf(self, id: Union[str, uuid.UUID]) -> bytes:
         res = self._client.request_raw(
             endpoint="customers/my/invoices/{id}/pdf".format(id=id), method="get"
         )
@@ -47,25 +48,25 @@ class AsyncInvoicesManager(AsyncBaseManager):
         )
         return [models.Invoice(**invoice) for invoice in res]
 
-    async def get(self, id: str) -> models.Invoice:
+    async def get(self, id: Union[str, uuid.UUID]) -> models.Invoice:
         res = await self._client.request(
             endpoint="customers/my/invoices/{id}/summary".format(id=id), method="get"
         )
         return models.Invoice(**res)
 
-    async def items(self, id: str) -> List[models.Invoice.Item]:
+    async def items(self, id: Union[str, uuid.UUID]) -> List[models.Invoice.Item]:
         res = await self._client.fetch_all(
             endpoint="customers/my/invoices/{id}".format(id=id), key="invoice_items"
         )
         return [models.Invoice.Item(**item) for item in res]
 
-    async def csv(self, id: str) -> bytes:
+    async def csv(self, id: Union[str, uuid.UUID]) -> bytes:
         res = await self._client.request_raw(
             endpoint="customers/my/invoices/{id}/csv".format(id=id), method="get"
         )
         return res.content
 
-    async def pdf(self, id: str) -> bytes:
+    async def pdf(self, id: Union[str, uuid.UUID]) -> bytes:
         res = await self._client.request_raw(
             endpoint="customers/my/invoices/{id}/pdf".format(id=id), method="get"
         )

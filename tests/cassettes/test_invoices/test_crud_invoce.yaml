@@ -1,0 +1,150 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.23.0
+    method: GET
+    uri: https://api.digitalocean.com/v2/customers/my/invoices?per_page=200
+  response:
+    body:
+      string: '{"invoices":[{"invoice_uuid":"34ad0122-a596-11ea-af93-7085c23b1dcb","amount":"25.75","invoice_period":"2020-05"}],"invoice_preview":{"invoice_uuid":"9db0cd20-a596-11ea-af93-7085c23b1dcb","amount":"2.42","invoice_period":"2020-06","updated_at":"2020-06-03T03:05:51Z"},"links":{},"meta":{"total":2}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 03 Jun 2020 12:27:37 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Grpc-Metadata-Content-Type:
+      - application/grpc
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4948'
+      Ratelimit-Reset:
+      - '1591183995'
+      Server:
+      - cloudflare
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+      content-length:
+      - '297'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.23.0
+    method: GET
+    uri: https://api.digitalocean.com/v2/customers/my/invoices/34ad0122-a596-11ea-af93-7085c23b1dcb/summary
+  response:
+    body:
+      string: '{"invoice_uuid":"34ad0122-a596-11ea-af93-7085c23b1dcb","billing_period":"2020-05","issue_date":"2020-06-01","invoice_generated_at":"2020-06-01T07:06:24Z","amount":"25.75","user_name":"Yuri Balandin","user_billing_address":{"address_line1":"***","city":"Moscow","region":"Moscow","postal_code":"111000","country_iso2_code":"RU","created_at":"2019-06-28T17:23:59.000+00:00","updated_at":"2019-06-28T17:23:59.000+00:00"},"user_email":"yuri@balandin.ru","product_charges":{"name":"Product usage charges","amount":"21.46","items":[{"amount":"20.63","name":"Droplets","count":"4"},{"amount":"0.09","name":"Volumes","count":"6"},{"amount":"0.55","name":"Droplet Snapshots","count":"2"},{"amount":"0.01","name":"Volume Snapshots","count":"1"},{"amount":"0.03","name":"Load Balancers","count":"1"},{"amount":"0.03","name":"Spaces Subscription","count":"1"},{"amount":"0.08","name":"Database Clusters","count":"3"},{"amount":"0.01","name":"Database Clusters","count":"1"},{"amount":"0.03","name":"Kubernetes Clusters","count":"2"}]},"overages":{"name":"Overages","amount":"0.00"},"taxes":{"name":"Taxes","amount":"4.29","items":[{"amount":"4.29","name":"Taxes","count":"1"}]},"credits_and_adjustments":{"name":"Credits \u0026 adjustments","amount":"0.00"}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 03 Jun 2020 12:28:07 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Grpc-Metadata-Content-Type:
+      - application/grpc
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4947'
+      Ratelimit-Reset:
+      - '1591183995'
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+      content-length:
+      - '1241'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.23.0
+    method: GET
+    uri: https://api.digitalocean.com/v2/customers/my/invoices/34ad0122-a596-11ea-af93-7085c23b1dcb?per_page=200
+  response:
+    body:
+      string: '{"invoice_items":[{"product":"Kubernetes Clusters","resource_uuid":"dcab673e-d07e-4ba3-949a-d53eceb80297","group_description":"test1","description":"1 node - 2 GB / 1 vCPU / 50 GB SSD","amount":"0.01","duration":"0","duration_unit":"Hours","start_time":"2020-05-29T20:52:00Z","end_time":"2020-05-29T21:00:45Z","project_name":"dolib.io"},{"product":"Kubernetes Clusters","resource_uuid":"3b0d7c9f-8039-4bdf-956f-03b7a2a34504","group_description":"test1","description":"2 nodes - 2 GB / 1 vCPU / 50 GB SSD","amount":"0.02","duration":"1","duration_unit":"Hours","start_time":"2020-05-29T19:24:38Z","end_time":"2020-05-29T20:54:56Z","project_name":"dolib.io"},{"product":"Database Clusters","resource_uuid":"8e13cbed-4656-4e61-904d-39b0ade1ac33","group_description":"test (PostgreSQL)","description":"Read Only Node - 1 GB / 1 vCPU / 25 GB SSD","amount":"0.01","duration":"0","duration_unit":"Hours","start_time":"2020-05-29T16:21:01Z","end_time":"2020-05-29T16:26:15Z"},{"product":"Database Clusters","resource_uuid":"9b0df9a1-b4a1-4ddb-9c19-09372dfb588c","group_description":"test (PostgreSQL)","description":"Primary Node - 1 GB / 1 vCPU / 25 GB SSD","amount":"0.02","duration":"0","duration_unit":"Hours","start_time":"2020-05-29T16:48:40Z","end_time":"2020-05-29T17:10:35Z"},{"product":"Database Clusters","resource_uuid":"9b0df9a1-b4a1-4ddb-9c19-09372dfb588c","group_description":"test (PostgreSQL)","description":"Primary Node - 2 GB / 1 vCPU / 50 GB SSD","amount":"0.04","duration":"0","duration_unit":"Hours","start_time":"2020-05-29T16:43:21Z","end_time":"2020-05-29T16:48:40Z"},{"product":"Database Clusters","resource_uuid":"9b0df9a1-b4a1-4ddb-9c19-09372dfb588c","group_description":"test (PostgreSQL)","description":"Primary Node - 1 GB / 1 vCPU / 25 GB SSD","amount":"0.02","duration":"1","duration_unit":"Hours","start_time":"2020-05-29T15:14:08Z","end_time":"2020-05-29T16:43:21Z"},{"product":"Taxes","description":"VAT Russia (20.00%)","amount":"4.29","duration":"0","duration_unit":"Hours","start_time":"2020-05-01T00:00:00Z","end_time":"2020-05-31T23:59:59Z"},{"product":"Volume Snapshots","description":"test-snapshot (fra1) 0.0GB Volume Snapshot","amount":"0.01","duration":"0","duration_unit":"Hours","start_time":"2020-05-23T20:28:41Z","end_time":"2020-05-24T00:35:45Z"},{"product":"Volumes","description":"test (fra1) - 1.0GB Volume","amount":"0.01","duration":"0","duration_unit":"Hours","start_time":"2020-05-24T01:10:16Z","end_time":"2020-05-24T01:26:19Z"},{"product":"Volumes","description":"test (fra1) - 2.0GB Volume","amount":"0.04","duration":"145","duration_unit":"Hours","start_time":"2020-05-25T23:03:29Z","end_time":"2020-06-01T00:00:00Z"},{"product":"Volumes","description":"test (fra1) - 1.0GB Volume","amount":"0.01","duration":"4","duration_unit":"Hours","start_time":"2020-05-25T19:01:27Z","end_time":"2020-05-25T23:03:29Z"},{"product":"Volumes","description":"test (fra1) - 3.0GB Volume","amount":"0.01","duration":"1","duration_unit":"Hours","start_time":"2020-05-23T22:07:43Z","end_time":"2020-05-23T23:24:25Z"},{"product":"Volumes","description":"test (fra1) - 2.0GB Volume","amount":"0.01","duration":"1","duration_unit":"Hours","start_time":"2020-05-23T20:56:28Z","end_time":"2020-05-23T22:07:43Z"},{"product":"Volumes","description":"test (fra1) - 1.0GB Volume","amount":"0.01","duration":"8","duration_unit":"Hours","start_time":"2020-05-23T13:05:28Z","end_time":"2020-05-23T20:56:28Z"},{"product":"Container Registry Subscription","description":"Container Registry","amount":"0.00","duration":"107","duration_unit":"Hours","start_time":"2020-05-27T13:20:18Z","end_time":"2020-06-01T00:00:00Z"},{"product":"Spaces Subscription","description":"Spaces ($5/mo 250GB storage \u0026 1TB bandwidth)","amount":"0.03","duration":"4","duration_unit":"Hours","start_time":"2020-05-27T13:20:30Z","end_time":"2020-05-29T11:53:12Z"},{"product":"Droplet Snapshots","resource_id":"64175865","description":"fra1-front1-1590407319 (fra1) 20.02GB Droplet Snapshot","amount":"0.23","duration":"156","duration_unit":"Hours","start_time":"2020-05-25T12:03:28Z","end_time":"2020-06-01T00:00:00Z"},{"product":"Droplet Snapshots","resource_id":"41856563","description":"fra1-front1-1546013722304 (fra1) 6.45GB Droplet Snapshot","amount":"0.32","duration":"744","duration_unit":"Hours","start_time":"2020-05-01T00:00:00Z","end_time":"2020-06-01T00:00:00Z"},{"product":"Load Balancers","description":"test-balancer (fra1) Load Balancer","amount":"0.03","duration":"2","duration_unit":"Hours","start_time":"2020-05-25T21:33:30Z","end_time":"2020-05-25T23:23:58Z"},{"product":"Droplets","resource_id":"193990952","description":"test1 (s-1vcpu-1gb)","amount":"0.01","duration":"0","duration_unit":"Hours","start_time":"2020-05-28T16:40:44Z","end_time":"2020-05-28T17:10:11Z","project_name":"dolib.io"},{"product":"Droplets","resource_id":"193733088","description":"test1 (s-1vcpu-1gb)","amount":"0.15","duration":"20","duration_unit":"Hours","start_time":"2020-05-26T15:56:58Z","end_time":"2020-05-27T11:49:48Z","project_name":"dolib.io"},{"product":"Droplets","resource_id":"194076711","description":"test (s-1vcpu-1gb)","amount":"0.47","duration":"63","duration_unit":"Hours","start_time":"2020-05-29T08:43:15Z","end_time":"2020-06-01T00:00:00Z","project_name":"dolib.io"},{"product":"Droplets","resource_id":"111111111","description":"fra1-front1 (s-2vcpu-4gb)","amount":"20.00","duration":"744","duration_unit":"Hours","start_time":"2020-05-01T00:00:00Z","end_time":"2020-06-01T00:00:00Z","project_name":"dolib.io"}],"links":{},"meta":{"total":23}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 03 Jun 2020 12:28:08 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Grpc-Metadata-Content-Type:
+      - application/grpc
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4946'
+      Ratelimit-Reset:
+      - '1591183995'
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+      content-length:
+      - '5564'
+    status:
+      code: 200
+      message: OK
+version: 1
