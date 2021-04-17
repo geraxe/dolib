@@ -125,7 +125,6 @@ class Client(BaseClient):
         response = self.request_raw(endpoint, method, params, json, data)
         if response.status_code in [
             requests.codes["no_content"],
-            requests.codes["accepted"],
         ]:
             return {}
         return response.json()
@@ -232,7 +231,6 @@ class AsyncClient(BaseClient):
         response = await self.request_raw(endpoint, method, params, json, data)
         if response.status_code in [
             requests.codes["no_content"],
-            requests.codes["accepted"],
         ]:
             return {}
         return response.json()
