@@ -20,7 +20,9 @@ class DomainsManager(BaseManager):
 
     def create(self, domain: models.Domain) -> models.Domain:
         res = self._client.request(
-            endpoint="domains", method="post", data=domain.json(include={"name"}),
+            endpoint="domains",
+            method="post",
+            data=domain.json(include={"name"}),
         )
         return models.Domain(**res["domain"])
 
@@ -83,7 +85,9 @@ class AsyncDomainsManager(AsyncBaseManager):
 
     async def create(self, domain: models.Domain) -> models.Domain:
         res = await self._client.request(
-            endpoint="domains", method="post", data=domain.json(include={"name"}),
+            endpoint="domains",
+            method="post",
+            data=domain.json(include={"name"}),
         )
         return models.Domain(**res["domain"])
 

@@ -20,7 +20,9 @@ class LoadBalancersManager(BaseManager):
 
     def create(self, load_balancer: models.LoadBalancer) -> models.LoadBalancer:
         res = self._client.request(
-            endpoint="load_balancers", method="post", data=load_balancer.json(),
+            endpoint="load_balancers",
+            method="post",
+            data=load_balancer.json(),
         )
         return models.LoadBalancer(**res["load_balancer"])
 
@@ -52,7 +54,8 @@ class LoadBalancersManager(BaseManager):
 
     def delete(self, load_balancer: models.LoadBalancer) -> None:
         self._client.request(
-            endpoint="load_balancers/{id}".format(id=load_balancer.id), method="delete",
+            endpoint="load_balancers/{id}".format(id=load_balancer.id),
+            method="delete",
         )
 
     def add_droplets(self, id: str, droplet_ids: List[int]) -> None:
@@ -82,7 +85,9 @@ class LoadBalancersManager(BaseManager):
         )
 
     def remove_forwarding_rules(
-        self, id: str, forwarding_rules: List[models.LoadBalancer.ForwardingRule],
+        self,
+        id: str,
+        forwarding_rules: List[models.LoadBalancer.ForwardingRule],
     ) -> None:
         post_json = {"forwarding_rules": [rule.dict() for rule in forwarding_rules]}
         self._client.request(
@@ -110,7 +115,9 @@ class AsyncLoadBalancersManager(AsyncBaseManager):
 
     async def create(self, load_balancer: models.LoadBalancer) -> models.LoadBalancer:
         res = await self._client.request(
-            endpoint="load_balancers", method="post", data=load_balancer.json(),
+            endpoint="load_balancers",
+            method="post",
+            data=load_balancer.json(),
         )
         return models.LoadBalancer(**res["load_balancer"])
 
@@ -142,7 +149,8 @@ class AsyncLoadBalancersManager(AsyncBaseManager):
 
     async def delete(self, load_balancer: models.LoadBalancer) -> None:
         await self._client.request(
-            endpoint="load_balancers/{id}".format(id=load_balancer.id), method="delete",
+            endpoint="load_balancers/{id}".format(id=load_balancer.id),
+            method="delete",
         )
 
     async def add_droplets(self, id: str, droplet_ids: List[int]) -> None:
@@ -172,7 +180,9 @@ class AsyncLoadBalancersManager(AsyncBaseManager):
         )
 
     async def remove_forwarding_rules(
-        self, id: str, forwarding_rules: List[models.LoadBalancer.ForwardingRule],
+        self,
+        id: str,
+        forwarding_rules: List[models.LoadBalancer.ForwardingRule],
     ) -> None:
         post_json = {"forwarding_rules": [rule.dict() for rule in forwarding_rules]}
         await self._client.request(

@@ -25,7 +25,9 @@ class Network(BaseModel):
 
     def __repr__(self) -> str:
         return "Network({ip}/{netmask} [{type}])".format(
-            ip=self.ip_address, netmask=self.netmask, type=self.type,
+            ip=self.ip_address,
+            netmask=self.netmask,
+            type=self.type,
         )
 
 

@@ -90,7 +90,9 @@ class Client(BaseClient):
         ], "Invalid method {method}".format(method=method)
 
         url = "https://{domain}/{version}/{endpoint}".format(
-            domain=self.API_DOMAIN, version=self.API_VERSION, endpoint=endpoint,
+            domain=self.API_DOMAIN,
+            version=self.API_VERSION,
+            endpoint=endpoint,
         )
 
         response = requests.request(
@@ -129,7 +131,10 @@ class Client(BaseClient):
         return response.json()
 
     def fetch_all(
-        self, endpoint: str, key: str, params: dict = {},
+        self,
+        endpoint: str,
+        key: str,
+        params: dict = {},
     ) -> t.List[t.Dict[str, t.Any]]:
         def get_next_page(result: t.Dict[str, t.Any] = None) -> t.Optional[str]:
             if (
@@ -194,7 +199,9 @@ class AsyncClient(BaseClient):
         ], "Invalid method {method}".format(method=method)
 
         url = "https://{domain}/{version}/{endpoint}".format(
-            domain=self.API_DOMAIN, version=self.API_VERSION, endpoint=endpoint,
+            domain=self.API_DOMAIN,
+            version=self.API_VERSION,
+            endpoint=endpoint,
         )
 
         response = await self._rclient.request(
@@ -231,7 +238,10 @@ class AsyncClient(BaseClient):
         return response.json()
 
     async def fetch_all(
-        self, endpoint: str, key: str, params: dict = {},
+        self,
+        endpoint: str,
+        key: str,
+        params: dict = {},
     ) -> t.List[t.Dict[str, t.Any]]:
         def get_next_page(result: t.Dict[str, t.Any] = None) -> t.Optional[str]:
             if (

@@ -13,7 +13,10 @@ class ActionsManager(BaseManager):
         return [models.Action(**action) for action in res["actions"]]
 
     def get(self, id: str) -> models.Action:
-        res = self._client.request(endpoint="actions/{id}".format(id=id), method="get",)
+        res = self._client.request(
+            endpoint="actions/{id}".format(id=id),
+            method="get",
+        )
         return models.Action(**res["action"])
 
 
@@ -27,6 +30,7 @@ class AsyncActionsManager(AsyncBaseManager):
 
     async def get(self, id: str) -> models.Action:
         res = await self._client.request(
-            endpoint="actions/{id}".format(id=id), method="get",
+            endpoint="actions/{id}".format(id=id),
+            method="get",
         )
         return models.Action(**res["action"])

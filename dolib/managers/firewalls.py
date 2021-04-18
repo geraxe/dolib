@@ -1,6 +1,7 @@
 from typing import List
 
 from .. import models
+from ..models import Firewall
 from .base import AsyncBaseManager, BaseManager
 
 
@@ -8,7 +9,7 @@ class FirewallsManager(BaseManager):
     endpoint = "firewalls"
     name = "firewalls"
 
-    def all(self) -> List[models.Firewall]:
+    def all(self) -> List["Firewall"]:
         res = self._client.fetch_all(endpoint="firewalls", key="firewalls")
         return [models.Firewall(**firewall) for firewall in res]
 

@@ -18,13 +18,16 @@ class VolumesManager(BaseManager):
 
     def create(self, volume: models.Volume) -> models.Volume:
         res = self._client.request(
-            endpoint="volumes", method="post", data=volume.json(),
+            endpoint="volumes",
+            method="post",
+            data=volume.json(),
         )
         return models.Volume(**res["volume"])
 
     def delete(self, volume: models.Volume) -> None:
         self._client.request(
-            endpoint="volumes/{id}".format(id=volume.id), method="delete",
+            endpoint="volumes/{id}".format(id=volume.id),
+            method="delete",
         )
 
     def resize(self, id: str, size_gigabytes: int) -> models.Action:
@@ -33,7 +36,9 @@ class VolumesManager(BaseManager):
             "size_gigabytes": int(size_gigabytes),
         }
         res = self._client.request(
-            endpoint="volumes/{id}/actions".format(id=id), method="post", json=action,
+            endpoint="volumes/{id}/actions".format(id=id),
+            method="post",
+            json=action,
         )
         return models.Action(**res["action"])
 
@@ -108,13 +113,16 @@ class AsyncVolumesManager(AsyncBaseManager):
 
     async def create(self, volume: models.Volume) -> models.Volume:
         res = await self._client.request(
-            endpoint="volumes", method="post", data=volume.json(),
+            endpoint="volumes",
+            method="post",
+            data=volume.json(),
         )
         return models.Volume(**res["volume"])
 
     async def delete(self, volume: models.Volume) -> None:
         await self._client.request(
-            endpoint="volumes/{id}".format(id=volume.id), method="delete",
+            endpoint="volumes/{id}".format(id=volume.id),
+            method="delete",
         )
 
     async def resize(self, id: str, size_gigabytes: int) -> models.Action:
@@ -123,7 +131,9 @@ class AsyncVolumesManager(AsyncBaseManager):
             "size_gigabytes": int(size_gigabytes),
         }
         res = await self._client.request(
-            endpoint="volumes/{id}/actions".format(id=id), method="post", json=action,
+            endpoint="volumes/{id}/actions".format(id=id),
+            method="post",
+            json=action,
         )
         return models.Action(**res["action"])
 

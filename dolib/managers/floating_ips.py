@@ -26,7 +26,9 @@ class FloatingIPsManager(BaseManager):
             post_data["droplet_id"] = ip.droplet.id
 
         res = self._client.request(
-            endpoint="floating_ips", method="post", json=post_data,
+            endpoint="floating_ips",
+            method="post",
+            json=post_data,
         )
         return models.FloatingIP(**res["floating_ip"])
 
@@ -89,7 +91,9 @@ class AsyncFloatingIPsManager(AsyncBaseManager):
             post_data["droplet_id"] = ip.droplet.id
 
         res = await self._client.request(
-            endpoint="floating_ips", method="post", json=post_data,
+            endpoint="floating_ips",
+            method="post",
+            json=post_data,
         )
         return models.FloatingIP(**res["floating_ip"])
 
