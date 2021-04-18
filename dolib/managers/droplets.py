@@ -17,7 +17,9 @@ class DropletsManager(BaseManager):
         if tag_name is not None:
             params["tag_name"] = tag_name
         res = self._client.fetch_all(
-            endpoint="droplets", key="droplets", params=params,
+            endpoint="droplets",
+            key="droplets",
+            params=params,
         )
         return [models.Droplet(**droplet) for droplet in res]
 
@@ -56,25 +58,29 @@ class DropletsManager(BaseManager):
 
     def neighbors(self, id: str) -> List[models.Droplet]:
         res = self._client.fetch_all(
-            endpoint="droplets/{id}/neighbors".format(id=id), key="droplets",
+            endpoint="droplets/{id}/neighbors".format(id=id),
+            key="droplets",
         )
         return [models.Droplet(**neighbor) for neighbor in res]
 
     def kernels(self, id: str) -> List[models.Droplet.Kernel]:
         res = self._client.fetch_all(
-            endpoint="droplets/{id}/kernels".format(id=id), key="kernels",
+            endpoint="droplets/{id}/kernels".format(id=id),
+            key="kernels",
         )
         return [models.Droplet.Kernel(**kernel) for kernel in res]
 
     def shapshots(self, id: str) -> List[models.Snapshot]:
         res = self._client.fetch_all(
-            endpoint="droplets/{id}/snapshots".format(id=id), key="snapshots",
+            endpoint="droplets/{id}/snapshots".format(id=id),
+            key="snapshots",
         )
         return [models.Snapshot(**snapshot) for snapshot in res]
 
     def actions(self, id: str) -> List[models.Action]:
         res = self._client.fetch_all(
-            endpoint="droplets/{id}/actions".format(id=id), key="actions",
+            endpoint="droplets/{id}/actions".format(id=id),
+            key="actions",
         )
         return [models.Action(**action) for action in res]
 
@@ -199,7 +205,10 @@ class DropletsManager(BaseManager):
         post_json = {"type": action}
 
         res = self._client.request(
-            endpoint="droplets/actions", method="post", json=post_json, params=params,
+            endpoint="droplets/actions",
+            method="post",
+            json=post_json,
+            params=params,
         )
         return [models.Action(**action) for action in res["actions"]]
 
@@ -227,7 +236,9 @@ class AsyncDropletsManager(AsyncBaseManager):
         if tag_name is not None:
             params["tag_name"] = tag_name
         res = await self._client.fetch_all(
-            endpoint="droplets", key="droplets", params=params,
+            endpoint="droplets",
+            key="droplets",
+            params=params,
         )
         return [models.Droplet(**droplet) for droplet in res]
 
@@ -268,25 +279,29 @@ class AsyncDropletsManager(AsyncBaseManager):
 
     async def neighbors(self, id: str) -> List[models.Droplet]:
         res = await self._client.fetch_all(
-            endpoint="droplets/{id}/neighbors".format(id=id), key="droplets",
+            endpoint="droplets/{id}/neighbors".format(id=id),
+            key="droplets",
         )
         return [models.Droplet(**neighbor) for neighbor in res]
 
     async def kernels(self, id: str) -> List[models.Droplet.Kernel]:
         res = await self._client.fetch_all(
-            endpoint="droplets/{id}/kernels".format(id=id), key="kernels",
+            endpoint="droplets/{id}/kernels".format(id=id),
+            key="kernels",
         )
         return [models.Droplet.Kernel(**kernel) for kernel in res]
 
     async def shapshots(self, id: str) -> List[models.Snapshot]:
         res = await self._client.fetch_all(
-            endpoint="droplets/{id}/snapshots".format(id=id), key="snapshots",
+            endpoint="droplets/{id}/snapshots".format(id=id),
+            key="snapshots",
         )
         return [models.Snapshot(**snapshot) for snapshot in res]
 
     async def actions(self, id: str) -> List[models.Action]:
         res = await self._client.fetch_all(
-            endpoint="droplets/{id}/actions".format(id=id), key="actions",
+            endpoint="droplets/{id}/actions".format(id=id),
+            key="actions",
         )
         return [models.Action(**action) for action in res]
 
@@ -411,7 +426,10 @@ class AsyncDropletsManager(AsyncBaseManager):
         post_json = {"type": action}
 
         res = await self._client.request(
-            endpoint="droplets/actions", method="post", json=post_json, params=params,
+            endpoint="droplets/actions",
+            method="post",
+            json=post_json,
+            params=params,
         )
         return [models.Action(**action) for action in res["actions"]]
 

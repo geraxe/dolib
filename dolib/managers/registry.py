@@ -9,19 +9,25 @@ class RegistryManager(BaseManager):
     name: str = "registry"
 
     def get(self) -> models.Registry:
-        res = self._client.request(endpoint="registry", method="get",)
+        res = self._client.request(
+            endpoint="registry",
+            method="get",
+        )
         return models.Registry(**res["registry"])
 
     def create(self, registry: models.Registry) -> models.Registry:
         res = self._client.request(
-            endpoint="registry", method="post", data=registry.json(include={"name"}),
+            endpoint="registry",
+            method="post",
+            data=registry.json(include={"name"}),
         )
         return models.Registry(**res["registry"])
 
     def delete(self, registry: models.Registry) -> None:
         # may be in future account will be have multiple repository
         self._client.request(
-            endpoint="registry", method="delete",
+            endpoint="registry",
+            method="delete",
         )
 
     def docker_credentials(
@@ -33,7 +39,8 @@ class RegistryManager(BaseManager):
         if read_write is not None:
             params["read_write"] = str(bool(read_write)).lower()
         res = self._client.request(
-            endpoint="registry/docker-credentials", method="get",
+            endpoint="registry/docker-credentials",
+            method="get",
         )
         return res
 
@@ -83,19 +90,25 @@ class AsyncRegistryManager(AsyncBaseManager):
     name: str = "registry"
 
     async def get(self) -> models.Registry:
-        res = await self._client.request(endpoint="registry", method="get",)
+        res = await self._client.request(
+            endpoint="registry",
+            method="get",
+        )
         return models.Registry(**res["registry"])
 
     async def create(self, registry: models.Registry) -> models.Registry:
         res = await self._client.request(
-            endpoint="registry", method="post", data=registry.json(include={"name"}),
+            endpoint="registry",
+            method="post",
+            data=registry.json(include={"name"}),
         )
         return models.Registry(**res["registry"])
 
     async def delete(self, registry: models.Registry) -> None:
         # may be in future account will be have multiple repository
         await self._client.request(
-            endpoint="registry", method="delete",
+            endpoint="registry",
+            method="delete",
         )
 
     async def docker_credentials(
@@ -107,7 +120,8 @@ class AsyncRegistryManager(AsyncBaseManager):
         if read_write is not None:
             params["read_write"] = str(bool(read_write)).lower()
         res = await self._client.request(
-            endpoint="registry/docker-credentials", method="get",
+            endpoint="registry/docker-credentials",
+            method="get",
         )
         return res
 

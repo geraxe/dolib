@@ -20,13 +20,16 @@ class TagsManager(BaseManager):
 
     def create(self, tag: models.Tag) -> models.Tag:
         res = self._client.request(
-            endpoint="tags", method="post", data=tag.json(include={"name"}),
+            endpoint="tags",
+            method="post",
+            data=tag.json(include={"name"}),
         )
         return models.Tag(**res["tag"])
 
     def delete(self, tag: models.Tag) -> None:
         self._client.request(
-            endpoint="tags/{name}".format(name=tag.name), method="delete",
+            endpoint="tags/{name}".format(name=tag.name),
+            method="delete",
         )
 
     def tag_resources(self, name: str, resources: List[models.Tag.Resource]) -> None:
@@ -66,13 +69,16 @@ class AsyncTagsManager(AsyncBaseManager):
 
     async def create(self, tag: models.Tag) -> models.Tag:
         res = await self._client.request(
-            endpoint="tags", method="post", data=tag.json(include={"name"}),
+            endpoint="tags",
+            method="post",
+            data=tag.json(include={"name"}),
         )
         return models.Tag(**res["tag"])
 
     async def delete(self, tag: models.Tag) -> None:
         await self._client.request(
-            endpoint="tags/{name}".format(name=tag.name), method="delete",
+            endpoint="tags/{name}".format(name=tag.name),
+            method="delete",
         )
 
     async def tag_resources(

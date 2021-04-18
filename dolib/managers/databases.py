@@ -17,7 +17,9 @@ class DatabasesManager(BaseManager):
         if tag_name is not None:
             params["tag_name"] = tag_name
         res = self._client.fetch_all(
-            endpoint="databases", key="databases", params=params,
+            endpoint="databases",
+            key="databases",
+            params=params,
         )
         return [models.DBCluster(**db) for db in res]
 
@@ -53,7 +55,8 @@ class DatabasesManager(BaseManager):
 
     def replicas(self, id: str) -> List[models.DBReplica]:
         res = self._client.fetch_all(
-            endpoint="databases/{id}/replicas".format(id=id), key="replicas",
+            endpoint="databases/{id}/replicas".format(id=id),
+            key="replicas",
         )
         return [models.DBReplica(**replica) for replica in res]
 
@@ -82,7 +85,8 @@ class DatabasesManager(BaseManager):
 
     def users(self, id: str) -> List[models.DBCluster.User]:
         res = self._client.fetch_all(
-            endpoint="databases/{id}/users".format(id=id), key="users",
+            endpoint="databases/{id}/users".format(id=id),
+            key="users",
         )
         return [models.DBCluster.User(**user) for user in res]
 
@@ -109,7 +113,8 @@ class DatabasesManager(BaseManager):
 
     def dbs(self, id: str) -> List[models.DBCluster.DB]:
         res = self._client.fetch_all(
-            endpoint="databases/{id}/dbs".format(id=id), key="dbs",
+            endpoint="databases/{id}/dbs".format(id=id),
+            key="dbs",
         )
         return [models.DBCluster.DB(**db) for db in res]
 
@@ -160,7 +165,9 @@ class AsyncDatabasesManager(AsyncBaseManager):
         if tag_name is not None:
             params["tag_name"] = tag_name
         res = await self._client.fetch_all(
-            endpoint="databases", key="databases", params=params,
+            endpoint="databases",
+            key="databases",
+            params=params,
         )
         return [models.DBCluster(**db) for db in res]
 
@@ -196,7 +203,8 @@ class AsyncDatabasesManager(AsyncBaseManager):
 
     async def replicas(self, id: str) -> List[models.DBReplica]:
         res = await self._client.fetch_all(
-            endpoint="databases/{id}/replicas".format(id=id), key="replicas",
+            endpoint="databases/{id}/replicas".format(id=id),
+            key="replicas",
         )
         return [models.DBReplica(**replica) for replica in res]
 
@@ -225,7 +233,8 @@ class AsyncDatabasesManager(AsyncBaseManager):
 
     async def users(self, id: str) -> List[models.DBCluster.User]:
         res = await self._client.fetch_all(
-            endpoint="databases/{id}/users".format(id=id), key="users",
+            endpoint="databases/{id}/users".format(id=id),
+            key="users",
         )
         return [models.DBCluster.User(**user) for user in res]
 
@@ -254,7 +263,8 @@ class AsyncDatabasesManager(AsyncBaseManager):
 
     async def dbs(self, id: str) -> List[models.DBCluster.DB]:
         res = await self._client.fetch_all(
-            endpoint="databases/{id}/dbs".format(id=id), key="dbs",
+            endpoint="databases/{id}/dbs".format(id=id),
+            key="dbs",
         )
         return [models.DBCluster.DB(**db) for db in res]
 
