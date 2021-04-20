@@ -41,6 +41,7 @@ class RegistryManager(BaseManager):
         res = self._client.request(
             endpoint="registry/docker-credentials",
             method="get",
+            params=params,
         )
         return res
 
@@ -84,6 +85,26 @@ class RegistryManager(BaseManager):
             method="delete",
         )
 
+    def start_garbage_collection(
+        self, name: str, collection_type: str = None
+    ) -> models.Registry.GarbageCollection:
+        json_param: Dict[str, Any] = {}
+        if collection_type is not None:
+            json_param["type"] = collection_type
+        res = self._client.request(
+            endpoint="registry/{name}/garbage-collection".format(name=name),
+            method="post",
+            json=json_param,
+        )
+        return models.Registry.GarbageCollection(**res["garbage_collection"])
+
+    def garbage_collection(self, name: str) -> models.Registry.GarbageCollection:
+        res = self._client.request(
+            endpoint="registry/{name}/garbage-collection".format(name=name),
+            method="get",
+        )
+        return models.Registry.GarbageCollection(**res["garbage_collection"])
+
 
 class AsyncRegistryManager(AsyncBaseManager):
     endpoint: str = "registry"
@@ -122,6 +143,7 @@ class AsyncRegistryManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="registry/docker-credentials",
             method="get",
+            params=params,
         )
         return res
 
@@ -166,3 +188,23 @@ class AsyncRegistryManager(AsyncBaseManager):
             ),
             method="delete",
         )
+
+    async def start_garbage_collection(
+        self, name: str, collection_type: str = None
+    ) -> models.Registry.GarbageCollection:
+        json_param: Dict[str, Any] = {}
+        if collection_type is not None:
+            json_param["type"] = collection_type
+        res = await self._client.request(
+            endpoint="registry/{name}/garbage-collection".format(name=name),
+            method="post",
+            json=json_param,
+        )
+        return models.Registry.GarbageCollection(**res["garbage_collection"])
+
+    async def garbage_collection(self, name: str) -> models.Registry.GarbageCollection:
+        res = await self._client.request(
+            endpoint="registry/{name}/garbage-collection".format(name=name),
+            method="get",
+        )
+        return models.Registry.GarbageCollection(**res["garbage_collection"])

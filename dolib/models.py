@@ -393,6 +393,7 @@ class LoadBalancer(BaseModel):
     forwarding_rules: List[ForwardingRule]
 
     # optional params
+    size: Optional[str]
     ip: Optional[str]
     algorithm: Optional[str]
     status: Optional[str]
@@ -448,6 +449,15 @@ class Registry(BaseModel):
         name: str
         latest_tag: Tag
         tag_count: int
+
+    class GarbageCollection(BaseModel):
+        uuid: str
+        registry_name: str
+        blobs_deleted: int
+        status: str
+        freed_bytes: int
+        created_at: datetime
+        updated_at: datetime
 
     name: str
     created_at: Optional[datetime]

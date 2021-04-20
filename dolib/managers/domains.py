@@ -31,9 +31,18 @@ class DomainsManager(BaseManager):
             endpoint="domains/{name}".format(name=domain.name), method="delete"
         )
 
-    def records(self, name: str) -> List[models.Domain.Record]:
+    def records(
+        self, name: str, record_name: str = None, record_type: str = None
+    ) -> List[models.Domain.Record]:
+        params = {}
+        if record_name is not None:
+            params["name"] = record_name
+        if record_type is not None:
+            params["type"] = record_type
         res = self._client.fetch_all(
-            endpoint="domains/{name}/records".format(name=name), key="domain_records"
+            endpoint="domains/{name}/records".format(name=name),
+            key="domain_records",
+            params=params,
         )
         return [models.Domain.Record(**record) for record in res]
 
@@ -96,9 +105,18 @@ class AsyncDomainsManager(AsyncBaseManager):
             endpoint="domains/{name}".format(name=domain.name), method="delete"
         )
 
-    async def records(self, name: str) -> List[models.Domain.Record]:
+    async def records(
+        self, name: str, record_name: str = None, record_type: str = None
+    ) -> List[models.Domain.Record]:
+        params = {}
+        if record_name is not None:
+            params["name"] = record_name
+        if record_type is not None:
+            params["type"] = record_type
         res = await self._client.fetch_all(
-            endpoint="domains/{name}/records".format(name=name), key="domain_records"
+            endpoint="domains/{name}/records".format(name=name),
+            key="domain_records",
+            params=params,
         )
         return [models.Domain.Record(**record) for record in res]
 
