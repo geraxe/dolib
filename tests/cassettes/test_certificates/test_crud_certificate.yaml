@@ -33,8 +33,6 @@ interactions:
       - application/json; charset=utf-8
       Date:
       - Wed, 03 Jun 2020 15:18:07 GMT
-      Expect-CT:
-      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Ratelimit-Limit:
       - '5000'
       Ratelimit-Remaining:
@@ -79,8 +77,6 @@ interactions:
       - application/json; charset=utf-8
       Date:
       - Wed, 03 Jun 2020 15:18:07 GMT
-      Expect-CT:
-      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Ratelimit-Limit:
       - '5000'
       Ratelimit-Remaining:
@@ -127,8 +123,6 @@ interactions:
       - application/json; charset=utf-8
       Date:
       - Wed, 03 Jun 2020 15:18:08 GMT
-      Expect-CT:
-      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Ratelimit-Limit:
       - '5000'
       Ratelimit-Remaining:
@@ -175,8 +169,6 @@ interactions:
       - keep-alive
       Date:
       - Wed, 03 Jun 2020 15:18:09 GMT
-      Expect-CT:
-      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Ratelimit-Limit:
       - '5000'
       Ratelimit-Remaining:

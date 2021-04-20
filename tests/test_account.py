@@ -1,5 +1,6 @@
 import pytest
 
+from dolib import models
 from dolib.client import Client
 
 

@@ -1,4 +1,5 @@
 import pytest
+
 from dolib.client import Client
 from dolib.models import Certificate
 
