@@ -36,6 +36,7 @@ class LoadBalancersManager(BaseManager):
             data=load_balancer.json(
                 include={
                     "name",
+                    "size",
                     "algorithm",
                     "region",
                     "forwarding_rules",
@@ -131,6 +132,7 @@ class AsyncLoadBalancersManager(AsyncBaseManager):
             data=load_balancer.json(
                 include={
                     "name",
+                    "size",
                     "algorithm",
                     "region",
                     "forwarding_rules",

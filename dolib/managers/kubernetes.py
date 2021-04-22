@@ -140,6 +140,18 @@ class KubernetesManager(BaseManager):
         res = self._client.request(endpoint="kubernetes/options", method="get")
         return res["options"]
 
+    def add_registry(self) -> None:
+        self._client.request(
+            endpoint="kubernetes/registry",
+            method="post",
+        )
+
+    def delete_registry(self) -> None:
+        self._client.request(
+            endpoint="kubernetes/registry",
+            method="delete",
+        )
+
 
 class AsyncKubernetesManager(AsyncBaseManager):
     endpoint = "kubernetes"
@@ -276,3 +288,15 @@ class AsyncKubernetesManager(AsyncBaseManager):
     async def options(self) -> dict:
         res = await self._client.request(endpoint="kubernetes/options", method="get")
         return res["options"]
+
+    async def add_registry(self) -> None:
+        await self._client.request(
+            endpoint="kubernetes/registry",
+            method="post",
+        )
+
+    async def delete_registry(self) -> None:
+        await self._client.request(
+            endpoint="kubernetes/registry",
+            method="delete",
+        )
