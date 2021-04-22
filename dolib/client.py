@@ -105,9 +105,7 @@ class Client(BaseClient):
         )
 
         # raise exceptions in case of errors
-        if not response.ok:
-            print(response.content)
-            response.raise_for_status()
+        response.raise_for_status()
 
         # save data to client from response
         self._process_response(response)
@@ -161,8 +159,7 @@ class Client(BaseClient):
                 break
             res = requests.get(next_url, headers=self.headers)
 
-            if not res.ok:
-                res.raise_for_status()
+            res.raise_for_status()
             response = res.json()
             result += response[key]
 
