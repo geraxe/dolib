@@ -206,7 +206,7 @@ class AsyncClient(BaseClient):
                 headers=self.headers,
                 params=params,
                 json=json,
-                data=data,
+                content=data,
             )
 
         # raise exceptions in case of errors
