@@ -1,0 +1,35 @@
+# Project information
+site_name: DOLib
+site_url: https://geraxe.github.io/dolib
+site_author: Yury Balandin
+site_description: >-
+  DOLib is a fully featured python 3.6+ library for Digital Ocean,
+  which provides sync and async APIs. This library supports all
+  Digital Ocean API methods and simple in use. Enjoy!
+
+# Repository
+repo_name: geraxe/dolib
+repo_url: https://github.com/geraxe/dolib
+edit_uri: ""
+
+# Plugins
+plugins:
+  - search
+  - minify:
+      minify_html: true
+
+theme:
+  name: material
+
+nav:
+- Overview: index.md
+- install.md
+- Usage:
+  - usage/client.md
+  - usage/models.md
+
+markdown_extensions:
+- markdown_include.include:
+    base_path: docs
+- pymdownx.highlight
+- pymdownx.extra
