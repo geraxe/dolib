@@ -169,7 +169,6 @@ class Client(BaseClient):
 class AsyncClient(BaseClient):
     def __init__(self, token: str = None):
         super().__init__(token)
-        self._rclient = httpx.AsyncClient()
 
     def _load_managers(self) -> None:
         for manager in do_managers.__async_managers__:
@@ -200,14 +199,15 @@ class AsyncClient(BaseClient):
             endpoint=endpoint,
         )
 
-        response = await self._rclient.request(
-            method=method,
-            url=url,
-            headers=self.headers,
-            params=params,
-            json=json,
-            data=data,
-        )
+        async with httpx.AsyncClient() as async_client:
+            response = await async_client.request(
+                method=method,
+                url=url,
+                headers=self.headers,
+                params=params,
+                json=json,
+                data=data,
+            )
 
         # raise exceptions in case of errors
         response.raise_for_status()
@@ -262,8 +262,9 @@ class AsyncClient(BaseClient):
             next_url = get_next_page(response)
             if next_url is None:
                 break
-            res = requests.get(next_url, headers=self.headers)
 
+            async with httpx.AsyncClient() as async_client:
+                res = await async_client.get(next_url, headers=self.headers)
             res.raise_for_status()
             response = res.json()
             result += response[key]
