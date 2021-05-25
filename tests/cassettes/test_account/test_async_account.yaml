@@ -1,22 +1,25 @@
 interactions:
 - request:
-    body: null
+    body: ''
     headers:
-      Accept:
+      accept:
       - '*/*'
-      Connection:
+      accept-encoding:
+      - ''
+      connection:
       - keep-alive
-      Content-Type:
+      content-type:
       - application/json
-      User-Agent:
+      host:
+      - api.digitalocean.com
+      user-agent:
       - dolib/0.2.1
     method: GET
     uri: https://api.digitalocean.com/v2/account
   response:
-    body:
-      string: '{"account":{"droplet_limit":25,"floating_ip_limit":3,"volume_limit":100,"email":"yuri@balandin.ru","uuid":"4775b5b8ef10a1069ddae8b81a425222e8cea930","email_verified":true,"status":"active","status_message":""}}
+    content: '{"account":{"droplet_limit":25,"floating_ip_limit":3,"volume_limit":100,"email":"yuri@balandin.ru","uuid":"4775b5b8ef10a1069ddae8b81a425222e8cea930","email_verified":true,"status":"active","status_message":""}}
 
-        '
+      '
     headers:
       CF-Cache-Status:
       - DYNAMIC
@@ -27,15 +30,15 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 25 May 2021 11:37:58 GMT
+      - Tue, 25 May 2021 12:25:25 GMT
       Expect-CT:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Ratelimit-Limit:
       - '5000'
       Ratelimit-Remaining:
-      - '4987'
+      - '4993'
       Ratelimit-Reset:
-      - '1621939149'
+      - '1621942277'
       Server:
       - cloudflare
       X-Gateway:
@@ -43,8 +46,7 @@ interactions:
       X-Response-From:
       - service
       X-Runtime:
-      - '0.087655'
-    status:
-      code: 200
-      message: OK
+      - '0.111525'
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1

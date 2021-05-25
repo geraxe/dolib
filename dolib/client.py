@@ -5,6 +5,7 @@ import httpx
 import requests
 
 from . import managers as do_managers
+from .__version__ import __version__
 
 
 class BaseClient:
@@ -43,8 +44,11 @@ class BaseClient:
         self._load_managers()
 
         self.headers = {
-            "Authorization": "Bearer {token}".format(token=self._token),
+            "Authorization": f"Bearer {self._token}",
             "Content-Type": "application/json",
+            "User-Agent": f"dolib/{__version__}",
+            #  our test lib(vcrpy) for httpx have bugs with gzip and deflate
+            "Accept-Encoding": "",
         }
 
     def _load_managers(self) -> None:
