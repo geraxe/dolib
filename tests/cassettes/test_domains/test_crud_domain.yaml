@@ -17,13 +17,10 @@ interactions:
     method: POST
     uri: https://api.digitalocean.com/v2/domains
   response:
-    body:
-      string: '{"domain":{"name":"test.dolib.io","ttl":null,"zone_file":null}}'
+    content: '{"domain":{"name":"test.dolib.io","ttl":null,"zone_file":null}}'
     headers:
       CF-Cache-Status:
       - DYNAMIC
-      CF-RAY:
-      - 59a7e6829c967b7b-DME
       Cache-Control:
       - max-age=0, private, must-revalidate
       Connection:
@@ -46,28 +43,20 @@ interactions:
       - '1590664532'
       Server:
       - cloudflare
-      Set-Cookie:
-      - __cfduid=dc49a0f1875e8afea8073c8b15016d6241590668119; expires=Sat, 27-Jun-20
-        12:15:19 GMT; path=/; domain=.digitalocean.com; HttpOnly; SameSite=Lax
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
       X-Gateway:
       - Edge-Gateway
-      X-Request-Id:
-      - d0c54151-2ecd-4527-862d-810c99b7d1b8
       X-Response-From:
       - service
       X-Runtime:
       - '0.247061'
       X-Xss-Protection:
       - 1; mode=block
-      cf-request-id:
-      - 02fcce659b00007b7bfd9e5200000001
-    status:
-      code: 201
-      message: Created
+    http_version: HTTP/1.1
+    status_code: 201
 - request:
     body: '{}'
     headers:
@@ -86,16 +75,13 @@ interactions:
     method: GET
     uri: https://api.digitalocean.com/v2/domains/test.dolib.io
   response:
-    body:
-      string: '{"domain":{"name":"test.dolib.io","ttl":1800,"zone_file":"$ORIGIN test.dolib.io.\n$TTL
+    content: '{"domain":{"name":"test.dolib.io","ttl":1800,"zone_file":"$ORIGIN test.dolib.io.\n$TTL
         1800\ntest.dolib.io. IN SOA ns1.digitalocean.com. hostmaster.test.dolib.io.
         1590668120 10800 3600 604800 1800\ntest.dolib.io. 1800 IN NS ns1.digitalocean.com.\ntest.dolib.io.
         1800 IN NS ns2.digitalocean.com.\ntest.dolib.io. 1800 IN NS ns3.digitalocean.com.\n"}}'
     headers:
       CF-Cache-Status:
       - DYNAMIC
-      CF-RAY:
-      - 59a7e687ac017b67-DME
       Cache-Control:
       - max-age=0, private, must-revalidate
       Connection:
@@ -116,9 +102,6 @@ interactions:
       - '1590664532'
       Server:
       - cloudflare
-      Set-Cookie:
-      - __cfduid=d3da90c2deb0b23c2e188dbfcc3b0accb1590668120; expires=Sat, 27-Jun-20
-        12:15:20 GMT; path=/; domain=.digitalocean.com; HttpOnly; SameSite=Lax
       Transfer-Encoding:
       - chunked
       X-Content-Type-Options:
@@ -127,21 +110,16 @@ interactions:
       - SAMEORIGIN
       X-Gateway:
       - Edge-Gateway
-      X-Request-Id:
-      - 5becf7a9-87d1-403f-bd54-616b00df1fe0
       X-Response-From:
       - service
       X-Runtime:
       - '0.106855'
       X-Xss-Protection:
       - 1; mode=block
-      cf-request-id:
-      - 02fcce68cb00007b673800a200000001
       content-length:
       - '348'
-    status:
-      code: 200
-      message: OK
+    http_version: HTTP/1.1
+    status_code: 200
 - request:
     body: '{}'
     headers:
@@ -160,13 +138,10 @@ interactions:
     method: DELETE
     uri: https://api.digitalocean.com/v2/domains/test.dolib.io
   response:
-    body:
-      string: ''
+    content: ''
     headers:
       CF-Cache-Status:
       - DYNAMIC
-      CF-RAY:
-      - 59a7e68bf9168e05-DME
       Cache-Control:
       - no-cache
       Connection:
@@ -183,29 +158,18 @@ interactions:
       - '1590664532'
       Server:
       - cloudflare
-      Set-Cookie:
-      - __cfduid=d3a8da5197a0dc200822cacf285799eeb1590668120; expires=Sat, 27-Jun-20
-        12:15:20 GMT; path=/; domain=.digitalocean.com; HttpOnly; SameSite=Lax
-      - __cf_bm=4f18bf891afdb09818f323ef3fd56456e30109fc-1590668121-1800-AfA5Dxffd8fiH9L+41FZq4GUkzFdoKptJjbb5kp5CQim;
-        path=/; expires=Thu, 28-May-20 12:45:21 GMT; domain=.digitalocean.com; HttpOnly;
-        Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
       X-Gateway:
       - Edge-Gateway
-      X-Request-Id:
-      - a0547e8d-ca0d-493a-a229-a544bfa37b7c
       X-Response-From:
       - service
       X-Runtime:
       - '0.150596'
       X-Xss-Protection:
       - 1; mode=block
-      cf-request-id:
-      - 02fcce6b7900008e05410cd200000001
-    status:
-      code: 204
-      message: No Content
+    http_version: HTTP/1.1
+    status_code: 204
 version: 1

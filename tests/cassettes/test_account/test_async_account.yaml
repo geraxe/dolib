@@ -30,15 +30,15 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 25 May 2021 12:25:25 GMT
+      - Tue, 25 May 2021 16:48:55 GMT
       Expect-CT:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Ratelimit-Limit:
       - '5000'
       Ratelimit-Remaining:
-      - '4993'
+      - '4997'
       Ratelimit-Reset:
-      - '1621942277'
+      - '1621961295'
       Server:
       - cloudflare
       X-Gateway:
@@ -46,7 +46,7 @@ interactions:
       X-Response-From:
       - service
       X-Runtime:
-      - '0.111525'
+      - '0.028696'
     http_version: HTTP/1.1
     status_code: 200
 version: 1

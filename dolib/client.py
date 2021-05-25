@@ -2,7 +2,6 @@ import typing as t
 from types import TracebackType
 
 import httpx
-import requests
 
 from . import managers as do_managers
 from .__version__ import __version__
@@ -58,9 +57,7 @@ class BaseClient:
                 obj = klass(client=self)
                 setattr(self, klass.endpoint, obj)
 
-    def _process_response(
-        self, response: t.Union[httpx._models.Response, requests.models.Response]
-    ) -> None:
+    def _process_response(self, response: httpx.Response) -> None:
         if "Ratelimit-Limit" in response.headers:
             self._ratelimit_limit = int(response.headers.get("Ratelimit-Limit"))
         if "Ratelimit-Remaining" in response.headers:
@@ -84,7 +81,7 @@ class Client(BaseClient):
         params: dict = {},
         json: dict = None,
         data: str = None,
-    ) -> requests.models.Response:
+    ) -> httpx.Response:
         assert method in [
             "get",
             "post",
@@ -99,13 +96,13 @@ class Client(BaseClient):
             endpoint=endpoint,
         )
 
-        response = requests.request(
+        response = httpx.request(
             method=method,
             url=url,
             headers=self.headers,
             params=params,
             json=json,
-            data=data,
+            content=data,
         )
 
         # raise exceptions in case of errors
@@ -125,9 +122,7 @@ class Client(BaseClient):
         data: str = None,
     ) -> t.Dict[str, t.Any]:
         response = self.request_raw(endpoint, method, params, json, data)
-        if response.status_code in [
-            requests.codes["no_content"],
-        ]:
+        if response.status_code in [httpx.codes.NO_CONTENT]:
             return {}
         return response.json()
 
@@ -161,7 +156,7 @@ class Client(BaseClient):
             next_url = get_next_page(response)
             if next_url is None:
                 break
-            res = requests.get(next_url, headers=self.headers)
+            res = httpx.get(next_url, headers=self.headers)
 
             res.raise_for_status()
             response = res.json()
@@ -230,9 +225,7 @@ class AsyncClient(BaseClient):
         data: str = None,
     ) -> t.Dict[str, t.Any]:
         response = await self.request_raw(endpoint, method, params, json, data)
-        if response.status_code in [
-            requests.codes["no_content"],
-        ]:
+        if response.status_code in [httpx.codes.NO_CONTENT]:
             return {}
         return response.json()
 

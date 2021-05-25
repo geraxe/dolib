@@ -19,7 +19,6 @@ Python 3.6+
 
 DOLib uses these awesome libraries:
 
-* <a href="https://requests.readthedocs.io/" class="external-link" target="_blank">Requests</a> for network.
 * <a href="https://www.python-httpx.org/" class="external-link" target="_blank">HTTPX</a> for async network.
 * <a href="https://pydantic-docs.helpmanual.io/" class="external-link" target="_blank">Pydantic</a> for the data parts.
 
@@ -51,7 +50,6 @@ from dolib.models import Droplet
 async with Client(token="60c13d47f17dbed9f7293cf8c82d18fece3439a54f88e6c52c2df07f87bd8dd9") as client:
     droplet = Droplet(name="dolib-droplet", region="fra1", size="s-1vcpu-1gb", image="ubuntu-18-04-x64")
     droplet = await client.droplets.create(droplet)
-
 ```
 
 
