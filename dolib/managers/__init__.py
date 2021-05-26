@@ -69,7 +69,6 @@ __all__ = [
 ]
 
 __sync_managers__ = [
-    "BaseManager",
     "AccountManager",
     "ActionsManager",
     "CDNEndpointsManager",
@@ -94,7 +93,6 @@ __sync_managers__ = [
 ]
 
 __async_managers__ = [
-    "AsyncBaseManager",
     "AsyncAccountManager",
     "AsyncActionsManager",
     "AsyncCDNEndpointsManager",
