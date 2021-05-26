@@ -48,7 +48,7 @@ class BaseClient:
 class Client(BaseClient):
 
     account: t.Optional[mn.AccountManager] = None
-    actions: t.Optional[mn.BaseManager] = None
+    actions: t.Optional[mn.ActionsManager] = None
     cdn_endpoints: t.Optional[mn.CDNEndpointsManager] = None
     certificates: t.Optional[mn.CertificatesManager] = None
     databases: t.Optional[mn.DatabasesManager] = None
@@ -170,7 +170,7 @@ class Client(BaseClient):
 class AsyncClient(BaseClient):
 
     account: t.Optional[mn.AsyncAccountManager] = None
-    actions: t.Optional[mn.AsyncBaseManager] = None
+    actions: t.Optional[mn.AsyncActionsManager] = None
     cdn_endpoints: t.Optional[mn.AsyncCDNEndpointsManager] = None
     certificates: t.Optional[mn.AsyncCertificatesManager] = None
     databases: t.Optional[mn.AsyncDatabasesManager] = None
