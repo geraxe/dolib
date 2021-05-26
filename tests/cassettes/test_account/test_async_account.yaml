@@ -49,4 +49,107 @@ interactions:
       - '0.028696'
     http_version: HTTP/1.1
     status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev8+g14ae0be.d20210525
+    method: GET
+    uri: https://api.digitalocean.com/v2/customers/my/billing_history?per_page=200
+  response:
+    content: '{"billing_history":[{"description":"Payment (Visa 0015)","amount":"-91.86","date":"2021-05-01T03:13:00Z","type":"Payment"},{"description":"Invoice
+      for April 2021","amount":"91.86","invoice_id":"424813944","invoice_uuid":"3873945f-6040-41ad-9271-541d6258cae2","date":"2021-05-01T03:08:28Z","type":"Invoice"},{"description":"Payment
+      (Visa 0015)","amount":"-29.63","date":"2021-04-01T14:03:16Z","type":"Payment"},{"description":"Invoice
+      for March 2021","amount":"29.63","invoice_id":"423795897","invoice_uuid":"17c9df78-bbb3-4d64-b9a5-c9a5b6d51277","date":"2021-04-01T06:45:44Z","type":"Invoice"},{"description":"Payment
+      for February 2019","amount":"24.38","invoice_id":"406910434","invoice_uuid":"9d23ca21-9fff-4f0a-a2ae-86c90b5835c2","date":"2019-03-01T06:53:48Z","type":"Invoice"},{"description":"PayPal","amount":"-25.00","date":"2019-02-19T12:26:46Z","type":"Payment"},{"description":"Invoice
+      for January 2019","amount":"24.38","invoice_id":"406333814","invoice_uuid":"449aae5d-1e02-4c42-a4b8-ad4d2814552d","date":"2019-02-01T09:12:27Z","type":"Invoice"},{"description":"PayPal","amount":"-25.00","date":"2019-01-21T18:25:00Z","type":"Payment"},{"description":"Invoice
+      for December 2018","amount":"20.04","invoice_id":"390930696","invoice_uuid":"69b0b435-6656-46f5-9654-7b208f906b87","date":"2019-01-01T08:11:08Z","type":"Invoice"},{"description":"PayPal","amount":"-25.00","date":"2018-12-13T15:16:25Z","type":"Payment"},{"description":"Invoice
+      for November 2018","amount":"2.35","invoice_id":"374470054","invoice_uuid":"4715a28b-6765-468d-a1f3-e7bbd72907e7","date":"2018-12-01T06:44:19Z","type":"Invoice"},{"description":"PayPal","amount":"-5.00","date":"2018-11-27T14:21:37Z","type":"Payment"}],"links":{},"meta":{"total":12}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 26 May 2021 21:06:03 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      grpc-metadata-content-type:
+      - application/grpc
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4986'
+      ratelimit-reset:
+      - '1622062489'
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev8+g14ae0be.d20210525
+    method: GET
+    uri: https://api.digitalocean.com/v2/customers/my/balance
+  response:
+    content: '{"month_to_date_balance":"55.50","account_balance":"0.00","month_to_date_usage":"55.50","generated_at":"2021-05-26T03:15:12Z"}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '126'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 26 May 2021 21:06:05 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Grpc-Metadata-Content-Type:
+      - application/grpc
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4985'
+      Ratelimit-Reset:
+      - '1622062489'
+      Server:
+      - cloudflare
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1
