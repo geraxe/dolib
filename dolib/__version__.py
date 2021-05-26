@@ -1,3 +1,6 @@
-__title__ = "dolib"
-__description__ = "Python library for Digital Ocean API, for Python 3."
-__version__ = "0.2.1"
+from pkg_resources import DistributionNotFound, get_distribution
+
+try:
+    __version__ = get_distribution("dolib").version
+except DistributionNotFound:
+    __version__ = None

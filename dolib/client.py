@@ -46,7 +46,8 @@ class BaseClient:
             "Authorization": f"Bearer {self._token}",
             "Content-Type": "application/json",
             "User-Agent": f"dolib/{__version__}",
-            #  our test lib(vcrpy) for httpx have bugs with gzip and deflate
+            # FIXME:  our test lib(vcrpy) for httpx have bugs with gzip and deflate
+            # https://github.com/kevin1024/vcrpy/issues/550
             "Accept-Encoding": "",
         }
 
