@@ -11,28 +11,6 @@ class BaseClient:
     API_DOMAIN = "api.digitalocean.com"
     API_VERSION = "v2"
 
-    account: t.Optional[mn.AsyncAccountManager] = None
-    actions: t.Optional[mn.AsyncBaseManager] = None
-    cdn_endpoints: t.Optional[mn.AsyncCDNEndpointsManager] = None
-    certificates: t.Optional[mn.AsyncCertificatesManager] = None
-    databases: t.Optional[mn.AsyncDatabasesManager] = None
-    domains: t.Optional[mn.AsyncDomainsManager] = None
-    droplets: t.Optional[mn.AsyncDropletsManager] = None
-    firewalls: t.Optional[mn.AsyncFirewallsManager] = None
-    floating_ips: t.Optional[mn.AsyncFloatingIPsManager] = None
-    images: t.Optional[mn.AsyncImagesManager] = None
-    invoices: t.Optional[mn.AsyncInvoicesManager] = None
-    kubernetes: t.Optional[mn.AsyncKubernetesManager] = None
-    load_balancers: t.Optional[mn.AsyncLoadBalancersManager] = None
-    projects: t.Optional[mn.AsyncProjectsManager] = None
-    regions: t.Optional[mn.AsyncRegionsManager] = None
-    registry: t.Optional[mn.AsyncRegistryManager] = None
-    snapshots: t.Optional[mn.AsyncSnapshotsManager] = None
-    ssh_keys: t.Optional[mn.AsyncSSHKeysManager] = None
-    tags: t.Optional[mn.AsyncTagsManager] = None
-    volumes: t.Optional[mn.AsyncVolumesManager] = None
-    vpcs: t.Optional[mn.AsyncVPCsManager] = None
-
     def __init__(self, token: str = None):
         if token is None:
             raise NotImplementedError("Need you api token.")
@@ -68,6 +46,29 @@ class BaseClient:
 
 
 class Client(BaseClient):
+
+    account: t.Optional[mn.AccountManager] = None
+    actions: t.Optional[mn.BaseManager] = None
+    cdn_endpoints: t.Optional[mn.CDNEndpointsManager] = None
+    certificates: t.Optional[mn.CertificatesManager] = None
+    databases: t.Optional[mn.DatabasesManager] = None
+    domains: t.Optional[mn.DomainsManager] = None
+    droplets: t.Optional[mn.DropletsManager] = None
+    firewalls: t.Optional[mn.FirewallsManager] = None
+    floating_ips: t.Optional[mn.FloatingIPsManager] = None
+    images: t.Optional[mn.ImagesManager] = None
+    invoices: t.Optional[mn.InvoicesManager] = None
+    kubernetes: t.Optional[mn.KubernetesManager] = None
+    load_balancers: t.Optional[mn.LoadBalancersManager] = None
+    projects: t.Optional[mn.ProjectsManager] = None
+    regions: t.Optional[mn.RegionsManager] = None
+    registry: t.Optional[mn.RegistryManager] = None
+    snapshots: t.Optional[mn.SnapshotsManager] = None
+    ssh_keys: t.Optional[mn.SSHKeysManager] = None
+    tags: t.Optional[mn.TagsManager] = None
+    volumes: t.Optional[mn.VolumesManager] = None
+    vpcs: t.Optional[mn.VPCsManager] = None
+
     def _load_managers(self) -> None:
         for manager in mn.__sync_managers__:
             klass = getattr(mn, manager)
@@ -167,6 +168,29 @@ class Client(BaseClient):
 
 
 class AsyncClient(BaseClient):
+
+    account: t.Optional[mn.AsyncAccountManager] = None
+    actions: t.Optional[mn.AsyncBaseManager] = None
+    cdn_endpoints: t.Optional[mn.AsyncCDNEndpointsManager] = None
+    certificates: t.Optional[mn.AsyncCertificatesManager] = None
+    databases: t.Optional[mn.AsyncDatabasesManager] = None
+    domains: t.Optional[mn.AsyncDomainsManager] = None
+    droplets: t.Optional[mn.AsyncDropletsManager] = None
+    firewalls: t.Optional[mn.AsyncFirewallsManager] = None
+    floating_ips: t.Optional[mn.AsyncFloatingIPsManager] = None
+    images: t.Optional[mn.AsyncImagesManager] = None
+    invoices: t.Optional[mn.AsyncInvoicesManager] = None
+    kubernetes: t.Optional[mn.AsyncKubernetesManager] = None
+    load_balancers: t.Optional[mn.AsyncLoadBalancersManager] = None
+    projects: t.Optional[mn.AsyncProjectsManager] = None
+    regions: t.Optional[mn.AsyncRegionsManager] = None
+    registry: t.Optional[mn.AsyncRegistryManager] = None
+    snapshots: t.Optional[mn.AsyncSnapshotsManager] = None
+    ssh_keys: t.Optional[mn.AsyncSSHKeysManager] = None
+    tags: t.Optional[mn.AsyncTagsManager] = None
+    volumes: t.Optional[mn.AsyncVolumesManager] = None
+    vpcs: t.Optional[mn.AsyncVPCsManager] = None
+
     def __init__(self, token: str = None):
         super().__init__(token)
 
