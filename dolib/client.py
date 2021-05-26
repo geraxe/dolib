@@ -3,7 +3,7 @@ from types import TracebackType
 
 import httpx
 
-from . import managers as do_managers
+from . import managers as mn
 from .__version__ import __version__
 
 
@@ -11,27 +11,37 @@ class BaseClient:
     API_DOMAIN = "api.digitalocean.com"
     API_VERSION = "v2"
 
-    account: t.Optional[do_managers.AccountManager] = None
-    actions: t.Optional[do_managers.ActionsManager] = None
-    cdn_endpoints: t.Optional[do_managers.CDNEndpointsManager] = None
-    certificates: t.Optional[do_managers.CertificatesManager] = None
-    databases: t.Optional[do_managers.DatabasesManager] = None
-    domains: t.Optional[do_managers.DomainsManager] = None
-    droplets: t.Optional[do_managers.DropletsManager] = None
-    firewalls: t.Optional[do_managers.FirewallsManager] = None
-    floating_ips: t.Optional[do_managers.FloatingIPsManager] = None
-    images: t.Optional[do_managers.ImagesManager] = None
-    invoices: t.Optional[do_managers.InvoicesManager] = None
-    kubernetes: t.Optional[do_managers.KubernetesManager] = None
-    load_balancers: t.Optional[do_managers.LoadBalancersManager] = None
-    projects: t.Optional[do_managers.ProjectsManager] = None
-    regions: t.Optional[do_managers.RegionsManager] = None
-    registry: t.Optional[do_managers.RegistryManager] = None
-    snapshots: t.Optional[do_managers.SnapshotsManager] = None
-    ssh_keys: t.Optional[do_managers.SSHKeysManager] = None
-    tags: t.Optional[do_managers.TagsManager] = None
-    volumes: t.Optional[do_managers.VolumesManager] = None
-    vpcs: t.Optional[do_managers.VPCsManager] = None
+    account: t.Optional[t.Union[mn.AccountManager, mn.AsyncAccountManager]] = None
+    actions: t.Optional[t.Union[mn.ActionsManager, mn.AsyncActionsManager]] = None
+    cdn_endpoints: t.Optional[
+        t.Union[mn.CDNEndpointsManager, mn.AsyncCDNEndpointsManager]
+    ] = None
+    certificates: t.Optional[
+        t.Union[mn.CertificatesManager, mn.AsyncCertificatesManager]
+    ] = None
+    databases: t.Optional[t.Union[mn.DatabasesManager, mn.AsyncDatabasesManager]] = None
+    domains: t.Optional[t.Union[mn.DomainsManager, mn.AsyncDomainsManager]] = None
+    droplets: t.Optional[t.Union[mn.DropletsManager, mn.AsyncDropletsManager]] = None
+    firewalls: t.Optional[t.Union[mn.FirewallsManager, mn.AsyncFirewallsManager]] = None
+    floating_ips: t.Optional[
+        t.Union[mn.FloatingIPsManager, mn.AsyncFloatingIPsManager]
+    ] = None
+    images: t.Optional[t.Union[mn.ImagesManager, mn.AsyncImagesManager]] = None
+    invoices: t.Optional[t.Union[mn.InvoicesManager, mn.AsyncInvoicesManager]] = None
+    kubernetes: t.Optional[
+        t.Union[mn.KubernetesManager, mn.AsyncKubernetesManager]
+    ] = None
+    load_balancers: t.Optional[
+        t.Union[mn.LoadBalancersManager, mn.AsyncLoadBalancersManager]
+    ] = None
+    projects: t.Optional[t.Union[mn.ProjectsManager, mn.AsyncProjectsManager]] = None
+    regions: t.Optional[t.Union[mn.RegionsManager, mn.AsyncRegionsManager]] = None
+    registry: t.Optional[t.Union[mn.RegistryManager, mn.AsyncRegistryManager]] = None
+    snapshots: t.Optional[t.Union[mn.SnapshotsManager, mn.AsyncSnapshotsManager]] = None
+    ssh_keys: t.Optional[t.Union[mn.SSHKeysManager, mn.AsyncSSHKeysManager]] = None
+    tags: t.Optional[t.Union[mn.TagsManager, mn.AsyncTagsManager]] = None
+    volumes: t.Optional[t.Union[mn.VolumesManager, mn.AsyncVolumesManager]] = None
+    vpcs: t.Optional[t.Union[mn.VPCsManager, mn.AsyncVPCsManager]] = None
 
     def __init__(self, token: str = None):
         if token is None:
@@ -52,9 +62,9 @@ class BaseClient:
         }
 
     def _load_managers(self) -> None:
-        for manager in do_managers.__all__:
-            klass = getattr(do_managers, manager)
-            if issubclass(klass, do_managers.base.BaseManager):
+        for manager in mn.__all__:
+            klass = getattr(mn, manager)
+            if issubclass(klass, mn.base.BaseManager):
                 obj = klass(client=self)
                 setattr(self, klass.endpoint, obj)
 
@@ -69,9 +79,9 @@ class BaseClient:
 
 class Client(BaseClient):
     def _load_managers(self) -> None:
-        for manager in do_managers.__sync_managers__:
-            klass = getattr(do_managers, manager)
-            if issubclass(klass, do_managers.base.BaseManager):
+        for manager in mn.__sync_managers__:
+            klass = getattr(mn, manager)
+            if issubclass(klass, mn.base.BaseManager):
                 obj = klass(client=self)
                 setattr(self, klass.endpoint, obj)
 
@@ -171,9 +181,9 @@ class AsyncClient(BaseClient):
         super().__init__(token)
 
     def _load_managers(self) -> None:
-        for manager in do_managers.__async_managers__:
-            klass = getattr(do_managers, manager)
-            if issubclass(klass, do_managers.base.AsyncBaseManager):
+        for manager in mn.__async_managers__:
+            klass = getattr(mn, manager)
+            if issubclass(klass, mn.base.AsyncBaseManager):
                 obj = klass(client=self)
                 setattr(self, klass.endpoint, obj)
 
