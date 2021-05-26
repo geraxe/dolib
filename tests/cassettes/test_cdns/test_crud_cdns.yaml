@@ -18,10 +18,9 @@ interactions:
     method: POST
     uri: https://api.digitalocean.com/v2/cdn/endpoints
   response:
-    body:
-      string: '{"endpoint":{"id":"1943c0dd-1a9c-4e23-a451-f64b1c219ff5","origin":"e183e06c-0252-4e0c-85bb-2fe17eb87169.ams3.digitaloceanspaces.com","endpoint":"e183e06c-0252-4e0c-85bb-2fe17eb87169.ams3.cdn.digitaloceanspaces.com","created_at":"2020-06-03T10:54:55Z","ttl":1800}}
+    content: '{"endpoint":{"id":"1943c0dd-1a9c-4e23-a451-f64b1c219ff5","origin":"e183e06c-0252-4e0c-85bb-2fe17eb87169.ams3.digitaloceanspaces.com","endpoint":"e183e06c-0252-4e0c-85bb-2fe17eb87169.ams3.cdn.digitaloceanspaces.com","created_at":"2020-06-03T10:54:55Z","ttl":1800}}
 
-        '
+      '
     headers:
       CF-Cache-Status:
       - DYNAMIC
@@ -47,9 +46,8 @@ interactions:
       - Edge-Gateway
       X-Response-From:
       - service
-    status:
-      code: 201
-      message: Created
+    http_version: HTTP/1.1
+    status_code: 201
 - request:
     body: null
     headers:
@@ -66,10 +64,9 @@ interactions:
     method: GET
     uri: https://api.digitalocean.com/v2/cdn/endpoints/1943c0dd-1a9c-4e23-a451-f64b1c219ff5
   response:
-    body:
-      string: '{"endpoint":{"id":"1943c0dd-1a9c-4e23-a451-f64b1c219ff5","origin":"e183e06c-0252-4e0c-85bb-2fe17eb87169.ams3.digitaloceanspaces.com","endpoint":"e183e06c-0252-4e0c-85bb-2fe17eb87169.ams3.cdn.digitaloceanspaces.com","created_at":"2020-06-03T10:54:55Z","ttl":1800}}
+    content: '{"endpoint":{"id":"1943c0dd-1a9c-4e23-a451-f64b1c219ff5","origin":"e183e06c-0252-4e0c-85bb-2fe17eb87169.ams3.digitaloceanspaces.com","endpoint":"e183e06c-0252-4e0c-85bb-2fe17eb87169.ams3.cdn.digitaloceanspaces.com","created_at":"2020-06-03T10:54:55Z","ttl":1800}}
 
-        '
+      '
     headers:
       CF-Cache-Status:
       - DYNAMIC
@@ -97,16 +94,15 @@ interactions:
       - service
       content-length:
       - '264'
-    status:
-      code: 200
-      message: OK
+    http_version: HTTP/1.1
+    status_code: 200
 - request:
     body: null
     headers:
       Accept:
       - '*/*'
       Accept-Encoding:
-      - gzip, deflate
+      - ''
       Connection:
       - keep-alive
       Content-Type:
@@ -116,10 +112,9 @@ interactions:
     method: GET
     uri: https://api.digitalocean.com/v2/cdn/endpoints?per_page=200
   response:
-    body:
-      string: '{"endpoints":[{"id":"1943c0dd-1a9c-4e23-a451-f64b1c219ff5","origin":"e183e06c-0252-4e0c-85bb-2fe17eb87169.ams3.digitaloceanspaces.com","endpoint":"e183e06c-0252-4e0c-85bb-2fe17eb87169.ams3.cdn.digitaloceanspaces.com","created_at":"2020-06-03T10:54:55Z","ttl":1800}],"meta":{"total":1}}
+    content: '{"endpoints":[{"id":"1943c0dd-1a9c-4e23-a451-f64b1c219ff5","origin":"e183e06c-0252-4e0c-85bb-2fe17eb87169.ams3.digitaloceanspaces.com","endpoint":"e183e06c-0252-4e0c-85bb-2fe17eb87169.ams3.cdn.digitaloceanspaces.com","created_at":"2020-06-03T10:54:55Z","ttl":1800}],"meta":{"total":1}}
 
-        '
+      '
     headers:
       CF-Cache-Status:
       - DYNAMIC
@@ -147,9 +142,8 @@ interactions:
       - service
       content-length:
       - '286'
-    status:
-      code: 200
-      message: OK
+    http_version: HTTP/1.1
+    status_code: 200
 - request:
     body: null
     headers:
@@ -168,8 +162,7 @@ interactions:
     method: DELETE
     uri: https://api.digitalocean.com/v2/cdn/endpoints/1943c0dd-1a9c-4e23-a451-f64b1c219ff5
   response:
-    body:
-      string: ''
+    content: ''
     headers:
       CF-Cache-Status:
       - DYNAMIC
@@ -193,7 +186,6 @@ interactions:
       - Edge-Gateway
       X-Response-From:
       - service
-    status:
-      code: 204
-      message: No Content
+    http_version: HTTP/1.1
+    status_code: 204
 version: 1
