@@ -11,37 +11,27 @@ class BaseClient:
     API_DOMAIN = "api.digitalocean.com"
     API_VERSION = "v2"
 
-    account: t.Optional[t.Union[mn.AccountManager, mn.AsyncAccountManager]] = None
-    actions: t.Optional[t.Union[mn.ActionsManager, mn.AsyncActionsManager]] = None
-    cdn_endpoints: t.Optional[
-        t.Union[mn.CDNEndpointsManager, mn.AsyncCDNEndpointsManager]
-    ] = None
-    certificates: t.Optional[
-        t.Union[mn.CertificatesManager, mn.AsyncCertificatesManager]
-    ] = None
-    databases: t.Optional[t.Union[mn.DatabasesManager, mn.AsyncDatabasesManager]] = None
-    domains: t.Optional[t.Union[mn.DomainsManager, mn.AsyncDomainsManager]] = None
-    droplets: t.Optional[t.Union[mn.DropletsManager, mn.AsyncDropletsManager]] = None
-    firewalls: t.Optional[t.Union[mn.FirewallsManager, mn.AsyncFirewallsManager]] = None
-    floating_ips: t.Optional[
-        t.Union[mn.FloatingIPsManager, mn.AsyncFloatingIPsManager]
-    ] = None
-    images: t.Optional[t.Union[mn.ImagesManager, mn.AsyncImagesManager]] = None
-    invoices: t.Optional[t.Union[mn.InvoicesManager, mn.AsyncInvoicesManager]] = None
-    kubernetes: t.Optional[
-        t.Union[mn.KubernetesManager, mn.AsyncKubernetesManager]
-    ] = None
-    load_balancers: t.Optional[
-        t.Union[mn.LoadBalancersManager, mn.AsyncLoadBalancersManager]
-    ] = None
-    projects: t.Optional[t.Union[mn.ProjectsManager, mn.AsyncProjectsManager]] = None
-    regions: t.Optional[t.Union[mn.RegionsManager, mn.AsyncRegionsManager]] = None
-    registry: t.Optional[t.Union[mn.RegistryManager, mn.AsyncRegistryManager]] = None
-    snapshots: t.Optional[t.Union[mn.SnapshotsManager, mn.AsyncSnapshotsManager]] = None
-    ssh_keys: t.Optional[t.Union[mn.SSHKeysManager, mn.AsyncSSHKeysManager]] = None
-    tags: t.Optional[t.Union[mn.TagsManager, mn.AsyncTagsManager]] = None
-    volumes: t.Optional[t.Union[mn.VolumesManager, mn.AsyncVolumesManager]] = None
-    vpcs: t.Optional[t.Union[mn.VPCsManager, mn.AsyncVPCsManager]] = None
+    account: t.Optional[mn.AsyncAccountManager] = None
+    actions: t.Optional[mn.AsyncBaseManager] = None
+    cdn_endpoints: t.Optional[mn.AsyncCDNEndpointsManager] = None
+    certificates: t.Optional[mn.AsyncCertificatesManager] = None
+    databases: t.Optional[mn.AsyncDatabasesManager] = None
+    domains: t.Optional[mn.AsyncDomainsManager] = None
+    droplets: t.Optional[mn.AsyncDropletsManager] = None
+    firewalls: t.Optional[mn.AsyncFirewallsManager] = None
+    floating_ips: t.Optional[mn.AsyncFloatingIPsManager] = None
+    images: t.Optional[mn.AsyncImagesManager] = None
+    invoices: t.Optional[mn.AsyncInvoicesManager] = None
+    kubernetes: t.Optional[mn.AsyncKubernetesManager] = None
+    load_balancers: t.Optional[mn.AsyncLoadBalancersManager] = None
+    projects: t.Optional[mn.AsyncProjectsManager] = None
+    regions: t.Optional[mn.AsyncRegionsManager] = None
+    registry: t.Optional[mn.AsyncRegistryManager] = None
+    snapshots: t.Optional[mn.AsyncSnapshotsManager] = None
+    ssh_keys: t.Optional[mn.AsyncSSHKeysManager] = None
+    tags: t.Optional[mn.AsyncTagsManager] = None
+    volumes: t.Optional[mn.AsyncVolumesManager] = None
+    vpcs: t.Optional[mn.AsyncVPCsManager] = None
 
     def __init__(self, token: str = None):
         if token is None:
