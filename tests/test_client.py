@@ -1,5 +1,5 @@
 import sys
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 import pytest
 from pkg_resources import DistributionNotFound
@@ -9,7 +9,7 @@ from dolib.client import BaseClient
 
 
 @patch("pkg_resources.get_distribution", side_effect=DistributionNotFound)
-def test_version() -> None:
+def test_version(mock: MagicMock) -> None:
     del sys.modules["dolib.__version__"]
     from dolib.__version__ import __version__
 
