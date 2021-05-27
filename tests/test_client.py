@@ -3,14 +3,13 @@ from unittest.mock import patch
 
 import pytest
 from pkg_resources import DistributionNotFound
-from pytest_mock import MockerFixture
 
 from dolib import AsyncClient, Client
 from dolib.client import BaseClient
 
 
 @patch("pkg_resources.get_distribution", side_effect=DistributionNotFound)
-def test_version(mocker: MockerFixture) -> None:
+def test_version() -> None:
     del sys.modules["dolib.__version__"]
     from dolib.__version__ import __version__
 
