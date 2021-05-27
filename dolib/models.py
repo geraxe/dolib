@@ -54,6 +54,35 @@ class Action(BaseModel):
     region_slug: Optional[str]
 
 
+class App(BaseModel):
+    class DeployTemplate(BaseModel):
+        spec: dict
+
+    class Deployment(BaseModel):
+        id: uuid.UUID
+
+    id: Optional[uuid.UUID]
+
+    # required params
+    spec: dict
+
+    # optional params
+    owner_uuid: Optional[uuid.UUID]
+    deploy_template: Optional[DeployTemplate]
+    default_ingress: Optional[str]
+    created_at: Optional[datetime]
+    updated_at: Optional[datetime]
+    active_deployment: Optional[Deployment]
+    in_progress_deployment: Optional[Deployment]
+    last_deployment_created_at: Optional[datetime]
+    live_url: Optional[str]
+    region: Optional[Region]
+    tier_slug: Optional[str]
+    live_url_base: Optional[str]
+    live_domain: Optional[str]
+    domains: Optional[List[str]]
+
+
 class Balance(BaseModel):
     month_to_date_balance: Decimal
     account_balance: Decimal

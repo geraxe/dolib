@@ -13,6 +13,7 @@ class BaseClient:
 
     account: t.Optional[do_managers.AccountManager] = None
     actions: t.Optional[do_managers.ActionsManager] = None
+    apps: t.Optional[do_managers.AppsManager] = None
     cdn_endpoints: t.Optional[do_managers.CDNEndpointsManager] = None
     certificates: t.Optional[do_managers.CertificatesManager] = None
     databases: t.Optional[do_managers.DatabasesManager] = None
@@ -109,6 +110,7 @@ class Client(BaseClient):
         # raise exceptions in case of errors
         response.raise_for_status()
 
+        print(response.content)
         # save data to client from response
         self._process_response(response)
 
@@ -146,13 +148,19 @@ class Client(BaseClient):
         params["per_page"] = 200
         response = self.request(endpoint=endpoint, params=params)
 
+        result: t.List[t.Any] = []
+
+        # in case of strange result like GET /apps
+        if key not in response:
+            result = []
         # in case of strange result like " "firewalls": null "
-        if response[key] is None:
+        elif response[key] is None:
             result = []
         elif isinstance(response[key], list):
             result = response[key]
         else:
             result = list(response[key])
+
         while True:
             next_url = get_next_page(response)
             if next_url is None:
@@ -249,13 +257,19 @@ class AsyncClient(BaseClient):
         params["per_page"] = 200
         response = await self.request(endpoint=endpoint, params=params)
 
+        result: t.List[t.Any] = []
+
+        # in case of strange result like GET /apps
+        if key not in response:
+            result = []
         # in case of strange result like " "firewalls": null "
-        if response[key] is None:
+        elif response[key] is None:
             result = []
         elif isinstance(response[key], list):
             result = response[key]
         else:
             result = list(response[key])
+
         while True:
             next_url = get_next_page(response)
             if next_url is None:
