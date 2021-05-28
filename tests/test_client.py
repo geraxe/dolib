@@ -2,6 +2,7 @@ import sys
 from unittest.mock import MagicMock, patch
 
 import pytest
+from httpx import HTTPStatusError
 from pkg_resources import DistributionNotFound
 
 from dolib import AsyncClient, Client
@@ -25,6 +26,8 @@ def test_base_client() -> None:
 @pytest.mark.block_network()
 def test_client(client: Client) -> None:
     client.request_raw(endpoint="account", method="get")
+
+    client.fetch_all(endpoint="fake_links", key="fake_links")
     firewalls = client.fetch_all(endpoint="firewalls", key="firewalls")
     assert firewalls == []
 
@@ -33,9 +36,24 @@ def test_client(client: Client) -> None:
     )
     assert clusters == []
 
+    with pytest.raises(HTTPStatusError):
+        client.fetch_all(endpoint="non_existent_page", key="error")
+
 
 @pytest.mark.vcr
 @pytest.mark.block_network()
 @pytest.mark.asyncio
 async def test_async_client(async_client: AsyncClient) -> None:
     await async_client.request_raw(endpoint="account", method="get")
+
+    await async_client.fetch_all(endpoint="fake_links", key="fake_links")
+    firewalls = await async_client.fetch_all(endpoint="firewalls", key="firewalls")
+    assert firewalls == []
+
+    clusters = await async_client.fetch_all(
+        endpoint="kubernetes/clusters", key="kubernetes_clusters"
+    )
+    assert clusters == []
+
+    with pytest.raises(HTTPStatusError):
+        await async_client.fetch_all(endpoint="non_existent_page", key="error")
