@@ -27,6 +27,13 @@ def test_base_client() -> None:
 @pytest.mark.vcr
 @pytest.mark.block_network()
 def test_client(client: Client) -> None:
+
+    # without ratelimits in header
+    client.request_raw(endpoint="account/keys", method="get")
+    assert client._ratelimit_limit is None
+    assert client._ratelimit_remaining is None
+    assert client._ratelimit_reset is None
+
     client.request_raw(endpoint="account", method="get")
     assert client._ratelimit_limit > 0
     assert client._ratelimit_remaining > 0
@@ -49,7 +56,17 @@ def test_client(client: Client) -> None:
 @pytest.mark.block_network()
 @pytest.mark.asyncio
 async def test_async_client(async_client: AsyncClient) -> None:
+
+    # without ratelimits in header
+    await async_client.request_raw(endpoint="account/keys", method="get")
+    assert async_client._ratelimit_limit is None
+    assert async_client._ratelimit_remaining is None
+    assert async_client._ratelimit_reset is None
+
     await async_client.request_raw(endpoint="account", method="get")
+    assert async_client._ratelimit_limit > 0
+    assert async_client._ratelimit_remaining > 0
+    assert async_client._ratelimit_reset > 0
 
     await async_client.fetch_all(endpoint="fake_links", key="fake_links")
     firewalls = await async_client.fetch_all(endpoint="firewalls", key="firewalls")

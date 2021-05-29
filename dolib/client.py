@@ -68,9 +68,8 @@ class Client(BaseClient):
     def _load_managers(self) -> None:
         for manager in mn.__sync_managers__:
             klass = getattr(mn, manager)
-            if issubclass(klass, mn.base.BaseManager):
-                obj = klass(client=self)
-                setattr(self, klass.endpoint, obj)
+            obj = klass(client=self)
+            setattr(self, klass.endpoint, obj)
 
     def request_raw(
         self,
@@ -190,9 +189,8 @@ class AsyncClient(BaseClient):
     def _load_managers(self) -> None:
         for manager in mn.__async_managers__:
             klass = getattr(mn, manager)
-            if issubclass(klass, mn.base.AsyncBaseManager):
-                obj = klass(client=self)
-                setattr(self, klass.endpoint, obj)
+            obj = klass(client=self)
+            setattr(self, klass.endpoint, obj)
 
     async def request_raw(
         self,
