@@ -49,3 +49,11 @@ async def test_async_crud_droplets(async_client: AsyncClient) -> None:
     # read droplet
     read_droplet = await async_client.droplets.get(str(created_droplet.id))
     assert read_droplet.id == created_droplet.id
+
+    # list droplets
+    droplets = await async_client.droplets.all()
+    droplets_count = len(droplets)
+    assert droplets_count > 0
+
+    # delete droplet
+    await async_client.droplets.delete(droplet=read_droplet)

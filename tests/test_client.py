@@ -18,14 +18,19 @@ def test_version(mock: MagicMock) -> None:
 
 
 def test_base_client() -> None:
-    with pytest.raises(NotImplementedError):
+    with pytest.raises(ValueError):
         BaseClient()
+    with pytest.raises(NotImplementedError):
+        BaseClient(token="fake_token")
 
 
 @pytest.mark.vcr
 @pytest.mark.block_network()
 def test_client(client: Client) -> None:
     client.request_raw(endpoint="account", method="get")
+    assert client._ratelimit_limit > 0
+    assert client._ratelimit_remaining > 0
+    assert client._ratelimit_reset > 0
 
     client.fetch_all(endpoint="fake_links", key="fake_links")
     firewalls = client.fetch_all(endpoint="firewalls", key="firewalls")

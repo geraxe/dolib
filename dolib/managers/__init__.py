@@ -68,6 +68,11 @@ __all__ = [
     "AsyncVPCsManager",
 ]
 
+__base_managers__ = [
+    "BaseManager",
+    "AsyncBaseManager",
+]
+
 __sync_managers__ = [
     "AccountManager",
     "ActionsManager",

@@ -13,7 +13,7 @@ class BaseClient:
 
     def __init__(self, token: str = None):
         if token is None:
-            raise NotImplementedError("Need you api token.")
+            raise ValueError("API token must be specified.")
         self._token = token
         self._ratelimit_limit: t.Optional[int] = None
         self._ratelimit_remaining: t.Optional[int] = None
@@ -30,11 +30,7 @@ class BaseClient:
         }
 
     def _load_managers(self) -> None:
-        for manager in mn.__all__:
-            klass = getattr(mn, manager)
-            if issubclass(klass, mn.base.BaseManager):
-                obj = klass(client=self)
-                setattr(self, klass.endpoint, obj)
+        raise NotImplementedError("_load_managers must be implemented.")
 
     def _process_response(self, response: httpx.Response) -> None:
         if "Ratelimit-Limit" in response.headers:
@@ -159,8 +155,8 @@ class Client(BaseClient):
             if next_url is None:
                 break
             res = httpx.get(next_url, headers=self.headers)
-
             res.raise_for_status()
+            self._process_response(res)
             response = res.json()
             result += response[key]
 
@@ -190,9 +186,6 @@ class AsyncClient(BaseClient):
     tags: t.Optional[mn.AsyncTagsManager] = None
     volumes: t.Optional[mn.AsyncVolumesManager] = None
     vpcs: t.Optional[mn.AsyncVPCsManager] = None
-
-    def __init__(self, token: str = None):
-        super().__init__(token)
 
     def _load_managers(self) -> None:
         for manager in mn.__async_managers__:
@@ -288,6 +281,7 @@ class AsyncClient(BaseClient):
             async with httpx.AsyncClient() as async_client:
                 res = await async_client.get(next_url, headers=self.headers)
             res.raise_for_status()
+            self._process_response(res)
             response = res.json()
             result += response[key]
 
