@@ -70,7 +70,7 @@ class DropletsManager(BaseManager):
         )
         return [models.Droplet.Kernel(**kernel) for kernel in res]
 
-    def shapshots(self, id: str) -> List[models.Snapshot]:
+    def snapshots(self, id: str) -> List[models.Snapshot]:
         res = self._client.fetch_all(
             endpoint="droplets/{id}/snapshots".format(id=id),
             key="snapshots",
@@ -192,16 +192,10 @@ class DropletsManager(BaseManager):
         return self._action(id, "enable_ipv6")
 
     def enable_private_networking(self, id: str) -> models.Action:
-        return self._action(id, "enable_private_networking")
+        raise DeprecationWarning("This function is depricated in Digital Ocean API")
 
     def tag_action(self, tag_name: str, action: str) -> List[models.Action]:
-        assert tag_name is not None, "tag_name must be set"
-        assert action is not None, "action must be set"
-
-        params = {}
-        if tag_name is not None:
-            params["tag_name"] = tag_name
-
+        params = {"tag_name": tag_name}
         post_json = {"type": action}
 
         res = self._client.request(
@@ -291,7 +285,7 @@ class AsyncDropletsManager(AsyncBaseManager):
         )
         return [models.Droplet.Kernel(**kernel) for kernel in res]
 
-    async def shapshots(self, id: str) -> List[models.Snapshot]:
+    async def snapshots(self, id: str) -> List[models.Snapshot]:
         res = await self._client.fetch_all(
             endpoint="droplets/{id}/snapshots".format(id=id),
             key="snapshots",
@@ -413,16 +407,10 @@ class AsyncDropletsManager(AsyncBaseManager):
         return await self._action(id, "enable_ipv6")
 
     async def enable_private_networking(self, id: str) -> models.Action:
-        return await self._action(id, "enable_private_networking")
+        raise DeprecationWarning("This function is depricated in Digital Ocean API")
 
     async def tag_action(self, tag_name: str, action: str) -> List[models.Action]:
-        assert tag_name is not None, "tag_name must be set"
-        assert action is not None, "action must be set"
-
-        params = {}
-        if tag_name is not None:
-            params["tag_name"] = tag_name
-
+        params = {"tag_name": tag_name}
         post_json = {"type": action}
 
         res = await self._client.request(
