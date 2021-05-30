@@ -1,0 +1,228 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev8+g14ae0be.d20210525
+    method: GET
+    uri: https://api.digitalocean.com/v2/snapshots?per_page=200
+  response:
+    content: '{"snapshots":[{"id":"84969251","name":"test-snapshot","regions":["fra1"],"created_at":"2021-05-29T17:42:16Z","resource_id":"248152601","resource_type":"droplet","min_disk_size":25,"size_gigabytes":1.29,"tags":[]},{"id":"84969331","name":"test-snapshot","regions":["fra1"],"created_at":"2021-05-29T17:51:15Z","resource_id":"248152601","resource_type":"droplet","min_disk_size":25,"size_gigabytes":1.29,"tags":[]},{"id":"84969736","name":"dolib-droplet-renamed-1622311264","regions":["fra1"],"created_at":"2021-05-29T18:01:04Z","resource_id":"248152601","resource_type":"droplet","min_disk_size":25,"size_gigabytes":1.29,"tags":[]},{"id":"84969750","name":"test-snapshot","regions":["fra1"],"created_at":"2021-05-29T18:03:15Z","resource_id":"248152601","resource_type":"droplet","min_disk_size":25,"size_gigabytes":1.29,"tags":[]},{"id":"84969777","name":"dolib-droplet-renamed-1622311583","regions":["fra1"],"created_at":"2021-05-29T18:06:23Z","resource_id":"248152601","resource_type":"droplet","min_disk_size":25,"size_gigabytes":1.29,"tags":[]}],"links":{},"meta":{"total":55555}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1509'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 29 May 2021 19:57:55 GMT
+      Etag:
+      - W/"f99146006fe60f6adb4bf706bef9fb44"
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4989'
+      Ratelimit-Reset:
+      - '1622314700'
+      Server:
+      - cloudflare
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+      X-Runtime:
+      - '4.197447'
+      X-Xss-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev8+g14ae0be.d20210525
+    method: GET
+    uri: https://api.digitalocean.com/v2/snapshots?resource_type=droplet&per_page=200
+  response:
+    content: '{"snapshots":[{"id":"84969251","name":"test-snapshot","regions":["fra1"],"created_at":"2021-05-29T17:42:16Z","resource_id":"248152601","resource_type":"droplet","min_disk_size":25,"size_gigabytes":1.29,"tags":[]},{"id":"84969331","name":"test-snapshot","regions":["fra1"],"created_at":"2021-05-29T17:51:15Z","resource_id":"248152601","resource_type":"droplet","min_disk_size":25,"size_gigabytes":1.29,"tags":[]},{"id":"84969736","name":"dolib-droplet-renamed-1622311264","regions":["fra1"],"created_at":"2021-05-29T18:01:04Z","resource_id":"248152601","resource_type":"droplet","min_disk_size":25,"size_gigabytes":1.29,"tags":[]},{"id":"84969750","name":"test-snapshot","regions":["fra1"],"created_at":"2021-05-29T18:03:15Z","resource_id":"248152601","resource_type":"droplet","min_disk_size":25,"size_gigabytes":1.29,"tags":[]},{"id":"84969777","name":"dolib-droplet-renamed-1622311583","regions":["fra1"],"created_at":"2021-05-29T18:06:23Z","resource_id":"248152601","resource_type":"droplet","min_disk_size":25,"size_gigabytes":1.29,"tags":[]}],"links":{},"meta":{"total":5}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1509'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 29 May 2021 20:00:46 GMT
+      Etag:
+      - W/"f99146006fe60f6adb4bf706bef9fb44"
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4987'
+      Ratelimit-Reset:
+      - '1622314920'
+      Server:
+      - cloudflare
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+      X-Runtime:
+      - '0.303081'
+      X-Xss-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev8+g14ae0be.d20210525
+    method: GET
+    uri: https://api.digitalocean.com/v2/snapshots/84969251
+  response:
+    content: '{"snapshot":{"id":"84969251","name":"test-snapshot","regions":["fra1"],"created_at":"2021-05-29T17:42:16Z","resource_id":"248152601","resource_type":"droplet","min_disk_size":25,"size_gigabytes":1.29,"tags":[]}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '211'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 29 May 2021 20:05:22 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      cache-control:
+      - max-age=0, private, must-revalidate
+      etag:
+      - W/"0c50a86e3af3598cba8aabcd1d7325c7"
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4987'
+      ratelimit-reset:
+      - '1622317334'
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+      x-runtime:
+      - '0.096905'
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev8+g14ae0be.d20210525
+    method: DELETE
+    uri: https://api.digitalocean.com/v2/snapshots/84969251
+  response:
+    content: ''
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Date:
+      - Sat, 29 May 2021 20:06:11 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      cache-control:
+      - no-cache
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4986'
+      ratelimit-reset:
+      - '1622317334'
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+      x-runtime:
+      - '0.102084'
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 204
+version: 1

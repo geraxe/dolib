@@ -1,5 +1,6 @@
 from .account import AccountManager, AsyncAccountManager
 from .actions import ActionsManager, AsyncActionsManager
+from .base import AsyncBaseManager, BaseManager
 from .cdns import AsyncCDNEndpointsManager, CDNEndpointsManager
 from .certificates import AsyncCertificatesManager, CertificatesManager
 from .databases import AsyncDatabasesManager, DatabasesManager
@@ -21,6 +22,7 @@ from .volumes import AsyncVolumesManager, VolumesManager
 from .vpcs import AsyncVPCsManager, VPCsManager
 
 __all__ = [
+    "BaseManager",
     "AccountManager",
     "ActionsManager",
     "CDNEndpointsManager",
@@ -42,6 +44,7 @@ __all__ = [
     "TagsManager",
     "VolumesManager",
     "VPCsManager",
+    "AsyncBaseManager",
     "AsyncAccountManager",
     "AsyncActionsManager",
     "AsyncCDNEndpointsManager",
@@ -63,6 +66,11 @@ __all__ = [
     "AsyncTagsManager",
     "AsyncVolumesManager",
     "AsyncVPCsManager",
+]
+
+__base_managers__ = [
+    "BaseManager",
+    "AsyncBaseManager",
 ]
 
 __sync_managers__ = [

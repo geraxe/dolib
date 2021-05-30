@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from .. import models
 from .base import AsyncBaseManager, BaseManager
@@ -8,7 +8,7 @@ class SnapshotsManager(BaseManager):
     endpoint = "snapshots"
     name = "snapshots"
 
-    def all(self, resource_type: str) -> List[models.Snapshot]:
+    def all(self, resource_type: Optional[str] = None) -> List[models.Snapshot]:
         params = dict()
         if resource_type is not None:
             params["resource_type"] = resource_type
@@ -33,7 +33,7 @@ class AsyncSnapshotsManager(AsyncBaseManager):
     endpoint = "snapshots"
     name = "snapshots"
 
-    async def all(self, resource_type: str) -> List[models.Snapshot]:
+    async def all(self, resource_type: Optional[str] = None) -> List[models.Snapshot]:
         params = dict()
         if resource_type is not None:
             params["resource_type"] = resource_type

@@ -3,7 +3,7 @@ from types import TracebackType
 
 import httpx
 
-from . import managers as do_managers
+from . import managers as mn
 from .__version__ import __version__
 
 
@@ -11,31 +11,9 @@ class BaseClient:
     API_DOMAIN = "api.digitalocean.com"
     API_VERSION = "v2"
 
-    account: t.Optional[do_managers.AccountManager] = None
-    actions: t.Optional[do_managers.ActionsManager] = None
-    cdn_endpoints: t.Optional[do_managers.CDNEndpointsManager] = None
-    certificates: t.Optional[do_managers.CertificatesManager] = None
-    databases: t.Optional[do_managers.DatabasesManager] = None
-    domains: t.Optional[do_managers.DomainsManager] = None
-    droplets: t.Optional[do_managers.DropletsManager] = None
-    firewalls: t.Optional[do_managers.FirewallsManager] = None
-    floating_ips: t.Optional[do_managers.FloatingIPsManager] = None
-    images: t.Optional[do_managers.ImagesManager] = None
-    invoices: t.Optional[do_managers.InvoicesManager] = None
-    kubernetes: t.Optional[do_managers.KubernetesManager] = None
-    load_balancers: t.Optional[do_managers.LoadBalancersManager] = None
-    projects: t.Optional[do_managers.ProjectsManager] = None
-    regions: t.Optional[do_managers.RegionsManager] = None
-    registry: t.Optional[do_managers.RegistryManager] = None
-    snapshots: t.Optional[do_managers.SnapshotsManager] = None
-    ssh_keys: t.Optional[do_managers.SSHKeysManager] = None
-    tags: t.Optional[do_managers.TagsManager] = None
-    volumes: t.Optional[do_managers.VolumesManager] = None
-    vpcs: t.Optional[do_managers.VPCsManager] = None
-
     def __init__(self, token: str = None):
         if token is None:
-            raise NotImplementedError("Need you api token.")
+            raise ValueError("API token must be specified.")
         self._token = token
         self._ratelimit_limit: t.Optional[int] = None
         self._ratelimit_remaining: t.Optional[int] = None
@@ -52,11 +30,7 @@ class BaseClient:
         }
 
     def _load_managers(self) -> None:
-        for manager in do_managers.__all__:
-            klass = getattr(do_managers, manager)
-            if issubclass(klass, do_managers.base.BaseManager):
-                obj = klass(client=self)
-                setattr(self, klass.endpoint, obj)
+        raise NotImplementedError("_load_managers must be implemented.")
 
     def _process_response(self, response: httpx.Response) -> None:
         if "Ratelimit-Limit" in response.headers:
@@ -68,12 +42,34 @@ class BaseClient:
 
 
 class Client(BaseClient):
+
+    account: t.Optional[mn.AccountManager] = None
+    actions: t.Optional[mn.ActionsManager] = None
+    cdn_endpoints: t.Optional[mn.CDNEndpointsManager] = None
+    certificates: t.Optional[mn.CertificatesManager] = None
+    databases: t.Optional[mn.DatabasesManager] = None
+    domains: t.Optional[mn.DomainsManager] = None
+    droplets: t.Optional[mn.DropletsManager] = None
+    firewalls: t.Optional[mn.FirewallsManager] = None
+    floating_ips: t.Optional[mn.FloatingIPsManager] = None
+    images: t.Optional[mn.ImagesManager] = None
+    invoices: t.Optional[mn.InvoicesManager] = None
+    kubernetes: t.Optional[mn.KubernetesManager] = None
+    load_balancers: t.Optional[mn.LoadBalancersManager] = None
+    projects: t.Optional[mn.ProjectsManager] = None
+    regions: t.Optional[mn.RegionsManager] = None
+    registry: t.Optional[mn.RegistryManager] = None
+    snapshots: t.Optional[mn.SnapshotsManager] = None
+    ssh_keys: t.Optional[mn.SSHKeysManager] = None
+    tags: t.Optional[mn.TagsManager] = None
+    volumes: t.Optional[mn.VolumesManager] = None
+    vpcs: t.Optional[mn.VPCsManager] = None
+
     def _load_managers(self) -> None:
-        for manager in do_managers.__sync_managers__:
-            klass = getattr(do_managers, manager)
-            if issubclass(klass, do_managers.base.BaseManager):
-                obj = klass(client=self)
-                setattr(self, klass.endpoint, obj)
+        for manager in mn.__sync_managers__:
+            klass = getattr(mn, manager)
+            obj = klass(client=self)
+            setattr(self, klass.endpoint, obj)
 
     def request_raw(
         self,
@@ -158,8 +154,8 @@ class Client(BaseClient):
             if next_url is None:
                 break
             res = httpx.get(next_url, headers=self.headers)
-
             res.raise_for_status()
+            self._process_response(res)
             response = res.json()
             result += response[key]
 
@@ -167,15 +163,34 @@ class Client(BaseClient):
 
 
 class AsyncClient(BaseClient):
-    def __init__(self, token: str = None):
-        super().__init__(token)
+
+    account: t.Optional[mn.AsyncAccountManager] = None
+    actions: t.Optional[mn.AsyncActionsManager] = None
+    cdn_endpoints: t.Optional[mn.AsyncCDNEndpointsManager] = None
+    certificates: t.Optional[mn.AsyncCertificatesManager] = None
+    databases: t.Optional[mn.AsyncDatabasesManager] = None
+    domains: t.Optional[mn.AsyncDomainsManager] = None
+    droplets: t.Optional[mn.AsyncDropletsManager] = None
+    firewalls: t.Optional[mn.AsyncFirewallsManager] = None
+    floating_ips: t.Optional[mn.AsyncFloatingIPsManager] = None
+    images: t.Optional[mn.AsyncImagesManager] = None
+    invoices: t.Optional[mn.AsyncInvoicesManager] = None
+    kubernetes: t.Optional[mn.AsyncKubernetesManager] = None
+    load_balancers: t.Optional[mn.AsyncLoadBalancersManager] = None
+    projects: t.Optional[mn.AsyncProjectsManager] = None
+    regions: t.Optional[mn.AsyncRegionsManager] = None
+    registry: t.Optional[mn.AsyncRegistryManager] = None
+    snapshots: t.Optional[mn.AsyncSnapshotsManager] = None
+    ssh_keys: t.Optional[mn.AsyncSSHKeysManager] = None
+    tags: t.Optional[mn.AsyncTagsManager] = None
+    volumes: t.Optional[mn.AsyncVolumesManager] = None
+    vpcs: t.Optional[mn.AsyncVPCsManager] = None
 
     def _load_managers(self) -> None:
-        for manager in do_managers.__async_managers__:
-            klass = getattr(do_managers, manager)
-            if issubclass(klass, do_managers.base.AsyncBaseManager):
-                obj = klass(client=self)
-                setattr(self, klass.endpoint, obj)
+        for manager in mn.__async_managers__:
+            klass = getattr(mn, manager)
+            obj = klass(client=self)
+            setattr(self, klass.endpoint, obj)
 
     async def request_raw(
         self,
@@ -264,6 +279,7 @@ class AsyncClient(BaseClient):
             async with httpx.AsyncClient() as async_client:
                 res = await async_client.get(next_url, headers=self.headers)
             res.raise_for_status()
+            self._process_response(res)
             response = res.json()
             result += response[key]
 

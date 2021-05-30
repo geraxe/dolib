@@ -14,3 +14,4 @@ pytestdebug.log
 pip-wheel-metadata/
 .python-version
 /docs/_build
+.api_token
