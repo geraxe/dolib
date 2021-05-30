@@ -1,9 +1,9 @@
 import uuid
 from datetime import datetime
 from decimal import Decimal
-from typing import List, Optional, Union
+from typing import Any, Dict, List, Optional, Union
 
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, validator
 
 
 class Region(BaseModel):
@@ -83,15 +83,29 @@ class CDNEndpoint(BaseModel):
 class Certificate(BaseModel):
     id: Optional[uuid.UUID]
     name: str
+    type: str
     private_key: Optional[str]
     leaf_certificate: Optional[str]
     certificate_chain: Optional[str]
     not_after: Optional[datetime]
     sha1_fingerprint: Optional[str]
     created_at: Optional[datetime]
-    dns_names: List[str]
+    dns_names: Optional[List[str]]
     state: Optional[str]
-    type: Optional[str]
+
+    @validator("type")
+    def check_type_enum(cls, v: str) -> str:
+        if v not in ["lets_encrypt", "custom"]:
+            raise ValueError('only "lets_encrypt" and "custom" type supported')
+        return v
+
+    @validator("dns_names", always=True)
+    def check_dns_names(
+        cls, v: List[str], values: Dict[str, Any], **kwargs: Any
+    ) -> List[str]:
+        if "type" in values and values["type"] == "lets_encrypt" and v is None:
+            raise ValueError('must be specified if type = "lets_encrypt"')
+        return v
 
 
 class DBCluster(BaseModel):
