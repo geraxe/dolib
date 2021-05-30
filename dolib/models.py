@@ -304,10 +304,14 @@ class Firewall(BaseModel):
         status: str
 
     id: Optional[uuid.UUID]
+
+    # required params
+    name: str
+
+    # optional params
     status: Optional[str]
     created_at: Optional[datetime]
     pending_changes: Optional[List[Changes]]
-    name: str
     inbound_rules: Optional[List[InboundRule]]
     outbound_rules: Optional[List[OutboundRule]]
     droplet_ids: Optional[List[int]]

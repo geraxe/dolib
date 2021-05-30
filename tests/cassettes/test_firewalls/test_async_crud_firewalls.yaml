@@ -1,0 +1,763 @@
+interactions:
+- request:
+    body: '{"name": "test", "inbound_rules": [{"protocol": "tcp", "ports": "80", "sources":
+      {"addresses": ["0.0.0.0/0"], "droplet_ids": null, "load_balancer_uids": null,
+      "tags": null}}], "outbound_rules": null, "droplet_ids": null, "tags": null}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '234'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: POST
+    uri: https://api.digitalocean.com/v2/firewalls
+  response:
+    content: '{"firewall":{"id":"16933382-1312-4224-90aa-32096c5dea1d","name":"test","status":"succeeded","inbound_rules":[{"protocol":"tcp","ports":"80","sources":{"addresses":["0.0.0.0/0"]}}],"outbound_rules":[],"created_at":"2021-05-30T14:02:12Z","droplet_ids":[],"tags":[],"pending_changes":[]}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '285'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 14:02:12 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4995'
+      Ratelimit-Reset:
+      - '1622379834'
+      Server:
+      - cloudflare
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+      X-Runtime:
+      - '0.215919'
+      X-Xss-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 202
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/firewalls?per_page=200
+  response:
+    content: '{"firewalls":[{"id":"16933382-1312-4224-90aa-32096c5dea1d","name":"test","status":"succeeded","inbound_rules":[{"protocol":"tcp","ports":"80","sources":{"addresses":["0.0.0.0/0"]}}],"outbound_rules":[],"created_at":"2021-05-30T14:02:12Z","droplet_ids":[],"tags":[],"pending_changes":[]}],"links":{},"meta":{"total":1}}
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '319'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 14:04:46 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      cache-control:
+      - max-age=0, private, must-revalidate
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4995'
+      ratelimit-reset:
+      - '1622379903'
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/firewalls/16933382-1312-4224-90aa-32096c5dea1d
+  response:
+    content: '{"firewall":{"id":"16933382-1312-4224-90aa-32096c5dea1d","name":"test","status":"succeeded","inbound_rules":[{"protocol":"tcp","ports":"80","sources":{"addresses":["0.0.0.0/0"]}}],"outbound_rules":[],"created_at":"2021-05-30T14:02:12Z","droplet_ids":[],"tags":[],"pending_changes":[]}}
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '286'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 14:04:46 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      cache-control:
+      - max-age=0, private, must-revalidate
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4994'
+      ratelimit-reset:
+      - '1622379903'
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"name": "test", "inbound_rules": [{"protocol": "tcp", "ports": "80", "sources":
+      {"addresses": ["0.0.0.0/0"], "droplet_ids": null, "load_balancer_uids": null,
+      "tags": null}}], "outbound_rules": [], "droplet_ids": [], "tags": ["test"]}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '234'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: PUT
+    uri: https://api.digitalocean.com/v2/firewalls/16933382-1312-4224-90aa-32096c5dea1d
+  response:
+    content: '{"firewall":{"id":"16933382-1312-4224-90aa-32096c5dea1d","name":"test","status":"succeeded","inbound_rules":[{"protocol":"tcp","ports":"80","sources":{"addresses":["0.0.0.0/0"]}}],"outbound_rules":[],"created_at":"2021-05-30T14:02:12Z","droplet_ids":[],"tags":["test"],"pending_changes":[]}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '291'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 14:09:31 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      cache-control:
+      - max-age=0, private, must-revalidate
+      etag:
+      - W/"8db892bded531801d7b66f15da8c2094"
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4991'
+      ratelimit-reset:
+      - '1622382611'
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+      x-runtime:
+      - '0.298984'
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/droplets?per_page=200
+  response:
+    content: '{"droplets":[{"id":248152601,"name":"dolib-droplet","memory":1024,"vcpus":1,"disk":25,"locked":false,"status":"new","kernel":null,"created_at":"2021-05-29T15:59:54Z","features":[],"backup_ids":[],"next_backup_window":null,"snapshot_ids":[],"image":{"id":84780421,"name":"18.04
+      (LTS) x64","distribution":"Ubuntu","slug":"ubuntu-18-04-x64","public":true,"regions":["nyc3","nyc1","sfo1","nyc2","ams2","sgp1","lon1","ams3","fra1","tor1","sfo2","blr1","sfo3"],"created_at":"2021-05-26T15:31:29Z","min_disk_size":15,"type":"base","size_gigabytes":0.4,"description":"Ubuntu
+      18.04 x86 image","tags":[],"status":"available"},"volume_ids":[],"size":{"slug":"s-1vcpu-1gb","memory":1024,"vcpus":1,"disk":25,"transfer":1.0,"price_monthly":5.0,"price_hourly":0.00744,"regions":["ams2","ams3","blr1","fra1","lon1","nyc1","nyc2","nyc3","sfo1","sfo3","sgp1","tor1"],"available":true,"description":"Basic"},"size_slug":"s-1vcpu-1gb","networks":{"v4":[],"v6":[]},"region":{"name":"Frankfurt
+      1","slug":"fra1","features":["backups","ipv6","metadata","install_agent","storage","image_transfer"],"available":true,"sizes":["s-1vcpu-1gb","s-1vcpu-1gb-amd","s-1vcpu-1gb-intel","s-1vcpu-2gb","s-1vcpu-2gb-amd","s-1vcpu-2gb-intel","s-2vcpu-2gb","s-2vcpu-2gb-amd","s-2vcpu-2gb-intel","s-2vcpu-4gb","s-2vcpu-4gb-amd","s-2vcpu-4gb-intel","s-4vcpu-8gb","c-2","c2-2vcpu-4gb","s-4vcpu-8gb-amd","s-4vcpu-8gb-intel","g-2vcpu-8gb","gd-2vcpu-8gb","s-8vcpu-16gb","m-2vcpu-16gb","c-4","c2-4vcpu-8gb","s-8vcpu-16gb-amd","s-8vcpu-16gb-intel","m3-2vcpu-16gb","g-4vcpu-16gb","so-2vcpu-16gb","m6-2vcpu-16gb","gd-4vcpu-16gb","so1_5-2vcpu-16gb","m-4vcpu-32gb","c-8","c2-8vcpu-16gb","m3-4vcpu-32gb","g-8vcpu-32gb","so-4vcpu-32gb","m6-4vcpu-32gb","gd-8vcpu-32gb","so1_5-4vcpu-32gb","m-8vcpu-64gb","c-16","c2-16vcpu-32gb","m3-8vcpu-64gb","g-16vcpu-64gb","so-8vcpu-64gb","m6-8vcpu-64gb","gd-16vcpu-64gb","so1_5-8vcpu-64gb","m-16vcpu-128gb","c-32","c2-32vcpu-64gb","m3-16vcpu-128gb","m-24vcpu-192gb","g-32vcpu-128gb","so-16vcpu-128gb","m6-16vcpu-128gb","gd-32vcpu-128gb","m3-24vcpu-192gb","g-40vcpu-160gb","so1_5-16vcpu-128gb","m-32vcpu-256gb","gd-40vcpu-160gb","so-24vcpu-192gb","m6-24vcpu-192gb","m3-32vcpu-256gb","so1_5-24vcpu-192gb","so-32vcpu-256gb","m6-32vcpu-256gb","so1_5-32vcpu-256gb"]},"tags":[]}],"links":{},"meta":{"total":1}}
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 14:17:03 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      cache-control:
+      - max-age=0, private, must-revalidate
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4990'
+      ratelimit-reset:
+      - '1622382611'
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+      x-runtime:
+      - '0.166354'
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"droplet_ids": [248152601]}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '39'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: POST
+    uri: https://api.digitalocean.com/v2/firewalls/16933382-1312-4224-90aa-32096c5dea1d/droplets
+  response:
+    content: ''
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 30 May 2021 14:17:04 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      cache-control:
+      - no-cache
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4989'
+      ratelimit-reset:
+      - '1622382611'
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+      x-runtime:
+      - '0.237412'
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 204
+- request:
+    body: '{"droplet_ids": [248152601]}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '39'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: DELETE
+    uri: https://api.digitalocean.com/v2/firewalls/16933382-1312-4224-90aa-32096c5dea1d/droplets
+  response:
+    content: ''
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 30 May 2021 14:17:58 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4988'
+      Ratelimit-Reset:
+      - '1622382611'
+      Server:
+      - cloudflare
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+      X-Runtime:
+      - '0.296470'
+      X-Xss-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 204
+- request:
+    body: '{"tags": ["test"]}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '18'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: POST
+    uri: https://api.digitalocean.com/v2/firewalls/16933382-1312-4224-90aa-32096c5dea1d/tags
+  response:
+    content: ''
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 30 May 2021 14:24:22 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4987'
+      Ratelimit-Reset:
+      - '1622382611'
+      Server:
+      - cloudflare
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+      X-Runtime:
+      - '0.306814'
+      X-Xss-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 204
+- request:
+    body: '{"tags": ["test"]}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '18'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: DELETE
+    uri: https://api.digitalocean.com/v2/firewalls/16933382-1312-4224-90aa-32096c5dea1d/tags
+  response:
+    content: ''
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 30 May 2021 14:24:23 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4986'
+      Ratelimit-Reset:
+      - '1622382611'
+      Server:
+      - cloudflare
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+      X-Runtime:
+      - '0.120598'
+      X-Xss-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 204
+- request:
+    body: '{"inbound_rules": [{"protocol": "tcp", "ports": "81", "sources": {"addresses":
+      ["0.0.0.0/0"], "droplet_ids": null, "load_balancer_uids": null, "tags": null}}],
+      "outbound_rules": [{"protocol": "tcp", "ports": "81", "destinations": {"addresses":
+      ["0.0.0.0/0"], "droplet_ids": null, "load_balancer_uids": null, "tags": null}}]}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '324'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: POST
+    uri: https://api.digitalocean.com/v2/firewalls/16933382-1312-4224-90aa-32096c5dea1d/rules
+  response:
+    content: ''
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 30 May 2021 14:28:30 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      cache-control:
+      - no-cache
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4985'
+      ratelimit-reset:
+      - '1622382611'
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+      x-runtime:
+      - '0.100253'
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 204
+- request:
+    body: '{"inbound_rules": [{"protocol": "tcp", "ports": "81", "sources": {"addresses":
+      ["0.0.0.0/0"], "droplet_ids": null, "load_balancer_uids": null, "tags": null}}],
+      "outbound_rules": [{"protocol": "tcp", "ports": "81", "destinations": {"addresses":
+      ["0.0.0.0/0"], "droplet_ids": null, "load_balancer_uids": null, "tags": null}}]}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '324'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: DELETE
+    uri: https://api.digitalocean.com/v2/firewalls/16933382-1312-4224-90aa-32096c5dea1d/rules
+  response:
+    content: ''
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 30 May 2021 14:29:33 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      cache-control:
+      - no-cache
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4983'
+      ratelimit-reset:
+      - '1622382611'
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+      x-runtime:
+      - '0.094365'
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 204
+- request:
+    body: '{"outbound_rules": [{"protocol": "tcp", "ports": "81", "destinations":
+      {"addresses": ["0.0.0.0/0"], "droplet_ids": null, "load_balancer_uids": null,
+      "tags": null}}]}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '165'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: POST
+    uri: https://api.digitalocean.com/v2/firewalls/16933382-1312-4224-90aa-32096c5dea1d/rules
+  response:
+    content: ''
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 30 May 2021 14:32:31 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4982'
+      Ratelimit-Reset:
+      - '1622382611'
+      Server:
+      - cloudflare
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+      X-Runtime:
+      - '0.084150'
+      X-Xss-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 204
+- request:
+    body: '{"outbound_rules": [{"protocol": "tcp", "ports": "81", "destinations":
+      {"addresses": ["0.0.0.0/0"], "droplet_ids": null, "load_balancer_uids": null,
+      "tags": null}}]}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '165'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: DELETE
+    uri: https://api.digitalocean.com/v2/firewalls/16933382-1312-4224-90aa-32096c5dea1d/rules
+  response:
+    content: ''
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 30 May 2021 14:33:39 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      cache-control:
+      - no-cache
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4981'
+      ratelimit-reset:
+      - '1622382611'
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+      x-runtime:
+      - '0.174330'
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 204
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: DELETE
+    uri: https://api.digitalocean.com/v2/firewalls/16933382-1312-4224-90aa-32096c5dea1d
+  response:
+    content: ''
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 30 May 2021 14:34:27 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4979'
+      Ratelimit-Reset:
+      - '1622382611'
+      Server:
+      - cloudflare
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+    http_version: HTTP/1.1
+    status_code: 204
+version: 1
