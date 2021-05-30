@@ -546,9 +546,13 @@ class VPC(BaseModel):
         created_at: datetime
 
     id: Optional[str]
-    urn: Optional[str]
+
+    # required params
     name: str
     region: str
+
+    # optional params
+    urn: Optional[str]
     ip_range: Optional[str]
     description: Optional[str]
     default: Optional[bool]
