@@ -90,6 +90,15 @@ class ImagesManager(BaseManager):
         )
         return [models.Action(**action) for action in res]
 
+    def action(self, id: str, action_id: str) -> models.Action:
+        res = self._client.request(
+            endpoint="images/{id}/actions/{action_id}".format(
+                id=id, action_id=action_id
+            ),
+            method="get",
+        )
+        return models.Action(**res["action"])
+
 
 class AsyncImagesManager(AsyncBaseManager):
     endpoint: str = "images"
@@ -178,3 +187,12 @@ class AsyncImagesManager(AsyncBaseManager):
             key="actions",
         )
         return [models.Action(**action) for action in res]
+
+    async def action(self, id: str, action_id: str) -> models.Action:
+        res = await self._client.request(
+            endpoint="images/{id}/actions/{action_id}".format(
+                id=id, action_id=action_id
+            ),
+            method="get",
+        )
+        return models.Action(**res["action"])
