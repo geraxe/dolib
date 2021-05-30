@@ -1,0 +1,630 @@
+interactions:
+- request:
+    body: '{"region": "fra1"}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '18'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: POST
+    uri: https://api.digitalocean.com/v2/floating_ips
+  response:
+    content: '{"floating_ip":{"ip":"159.89.214.32","droplet":null,"region":{"name":"Frankfurt
+      1","slug":"fra1","features":["private_networking","backups","ipv6","metadata","install_agent","storage","image_transfer"],"available":true,"sizes":["c-2","c-4","c-8","s-1vcpu-1gb","s-2vcpu-2gb","s-2vcpu-4gb","s-4vcpu-8gb","c-1vcpu-2gb","gd-2vcpu-8gb","g-2vcpu-8gb","gd-4vcpu-16gb","g-4vcpu-16gb","gd-8vcpu-32gb","g-8vcpu-32gb","c-16","g-16vcpu-64gb","gd-16vcpu-64gb","s-8vcpu-16gb","c-32","c2-2vcpu-4gb","c2-4vcpu-8gb","c2-8vcpu-16gb","so-2vcpu-16gb","c2-16vcpu-32gb","so-4vcpu-32gb","so-8vcpu-64gb","c2-32vcpu-64gb","so-16vcpu-128gb","so-24vcpu-192gb","so-32vcpu-256gb","m6-2vcpu-16gb","m-2vcpu-16gb","m3-2vcpu-16gb","m3-4vcpu-32gb","m6-4vcpu-32gb","m-4vcpu-32gb","m3-8vcpu-64gb","m-8vcpu-64gb","m6-8vcpu-64gb","m-16vcpu-128gb","m3-16vcpu-128gb","m6-16vcpu-128gb","m6-24vcpu-192gb","m-24vcpu-192gb","m3-24vcpu-192gb","m6-32vcpu-256gb","m3-32vcpu-256gb","so1_5-2vcpu-16gb","so1_5-4vcpu-32gb","so1_5-8vcpu-64gb","so1_5-16vcpu-128gb","so1_5-24vcpu-192gb","g-32vcpu-128gb","gd-32vcpu-128gb","m-32vcpu-256gb","s-1vcpu-1gb-amd","s-1vcpu-2gb-amd","s-2vcpu-2gb-amd","s-8vcpu-16gb-amd","g-40vcpu-160gb","gd-40vcpu-160gb","s-2vcpu-4gb-amd","s-1vcpu-2gb","s-1vcpu-1gb-intel","s-1vcpu-2gb-intel","s-2vcpu-2gb-intel","s-2vcpu-4gb-intel","s-4vcpu-8gb-intel","s-8vcpu-16gb-intel","so1_5-32vcpu-256gb","s-4vcpu-8gb-amd"]},"locked":false},"links":{}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1414'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 20:26:19 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4973'
+      Ratelimit-Reset:
+      - '1622403600'
+      Server:
+      - cloudflare
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+      X-Runtime:
+      - '1.767422'
+      X-Xss-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 202
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/floating_ips?per_page=200
+  response:
+    content: '{"floating_ips":[{"ip":"159.89.214.32","droplet":null,"region":{"name":"Frankfurt
+      1","slug":"fra1","features":["backups","ipv6","metadata","install_agent","storage","image_transfer"],"available":true,"sizes":["s-1vcpu-1gb","s-1vcpu-1gb-amd","s-1vcpu-1gb-intel","s-1vcpu-2gb","s-1vcpu-2gb-amd","s-1vcpu-2gb-intel","s-2vcpu-2gb","s-2vcpu-2gb-amd","s-2vcpu-2gb-intel","s-2vcpu-4gb","s-2vcpu-4gb-amd","s-2vcpu-4gb-intel","s-4vcpu-8gb","c-2","c2-2vcpu-4gb","s-4vcpu-8gb-amd","s-4vcpu-8gb-intel","g-2vcpu-8gb","gd-2vcpu-8gb","s-8vcpu-16gb","m-2vcpu-16gb","c-4","c2-4vcpu-8gb","s-8vcpu-16gb-amd","s-8vcpu-16gb-intel","m3-2vcpu-16gb","g-4vcpu-16gb","so-2vcpu-16gb","m6-2vcpu-16gb","gd-4vcpu-16gb","so1_5-2vcpu-16gb","m-4vcpu-32gb","c-8","c2-8vcpu-16gb","m3-4vcpu-32gb","g-8vcpu-32gb","so-4vcpu-32gb","m6-4vcpu-32gb","gd-8vcpu-32gb","so1_5-4vcpu-32gb","m-8vcpu-64gb","c-16","c2-16vcpu-32gb","m3-8vcpu-64gb","g-16vcpu-64gb","so-8vcpu-64gb","m6-8vcpu-64gb","gd-16vcpu-64gb","so1_5-8vcpu-64gb","m-16vcpu-128gb","c-32","c2-32vcpu-64gb","m3-16vcpu-128gb","m-24vcpu-192gb","g-32vcpu-128gb","so-16vcpu-128gb","m6-16vcpu-128gb","gd-32vcpu-128gb","m3-24vcpu-192gb","g-40vcpu-160gb","so1_5-16vcpu-128gb","m-32vcpu-256gb","gd-40vcpu-160gb","so-24vcpu-192gb","m6-24vcpu-192gb","m3-32vcpu-256gb","so1_5-24vcpu-192gb","so-32vcpu-256gb","m6-32vcpu-256gb","so1_5-32vcpu-256gb"]},"locked":false}],"links":{},"meta":{"total":1}}
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1402'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 20:26:49 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      cache-control:
+      - max-age=0, private, must-revalidate
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4971'
+      ratelimit-reset:
+      - '1622403600'
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - flip-aggregator
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/floating_ips/159.89.214.32
+  response:
+    content: '{"floating_ip":{"ip":"159.89.214.32","droplet":null,"region":{"name":"Frankfurt
+      1","slug":"fra1","features":["backups","ipv6","metadata","install_agent","storage","image_transfer"],"available":true,"sizes":["s-1vcpu-1gb","s-1vcpu-1gb-amd","s-1vcpu-1gb-intel","s-1vcpu-2gb","s-1vcpu-2gb-amd","s-1vcpu-2gb-intel","s-2vcpu-2gb","s-2vcpu-2gb-amd","s-2vcpu-2gb-intel","s-2vcpu-4gb","s-2vcpu-4gb-amd","s-2vcpu-4gb-intel","s-4vcpu-8gb","c-2","c2-2vcpu-4gb","s-4vcpu-8gb-amd","s-4vcpu-8gb-intel","g-2vcpu-8gb","gd-2vcpu-8gb","s-8vcpu-16gb","m-2vcpu-16gb","c-4","c2-4vcpu-8gb","s-8vcpu-16gb-amd","s-8vcpu-16gb-intel","m3-2vcpu-16gb","g-4vcpu-16gb","so-2vcpu-16gb","m6-2vcpu-16gb","gd-4vcpu-16gb","so1_5-2vcpu-16gb","m-4vcpu-32gb","c-8","c2-8vcpu-16gb","m3-4vcpu-32gb","g-8vcpu-32gb","so-4vcpu-32gb","m6-4vcpu-32gb","gd-8vcpu-32gb","so1_5-4vcpu-32gb","m-8vcpu-64gb","c-16","c2-16vcpu-32gb","m3-8vcpu-64gb","g-16vcpu-64gb","so-8vcpu-64gb","m6-8vcpu-64gb","gd-16vcpu-64gb","so1_5-8vcpu-64gb","m-16vcpu-128gb","c-32","c2-32vcpu-64gb","m3-16vcpu-128gb","m-24vcpu-192gb","g-32vcpu-128gb","so-16vcpu-128gb","m6-16vcpu-128gb","gd-32vcpu-128gb","m3-24vcpu-192gb","g-40vcpu-160gb","so1_5-16vcpu-128gb","m-32vcpu-256gb","gd-40vcpu-160gb","so-24vcpu-192gb","m6-24vcpu-192gb","m3-32vcpu-256gb","so1_5-24vcpu-192gb","so-32vcpu-256gb","m6-32vcpu-256gb","so1_5-32vcpu-256gb"]},"locked":false}}
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1369'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 20:28:00 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4970'
+      Ratelimit-Reset:
+      - '1622403600'
+      Server:
+      - cloudflare
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - flip-aggregator
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/droplets?per_page=200
+  response:
+    content: '{"droplets":[{"id":248152601,"name":"dolib-droplet","memory":1024,"vcpus":1,"disk":25,"locked":false,"status":"new","kernel":null,"created_at":"2021-05-29T15:59:54Z","features":[],"backup_ids":[],"next_backup_window":null,"snapshot_ids":[],"image":{"id":84780421,"name":"18.04
+      (LTS) x64","distribution":"Ubuntu","slug":"ubuntu-18-04-x64","public":true,"regions":["nyc3","nyc1","sfo1","nyc2","ams2","sgp1","lon1","ams3","fra1","tor1","sfo2","blr1","sfo3"],"created_at":"2021-05-26T15:31:29Z","min_disk_size":15,"type":"base","size_gigabytes":0.4,"description":"Ubuntu
+      18.04 x86 image","tags":[],"status":"available"},"volume_ids":[],"size":{"slug":"s-1vcpu-1gb","memory":1024,"vcpus":1,"disk":25,"transfer":1.0,"price_monthly":5.0,"price_hourly":0.00744,"regions":["ams2","ams3","blr1","fra1","lon1","nyc1","nyc2","nyc3","sfo1","sfo3","sgp1","tor1"],"available":true,"description":"Basic"},"size_slug":"s-1vcpu-1gb","networks":{"v4":[],"v6":[]},"region":{"name":"Frankfurt
+      1","slug":"fra1","features":["backups","ipv6","metadata","install_agent","storage","image_transfer"],"available":true,"sizes":["s-1vcpu-1gb","s-1vcpu-1gb-amd","s-1vcpu-1gb-intel","s-1vcpu-2gb","s-1vcpu-2gb-amd","s-1vcpu-2gb-intel","s-2vcpu-2gb","s-2vcpu-2gb-amd","s-2vcpu-2gb-intel","s-2vcpu-4gb","s-2vcpu-4gb-amd","s-2vcpu-4gb-intel","s-4vcpu-8gb","c-2","c2-2vcpu-4gb","s-4vcpu-8gb-amd","s-4vcpu-8gb-intel","g-2vcpu-8gb","gd-2vcpu-8gb","s-8vcpu-16gb","m-2vcpu-16gb","c-4","c2-4vcpu-8gb","s-8vcpu-16gb-amd","s-8vcpu-16gb-intel","m3-2vcpu-16gb","g-4vcpu-16gb","so-2vcpu-16gb","m6-2vcpu-16gb","gd-4vcpu-16gb","so1_5-2vcpu-16gb","m-4vcpu-32gb","c-8","c2-8vcpu-16gb","m3-4vcpu-32gb","g-8vcpu-32gb","so-4vcpu-32gb","m6-4vcpu-32gb","gd-8vcpu-32gb","so1_5-4vcpu-32gb","m-8vcpu-64gb","c-16","c2-16vcpu-32gb","m3-8vcpu-64gb","g-16vcpu-64gb","so-8vcpu-64gb","m6-8vcpu-64gb","gd-16vcpu-64gb","so1_5-8vcpu-64gb","m-16vcpu-128gb","c-32","c2-32vcpu-64gb","m3-16vcpu-128gb","m-24vcpu-192gb","g-32vcpu-128gb","so-16vcpu-128gb","m6-16vcpu-128gb","gd-32vcpu-128gb","m3-24vcpu-192gb","g-40vcpu-160gb","so1_5-16vcpu-128gb","m-32vcpu-256gb","gd-40vcpu-160gb","so-24vcpu-192gb","m6-24vcpu-192gb","m3-32vcpu-256gb","so1_5-24vcpu-192gb","so-32vcpu-256gb","m6-32vcpu-256gb","so1_5-32vcpu-256gb"]},"tags":[]}],"links":{},"meta":{"total":1}}
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 20:28:31 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      cache-control:
+      - max-age=0, private, must-revalidate
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4969'
+      ratelimit-reset:
+      - '1622403600'
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+      x-runtime:
+      - '0.123305'
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"type": "assign", "droplet_id": 248152601}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '43'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: POST
+    uri: https://api.digitalocean.com/v2/floating_ips/159.89.214.32/actions
+  response:
+    content: '{"action":{"id":1218275268,"status":"in-progress","type":"assign_ip","started_at":"2021-05-30T20:31:37Z","completed_at":null,"resource_id":2673464864,"resource_type":"floating_ip","region":{"name":"Frankfurt
+      1","slug":"fra1","features":["private_networking","backups","ipv6","metadata","install_agent","storage","image_transfer"],"available":true,"sizes":["c-2","c-4","c-8","s-1vcpu-1gb","s-2vcpu-2gb","s-2vcpu-4gb","s-4vcpu-8gb","c-1vcpu-2gb","gd-2vcpu-8gb","g-2vcpu-8gb","gd-4vcpu-16gb","g-4vcpu-16gb","gd-8vcpu-32gb","g-8vcpu-32gb","c-16","g-16vcpu-64gb","gd-16vcpu-64gb","s-8vcpu-16gb","c-32","c2-2vcpu-4gb","c2-4vcpu-8gb","c2-8vcpu-16gb","so-2vcpu-16gb","c2-16vcpu-32gb","so-4vcpu-32gb","so-8vcpu-64gb","c2-32vcpu-64gb","so-16vcpu-128gb","so-24vcpu-192gb","so-32vcpu-256gb","m6-2vcpu-16gb","m-2vcpu-16gb","m3-2vcpu-16gb","m3-4vcpu-32gb","m6-4vcpu-32gb","m-4vcpu-32gb","m3-8vcpu-64gb","m-8vcpu-64gb","m6-8vcpu-64gb","m-16vcpu-128gb","m3-16vcpu-128gb","m6-16vcpu-128gb","m6-24vcpu-192gb","m-24vcpu-192gb","m3-24vcpu-192gb","m6-32vcpu-256gb","m3-32vcpu-256gb","so1_5-2vcpu-16gb","so1_5-4vcpu-32gb","so1_5-8vcpu-64gb","so1_5-16vcpu-128gb","so1_5-24vcpu-192gb","g-32vcpu-128gb","gd-32vcpu-128gb","m-32vcpu-256gb","s-1vcpu-1gb-amd","s-1vcpu-2gb-amd","s-2vcpu-2gb-amd","s-8vcpu-16gb-amd","g-40vcpu-160gb","gd-40vcpu-160gb","s-2vcpu-4gb-amd","s-1vcpu-2gb","s-1vcpu-1gb-intel","s-1vcpu-2gb-intel","s-2vcpu-2gb-intel","s-2vcpu-4gb-intel","s-4vcpu-8gb-intel","s-8vcpu-16gb-intel","so1_5-32vcpu-256gb","s-4vcpu-8gb-amd"]},"region_slug":"fra1"}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1537'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 20:31:37 GMT
+      Etag:
+      - W/"e8eff7cc09915f08292a2aac9844d4c6"
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4967'
+      Ratelimit-Reset:
+      - '1622403600'
+      Server:
+      - cloudflare
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+      X-Runtime:
+      - '0.487202'
+      X-Xss-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 201
+- request:
+    body: '{"type": "unassign"}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '20'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: POST
+    uri: https://api.digitalocean.com/v2/floating_ips/159.89.214.32/actions
+  response:
+    content: '{"action":{"id":1218275701,"status":"in-progress","type":"unassign_ip","started_at":"2021-05-30T20:32:27Z","completed_at":null,"resource_id":2673464864,"resource_type":"floating_ip","region":{"name":"Frankfurt
+      1","slug":"fra1","features":["private_networking","backups","ipv6","metadata","install_agent","storage","image_transfer"],"available":true,"sizes":["c-2","c-4","c-8","s-1vcpu-1gb","s-2vcpu-2gb","s-2vcpu-4gb","s-4vcpu-8gb","c-1vcpu-2gb","gd-2vcpu-8gb","g-2vcpu-8gb","gd-4vcpu-16gb","g-4vcpu-16gb","gd-8vcpu-32gb","g-8vcpu-32gb","c-16","g-16vcpu-64gb","gd-16vcpu-64gb","s-8vcpu-16gb","c-32","c2-2vcpu-4gb","c2-4vcpu-8gb","c2-8vcpu-16gb","so-2vcpu-16gb","c2-16vcpu-32gb","so-4vcpu-32gb","so-8vcpu-64gb","c2-32vcpu-64gb","so-16vcpu-128gb","so-24vcpu-192gb","so-32vcpu-256gb","m6-2vcpu-16gb","m-2vcpu-16gb","m3-2vcpu-16gb","m3-4vcpu-32gb","m6-4vcpu-32gb","m-4vcpu-32gb","m3-8vcpu-64gb","m-8vcpu-64gb","m6-8vcpu-64gb","m-16vcpu-128gb","m3-16vcpu-128gb","m6-16vcpu-128gb","m6-24vcpu-192gb","m-24vcpu-192gb","m3-24vcpu-192gb","m6-32vcpu-256gb","m3-32vcpu-256gb","so1_5-2vcpu-16gb","so1_5-4vcpu-32gb","so1_5-8vcpu-64gb","so1_5-16vcpu-128gb","so1_5-24vcpu-192gb","g-32vcpu-128gb","gd-32vcpu-128gb","m-32vcpu-256gb","s-1vcpu-1gb-amd","s-1vcpu-2gb-amd","s-2vcpu-2gb-amd","s-8vcpu-16gb-amd","g-40vcpu-160gb","gd-40vcpu-160gb","s-2vcpu-4gb-amd","s-1vcpu-2gb","s-1vcpu-1gb-intel","s-1vcpu-2gb-intel","s-2vcpu-2gb-intel","s-2vcpu-4gb-intel","s-4vcpu-8gb-intel","s-8vcpu-16gb-intel","so1_5-32vcpu-256gb","s-4vcpu-8gb-amd"]},"region_slug":"fra1"}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1539'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 20:32:27 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      cache-control:
+      - max-age=0, private, must-revalidate
+      etag:
+      - W/"54835bfe297c28a92cef15f3e111f86a"
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4966'
+      ratelimit-reset:
+      - '1622403600'
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+      x-runtime:
+      - '0.409180'
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 201
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/floating_ips/159.89.214.32/actions?per_page=200
+  response:
+    content: '{"actions":[{"id":1218275701,"status":"in-progress","type":"unassign_ip","started_at":"2021-05-30T20:32:27Z","completed_at":null,"resource_id":2673464864,"resource_type":"floating_ip","region":{"name":"Frankfurt
+      1","slug":"fra1","features":["private_networking","backups","ipv6","metadata","install_agent","storage","image_transfer"],"available":true,"sizes":["c-2","c-4","c-8","s-1vcpu-1gb","s-2vcpu-2gb","s-2vcpu-4gb","s-4vcpu-8gb","c-1vcpu-2gb","gd-2vcpu-8gb","g-2vcpu-8gb","gd-4vcpu-16gb","g-4vcpu-16gb","gd-8vcpu-32gb","g-8vcpu-32gb","c-16","g-16vcpu-64gb","gd-16vcpu-64gb","s-8vcpu-16gb","c-32","c2-2vcpu-4gb","c2-4vcpu-8gb","c2-8vcpu-16gb","so-2vcpu-16gb","c2-16vcpu-32gb","so-4vcpu-32gb","so-8vcpu-64gb","c2-32vcpu-64gb","so-16vcpu-128gb","so-24vcpu-192gb","so-32vcpu-256gb","m6-2vcpu-16gb","m-2vcpu-16gb","m3-2vcpu-16gb","m3-4vcpu-32gb","m6-4vcpu-32gb","m-4vcpu-32gb","m3-8vcpu-64gb","m-8vcpu-64gb","m6-8vcpu-64gb","m-16vcpu-128gb","m3-16vcpu-128gb","m6-16vcpu-128gb","m6-24vcpu-192gb","m-24vcpu-192gb","m3-24vcpu-192gb","m6-32vcpu-256gb","m3-32vcpu-256gb","so1_5-2vcpu-16gb","so1_5-4vcpu-32gb","so1_5-8vcpu-64gb","so1_5-16vcpu-128gb","so1_5-24vcpu-192gb","g-32vcpu-128gb","gd-32vcpu-128gb","m-32vcpu-256gb","s-1vcpu-1gb-amd","s-1vcpu-2gb-amd","s-2vcpu-2gb-amd","s-8vcpu-16gb-amd","g-40vcpu-160gb","gd-40vcpu-160gb","s-2vcpu-4gb-amd","s-1vcpu-2gb","s-1vcpu-1gb-intel","s-1vcpu-2gb-intel","s-2vcpu-2gb-intel","s-2vcpu-4gb-intel","s-4vcpu-8gb-intel","s-8vcpu-16gb-intel","so1_5-32vcpu-256gb","s-4vcpu-8gb-amd"]},"region_slug":"fra1"},{"id":1218275268,"status":"completed","type":"assign_ip","started_at":"2021-05-30T20:31:37Z","completed_at":"2021-05-30T20:31:41Z","resource_id":2673464864,"resource_type":"floating_ip","region":{"name":"Frankfurt
+      1","slug":"fra1","features":["private_networking","backups","ipv6","metadata","install_agent","storage","image_transfer"],"available":true,"sizes":["c-2","c-4","c-8","s-1vcpu-1gb","s-2vcpu-2gb","s-2vcpu-4gb","s-4vcpu-8gb","c-1vcpu-2gb","gd-2vcpu-8gb","g-2vcpu-8gb","gd-4vcpu-16gb","g-4vcpu-16gb","gd-8vcpu-32gb","g-8vcpu-32gb","c-16","g-16vcpu-64gb","gd-16vcpu-64gb","s-8vcpu-16gb","c-32","c2-2vcpu-4gb","c2-4vcpu-8gb","c2-8vcpu-16gb","so-2vcpu-16gb","c2-16vcpu-32gb","so-4vcpu-32gb","so-8vcpu-64gb","c2-32vcpu-64gb","so-16vcpu-128gb","so-24vcpu-192gb","so-32vcpu-256gb","m6-2vcpu-16gb","m-2vcpu-16gb","m3-2vcpu-16gb","m3-4vcpu-32gb","m6-4vcpu-32gb","m-4vcpu-32gb","m3-8vcpu-64gb","m-8vcpu-64gb","m6-8vcpu-64gb","m-16vcpu-128gb","m3-16vcpu-128gb","m6-16vcpu-128gb","m6-24vcpu-192gb","m-24vcpu-192gb","m3-24vcpu-192gb","m6-32vcpu-256gb","m3-32vcpu-256gb","so1_5-2vcpu-16gb","so1_5-4vcpu-32gb","so1_5-8vcpu-64gb","so1_5-16vcpu-128gb","so1_5-24vcpu-192gb","g-32vcpu-128gb","gd-32vcpu-128gb","m-32vcpu-256gb","s-1vcpu-1gb-amd","s-1vcpu-2gb-amd","s-2vcpu-2gb-amd","s-8vcpu-16gb-amd","g-40vcpu-160gb","gd-40vcpu-160gb","s-2vcpu-4gb-amd","s-1vcpu-2gb","s-1vcpu-1gb-intel","s-1vcpu-2gb-intel","s-2vcpu-2gb-intel","s-2vcpu-4gb-intel","s-4vcpu-8gb-intel","s-8vcpu-16gb-intel","so1_5-32vcpu-256gb","s-4vcpu-8gb-amd"]},"region_slug":"fra1"},{"id":1218272636,"status":"completed","type":"reserve_ip","started_at":"2021-05-30T20:26:18Z","completed_at":"2021-05-30T20:26:18Z","resource_id":2673464864,"resource_type":"floating_ip","region":{"name":"Frankfurt
+      1","slug":"fra1","features":["private_networking","backups","ipv6","metadata","install_agent","storage","image_transfer"],"available":true,"sizes":["c-2","c-4","c-8","s-1vcpu-1gb","s-2vcpu-2gb","s-2vcpu-4gb","s-4vcpu-8gb","c-1vcpu-2gb","gd-2vcpu-8gb","g-2vcpu-8gb","gd-4vcpu-16gb","g-4vcpu-16gb","gd-8vcpu-32gb","g-8vcpu-32gb","c-16","g-16vcpu-64gb","gd-16vcpu-64gb","s-8vcpu-16gb","c-32","c2-2vcpu-4gb","c2-4vcpu-8gb","c2-8vcpu-16gb","so-2vcpu-16gb","c2-16vcpu-32gb","so-4vcpu-32gb","so-8vcpu-64gb","c2-32vcpu-64gb","so-16vcpu-128gb","so-24vcpu-192gb","so-32vcpu-256gb","m6-2vcpu-16gb","m-2vcpu-16gb","m3-2vcpu-16gb","m3-4vcpu-32gb","m6-4vcpu-32gb","m-4vcpu-32gb","m3-8vcpu-64gb","m-8vcpu-64gb","m6-8vcpu-64gb","m-16vcpu-128gb","m3-16vcpu-128gb","m6-16vcpu-128gb","m6-24vcpu-192gb","m-24vcpu-192gb","m3-24vcpu-192gb","m6-32vcpu-256gb","m3-32vcpu-256gb","so1_5-2vcpu-16gb","so1_5-4vcpu-32gb","so1_5-8vcpu-64gb","so1_5-16vcpu-128gb","so1_5-24vcpu-192gb","g-32vcpu-128gb","gd-32vcpu-128gb","m-32vcpu-256gb","s-1vcpu-1gb-amd","s-1vcpu-2gb-amd","s-2vcpu-2gb-amd","s-8vcpu-16gb-amd","g-40vcpu-160gb","gd-40vcpu-160gb","s-2vcpu-4gb-amd","s-1vcpu-2gb","s-1vcpu-1gb-intel","s-1vcpu-2gb-intel","s-2vcpu-2gb-intel","s-2vcpu-4gb-intel","s-4vcpu-8gb-intel","s-8vcpu-16gb-intel","so1_5-32vcpu-256gb","s-4vcpu-8gb-amd"]},"region_slug":"fra1"}],"links":{},"meta":{"total":3}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 20:32:28 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      cache-control:
+      - max-age=0, private, must-revalidate
+      etag:
+      - W/"ca4d686c41529ba03a9c6ff882bf8286"
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4965'
+      ratelimit-reset:
+      - '1622403600'
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+      x-runtime:
+      - '0.408335'
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/floating_ips/159.89.214.32/actions/1218275701
+  response:
+    content: '{"action":{"id":1218275701,"status":"completed","type":"unassign_ip","started_at":"2021-05-30T20:32:27Z","completed_at":"2021-05-30T20:32:31Z","resource_id":2673464864,"resource_type":"floating_ip","region":{"name":"Frankfurt
+      1","slug":"fra1","features":["private_networking","backups","ipv6","metadata","install_agent","storage","image_transfer"],"available":true,"sizes":["c-2","c-4","c-8","s-1vcpu-1gb","s-2vcpu-2gb","s-2vcpu-4gb","s-4vcpu-8gb","c-1vcpu-2gb","gd-2vcpu-8gb","g-2vcpu-8gb","gd-4vcpu-16gb","g-4vcpu-16gb","gd-8vcpu-32gb","g-8vcpu-32gb","c-16","g-16vcpu-64gb","gd-16vcpu-64gb","s-8vcpu-16gb","c-32","c2-2vcpu-4gb","c2-4vcpu-8gb","c2-8vcpu-16gb","so-2vcpu-16gb","c2-16vcpu-32gb","so-4vcpu-32gb","so-8vcpu-64gb","c2-32vcpu-64gb","so-16vcpu-128gb","so-24vcpu-192gb","so-32vcpu-256gb","m6-2vcpu-16gb","m-2vcpu-16gb","m3-2vcpu-16gb","m3-4vcpu-32gb","m6-4vcpu-32gb","m-4vcpu-32gb","m3-8vcpu-64gb","m-8vcpu-64gb","m6-8vcpu-64gb","m-16vcpu-128gb","m3-16vcpu-128gb","m6-16vcpu-128gb","m6-24vcpu-192gb","m-24vcpu-192gb","m3-24vcpu-192gb","m6-32vcpu-256gb","m3-32vcpu-256gb","so1_5-2vcpu-16gb","so1_5-4vcpu-32gb","so1_5-8vcpu-64gb","so1_5-16vcpu-128gb","so1_5-24vcpu-192gb","g-32vcpu-128gb","gd-32vcpu-128gb","m-32vcpu-256gb","s-1vcpu-1gb-amd","s-1vcpu-2gb-amd","s-2vcpu-2gb-amd","s-8vcpu-16gb-amd","g-40vcpu-160gb","gd-40vcpu-160gb","s-2vcpu-4gb-amd","s-1vcpu-2gb","s-1vcpu-1gb-intel","s-1vcpu-2gb-intel","s-2vcpu-2gb-intel","s-2vcpu-4gb-intel","s-4vcpu-8gb-intel","s-8vcpu-16gb-intel","so1_5-32vcpu-256gb","s-4vcpu-8gb-amd"]},"region_slug":"fra1"}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1555'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 20:34:25 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      cache-control:
+      - max-age=0, private, must-revalidate
+      etag:
+      - W/"8ef099ce0512785619ec484dc09dceaa"
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4962'
+      ratelimit-reset:
+      - '1622403600'
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+      x-runtime:
+      - '0.035880'
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"droplet_id": 248152601}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '25'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: POST
+    uri: https://api.digitalocean.com/v2/floating_ips
+  response:
+    content: '{"floating_ip":{"ip":"68.183.242.187","droplet":null,"region":{"name":"Frankfurt
+      1","slug":"fra1","features":["private_networking","backups","ipv6","metadata","install_agent","storage","image_transfer"],"available":true,"sizes":["c-2","c-4","c-8","s-1vcpu-1gb","s-2vcpu-2gb","s-2vcpu-4gb","s-4vcpu-8gb","c-1vcpu-2gb","gd-2vcpu-8gb","g-2vcpu-8gb","gd-4vcpu-16gb","g-4vcpu-16gb","gd-8vcpu-32gb","g-8vcpu-32gb","c-16","g-16vcpu-64gb","gd-16vcpu-64gb","s-8vcpu-16gb","c-32","c2-2vcpu-4gb","c2-4vcpu-8gb","c2-8vcpu-16gb","so-2vcpu-16gb","c2-16vcpu-32gb","so-4vcpu-32gb","so-8vcpu-64gb","c2-32vcpu-64gb","so-16vcpu-128gb","so-24vcpu-192gb","so-32vcpu-256gb","m6-2vcpu-16gb","m-2vcpu-16gb","m3-2vcpu-16gb","m3-4vcpu-32gb","m6-4vcpu-32gb","m-4vcpu-32gb","m3-8vcpu-64gb","m-8vcpu-64gb","m6-8vcpu-64gb","m-16vcpu-128gb","m3-16vcpu-128gb","m6-16vcpu-128gb","m6-24vcpu-192gb","m-24vcpu-192gb","m3-24vcpu-192gb","m6-32vcpu-256gb","m3-32vcpu-256gb","so1_5-2vcpu-16gb","so1_5-4vcpu-32gb","so1_5-8vcpu-64gb","so1_5-16vcpu-128gb","so1_5-24vcpu-192gb","g-32vcpu-128gb","gd-32vcpu-128gb","m-32vcpu-256gb","s-1vcpu-1gb-amd","s-1vcpu-2gb-amd","s-2vcpu-2gb-amd","s-8vcpu-16gb-amd","g-40vcpu-160gb","gd-40vcpu-160gb","s-2vcpu-4gb-amd","s-1vcpu-2gb","s-1vcpu-1gb-intel","s-1vcpu-2gb-intel","s-2vcpu-2gb-intel","s-2vcpu-4gb-intel","s-4vcpu-8gb-intel","s-8vcpu-16gb-intel","so1_5-32vcpu-256gb","s-4vcpu-8gb-amd"]},"locked":true},"links":{"droplets":[{"id":248152601,"rel":"droplet","href":"https://api.digitalocean.com/v2/droplets/248152601"}],"actions":[{"id":1218277960,"rel":"assign_ip","href":"https://api.digitalocean.com/v2/actions/1218277960"}]}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1627'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 20:38:44 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4960'
+      Ratelimit-Reset:
+      - '1622403600'
+      Server:
+      - cloudflare
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+      X-Runtime:
+      - '2.196076'
+      X-Xss-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 202
+- request:
+    body: '{}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '2'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: POST
+    uri: https://api.digitalocean.com/v2/floating_ips
+  response:
+    content: '{"id":"unprocessable_entity","message":"Due to limited availability
+      we have temporarily disabled IP reservation in this region."}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '129'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 20:41:12 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4958'
+      Ratelimit-Reset:
+      - '1622404334'
+      Server:
+      - cloudflare
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+      X-Runtime:
+      - '0.043451'
+      X-Xss-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 422
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: DELETE
+    uri: https://api.digitalocean.com/v2/floating_ips/159.89.214.32
+  response:
+    content: ''
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 30 May 2021 20:42:55 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4957'
+      Ratelimit-Reset:
+      - '1622404334'
+      Server:
+      - cloudflare
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+      X-Runtime:
+      - '0.174663'
+      X-Xss-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 204
+version: 1
