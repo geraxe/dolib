@@ -524,11 +524,15 @@ class Tag(BaseModel):
 
 class Volume(BaseModel):
     id: Optional[str]
-    region: Union[str, Region]
-    droplet_ids: Optional[List[int]]
+
+    # required params
     name: str
-    description: Optional[str]
+    region: Union[str, Region]
     size_gigabytes: int
+
+    # optional params
+    droplet_ids: Optional[List[int]]
+    description: Optional[str]
     created_at: Optional[datetime]
     filesystem_type: Optional[str]
     filesystem_label: Optional[str]

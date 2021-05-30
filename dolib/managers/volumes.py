@@ -45,16 +45,18 @@ class VolumesManager(BaseManager):
     def _droplet_action(
         self, action_type: str, volume: models.Volume, droplet_id: int
     ) -> models.Action:
+        assert (
+            volume.id is not None or volume.name is not None
+        ), "volume id or name must be defined"
 
         action = {
             "type": action_type,
             "droplet_id": droplet_id,
         }
-        if volume.region is not None:
-            if isinstance(volume.region, str):
-                action["region"] = volume.region
-            elif isinstance(volume.region, models.Region):
-                action["region"] = volume.region.slug
+        if isinstance(volume.region, str):
+            action["region"] = volume.region
+        elif isinstance(volume.region, models.Region):
+            action["region"] = volume.region.slug
 
         if volume.id is not None:
             res = self._client.request(
@@ -140,16 +142,18 @@ class AsyncVolumesManager(AsyncBaseManager):
     async def _droplet_action(
         self, action_type: str, volume: models.Volume, droplet_id: int
     ) -> models.Action:
+        assert (
+            volume.id is not None or volume.name is not None
+        ), "volume id or name must be defined"
 
         action = {
             "type": action_type,
             "droplet_id": droplet_id,
         }
-        if volume.region is not None:
-            if isinstance(volume.region, str):
-                action["region"] = volume.region
-            elif isinstance(volume.region, models.Region):
-                action["region"] = volume.region.slug
+        if isinstance(volume.region, str):
+            action["region"] = volume.region
+        elif isinstance(volume.region, models.Region):
+            action["region"] = volume.region.slug
 
         if volume.id is not None:
             res = await self._client.request(
