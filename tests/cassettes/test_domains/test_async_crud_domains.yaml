@@ -1,0 +1,550 @@
+interactions:
+- request:
+    body: '{"name": "test.dolib.io"}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '25'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: POST
+    uri: https://api.digitalocean.com/v2/domains
+  response:
+    content: '{"domain":{"name":"test.dolib.io","ttl":null,"zone_file":null}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '63'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 19:59:11 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      cache-control:
+      - max-age=0, private, must-revalidate
+      etag:
+      - W/"c4519eed580d156e5668a58696ea51a9"
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4988'
+      ratelimit-reset:
+      - '1622401618'
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+      x-runtime:
+      - '3.032681'
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 201
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/domains/test.dolib.io
+  response:
+    content: '{"domain":{"name":"test.dolib.io","ttl":1800,"zone_file":"$ORIGIN test.dolib.io.\n$TTL
+      1800\ntest.dolib.io. IN SOA ns1.digitalocean.com. hostmaster.test.dolib.io.
+      1622404748 10800 3600 604800 1800\ntest.dolib.io. 1800 IN NS ns1.digitalocean.com.\ntest.dolib.io.
+      1800 IN NS ns2.digitalocean.com.\ntest.dolib.io. 1800 IN NS ns3.digitalocean.com.\n"}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '348'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 19:59:12 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      cache-control:
+      - max-age=0, private, must-revalidate
+      etag:
+      - W/"84d7ec97136f9fc5dcf00fffe35c02e7"
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4987'
+      ratelimit-reset:
+      - '1622401618'
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+      x-runtime:
+      - '0.071739'
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"id": null, "type": "A", "name": "@", "data": "8.8.8.8", "priority": null,
+      "port": null, "ttl": null, "weight": null, "flags": null, "tag": null}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '146'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: POST
+    uri: https://api.digitalocean.com/v2/domains/test.dolib.io/records
+  response:
+    content: '{"domain_record":{"id":152363231,"type":"A","name":"@","data":"8.8.8.8","priority":null,"port":null,"ttl":1800,"weight":null,"flags":null,"tag":null}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '150'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 20:02:19 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      cache-control:
+      - max-age=0, private, must-revalidate
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4985'
+      ratelimit-reset:
+      - '1622401618'
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+    http_version: HTTP/1.1
+    status_code: 201
+- request:
+    body: '{"id": 152363231, "type": "A", "name": "test", "data": "8.8.8.8", "priority":
+      null, "port": null, "ttl": 60, "weight": null, "flags": null, "tag": null}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '152'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: PUT
+    uri: https://api.digitalocean.com/v2/domains/test.dolib.io/records/152363231
+  response:
+    content: '{"domain_record":{"id":152363231,"type":"A","name":"test","data":"8.8.8.8","priority":null,"port":null,"ttl":60,"weight":null,"flags":null,"tag":null}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '151'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 20:02:23 GMT
+      Etag:
+      - W/"c9f0ffedc688124361a25b7739cd3383"
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4984'
+      Ratelimit-Reset:
+      - '1622401618'
+      Server:
+      - cloudflare
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+      X-Runtime:
+      - '3.048281'
+      X-Xss-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/domains/test.dolib.io/records?per_page=200
+  response:
+    content: '{"domain_records":[{"id":152362729,"type":"SOA","name":"@","data":"1800","priority":null,"port":null,"ttl":1800,"weight":null,"flags":null,"tag":null},{"id":152362730,"type":"NS","name":"@","data":"ns1.digitalocean.com","priority":null,"port":null,"ttl":1800,"weight":null,"flags":null,"tag":null},{"id":152362731,"type":"NS","name":"@","data":"ns2.digitalocean.com","priority":null,"port":null,"ttl":1800,"weight":null,"flags":null,"tag":null},{"id":152362732,"type":"NS","name":"@","data":"ns3.digitalocean.com","priority":null,"port":null,"ttl":1800,"weight":null,"flags":null,"tag":null},{"id":152363231,"type":"A","name":"test","data":"8.8.8.8","priority":null,"port":null,"ttl":60,"weight":null,"flags":null,"tag":null}],"links":{},"meta":{"total":5}}
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '758'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 20:02:24 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4983'
+      Ratelimit-Reset:
+      - '1622401618'
+      Server:
+      - cloudflare
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/domains?per_page=200
+  response:
+    content: '{"domains":[{"name":"test.dolib.io","ttl":1800,"zone_file":"$ORIGIN test.dolib.io.\n$TTL 1800\ntest.dolib.io. IN SOA ns1.digitalocean.com. hostmaster.test.dolib.io. 1622404940 10800 3600 604800 1800\ntest.test.dolib.io. 60 IN A 8.8.8.8\ntest.dolib.io. 1800 IN NS ns1.digitalocean.com.\ntest.dolib.io. 1800 IN NS ns2.digitalocean.com.\ntest.dolib.io. 1800 IN NS ns3.digitalocean.com.\n"}],"links":{},"meta":{"total":1}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '411'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 20:03:52 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      cache-control:
+      - max-age=0, private, must-revalidate
+      etag:
+      - W/"060aa29104259d9cdcd14ffc9e63f2dc"
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4980'
+      ratelimit-reset:
+      - '1622401618'
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+      x-runtime:
+      - '0.145813'
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/domains/test.dolib.io/records?name=%40&type=A&per_page=200
+  response:
+    content: '{"domain_records":[],"links":{},"meta":{"total":0}}
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '52'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 20:05:55 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      cache-control:
+      - max-age=0, private, must-revalidate
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4979'
+      ratelimit-reset:
+      - '1622401618'
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/domains/test.dolib.io/records?name=test.test.dolib.io&type=A&per_page=200
+  response:
+    content: '{"domain_records":[{"id":152363231,"type":"A","name":"test","data":"8.8.8.8","priority":null,"port":null,"ttl":60,"weight":null,"flags":null,"tag":null}],"links":{},"meta":{"total":1}}
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '185'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 30 May 2021 20:08:23 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4976'
+      Ratelimit-Reset:
+      - '1622401721'
+      Server:
+      - cloudflare
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"id": 152363231, "type": "A", "name": "test", "data": "8.8.8.8", "priority":
+      null, "port": null, "ttl": 60, "weight": null, "flags": null, "tag": null}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '152'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: DELETE
+    uri: https://api.digitalocean.com/v2/domains/test.dolib.io/records/152363231
+  response:
+    content: ''
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 30 May 2021 20:09:15 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      cache-control:
+      - no-cache
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4976'
+      ratelimit-reset:
+      - '1622403600'
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+      x-runtime:
+      - '2.735531'
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 204
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: DELETE
+    uri: https://api.digitalocean.com/v2/domains/test.dolib.io
+  response:
+    content: ''
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 30 May 2021 20:09:19 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4975'
+      Ratelimit-Reset:
+      - '1622403600'
+      Server:
+      - cloudflare
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+      X-Runtime:
+      - '2.671537'
+      X-Xss-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 204
+version: 1
