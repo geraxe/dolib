@@ -192,7 +192,7 @@ class DropletsManager(BaseManager):
         return self._action(id, "enable_ipv6")
 
     def enable_private_networking(self, id: str) -> models.Action:
-        raise DeprecationWarning("This function is depricated in Digital Ocean API")
+        raise DeprecationWarning("This function is deprecated in Digital Ocean API")
 
     def tag_action(self, tag_name: str, action: str) -> List[models.Action]:
         params = {"tag_name": tag_name}
@@ -407,7 +407,7 @@ class AsyncDropletsManager(AsyncBaseManager):
         return await self._action(id, "enable_ipv6")
 
     async def enable_private_networking(self, id: str) -> models.Action:
-        raise DeprecationWarning("This function is depricated in Digital Ocean API")
+        raise DeprecationWarning("This function is depreicated in Digital Ocean API")
 
     async def tag_action(self, tag_name: str, action: str) -> List[models.Action]:
         params = {"tag_name": tag_name}

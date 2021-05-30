@@ -18,7 +18,7 @@ def test_version(mock: MagicMock) -> None:
 
 
 def test_base_client() -> None:
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match="API token must be specified"):
         BaseClient()
     with pytest.raises(NotImplementedError):
         BaseClient(token="fake_token")
