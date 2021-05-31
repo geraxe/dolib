@@ -140,16 +140,18 @@ class KubernetesManager(BaseManager):
         res = self._client.request(endpoint="kubernetes/options", method="get")
         return res["options"]
 
-    def add_registry(self) -> None:
+    def add_registry(self, cluster_uuids: List[str]) -> None:
         self._client.request(
             endpoint="kubernetes/registry",
             method="post",
+            json={"cluster_uuids": cluster_uuids},
         )
 
-    def delete_registry(self) -> None:
+    def delete_registry(self, cluster_uuids: List[str]) -> None:
         self._client.request(
             endpoint="kubernetes/registry",
             method="delete",
+            json={"cluster_uuids": cluster_uuids},
         )
 
 
@@ -289,14 +291,16 @@ class AsyncKubernetesManager(AsyncBaseManager):
         res = await self._client.request(endpoint="kubernetes/options", method="get")
         return res["options"]
 
-    async def add_registry(self) -> None:
+    async def add_registry(self, cluster_uuids: List[str]) -> None:
         await self._client.request(
             endpoint="kubernetes/registry",
             method="post",
+            json={"cluster_uuids": cluster_uuids},
         )
 
-    async def delete_registry(self) -> None:
+    async def delete_registry(self, cluster_uuids: List[str]) -> None:
         await self._client.request(
             endpoint="kubernetes/registry",
             method="delete",
+            json={"cluster_uuids": cluster_uuids},
         )
