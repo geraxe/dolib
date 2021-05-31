@@ -1,0 +1,260 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/customers/my/invoices?per_page=200
+  response:
+    content: '{"invoices":[{"invoice_uuid":"3873945f-6040-41ad-9271-541d6258cae2","amount":"91.86","invoice_period":"2021-04"},{"invoice_uuid":"69b0b435-6656-46f5-9654-7b208f906b87","amount":"20.04","invoice_period":"2018-12"},{"invoice_uuid":"4715a28b-6765-468d-a1f3-e7bbd72907e7","amount":"2.35","invoice_period":"2018-11"}],"invoice_preview":{"invoice_uuid":"b2951fb0-0cb2-4854-80c7-75f72384bf11","amount":"62.03","invoice_period":"2021-05","updated_at":"2021-05-31T04:56:30Z"},"links":{},"meta":{"total":3}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 31 May 2021 11:13:43 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      grpc-metadata-content-type:
+      - application/grpc
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4999'
+      ratelimit-reset:
+      - '1622459622'
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/customers/my/invoices/4715a28b-6765-468d-a1f3-e7bbd72907e7/summary
+  response:
+    content: '{"invoice_uuid":"4715a28b-6765-468d-a1f3-e7bbd72907e7","billing_period":"2018-11","issue_date":"2020-01-17","invoice_generated_at":"2020-01-17T20:04:40Z","amount":"2.35","user_name":"Yuri
+      Balandin","user_billing_address":{"address_line1":"Kremlin","city":"Moscow","region":"Moscow","postal_code":"111000","country_iso2_code":"RU","created_at":"2019-06-28T17:23:59.000+00:00","updated_at":"2019-06-28T17:23:59.000+00:00"},"user_email":"yuri@balandin.ru","product_charges":{"name":"Product
+      usage charges","amount":"2.35","items":[{"amount":"2.35","name":"Droplets","count":"1"}]},"overages":{"name":"Overages","amount":"0.00"},"taxes":{"name":"Taxes","amount":"0.00"},"credits_and_adjustments":{"name":"Credits
+      \u0026 adjustments","amount":"0.00"}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '763'
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 31 May 2021 11:17:21 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      grpc-metadata-content-type:
+      - application/grpc
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4998'
+      ratelimit-reset:
+      - '1622459622'
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/customers/my/invoices/4715a28b-6765-468d-a1f3-e7bbd72907e7?per_page=200
+  response:
+    content: '{"invoice_items":[{"product":"Droplets","description":"fra1-front1 (s-2vcpu-4gb)","amount":"2.35","duration":"79","duration_unit":"Hours","start_time":"2018-11-27T16:36:54Z","end_time":"2018-12-01T00:00:00Z","category":"iaas"}],"links":{},"meta":{"total":1}}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '258'
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 31 May 2021 11:17:43 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Grpc-Metadata-Content-Type:
+      - application/grpc
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4997'
+      Ratelimit-Reset:
+      - '1622459622'
+      Server:
+      - cloudflare
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/customers/my/invoices/4715a28b-6765-468d-a1f3-e7bbd72907e7/pdf
+  response:
+    content: "%PDF-1.4\n%\n1 0 obj\n<< /Creator <feff0050007200610077006e>\n/Producer
+      <feff0050007200610077006e>\n>>\nendobj\n2 0 obj\n<< /Type /Catalog\n/Pages 3
+      0 R\n>>\nendobj\n3 0 obj\n<< /Type /Pages\n/Count 1\n/Kids [5 0 R]\n>>\nendobj\n4"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/pdf
+      Date:
+      - Mon, 31 May 2021 11:34:06 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      cache-control:
+      - max-age=3600, private
+      content-disposition:
+      - inline; filename="DigitalOcean Invoice 2018 Nov (4495407-374470054).pdf"
+      grpc-metadata-content-type:
+      - application/grpc
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4990'
+      ratelimit-reset:
+      - '1622459622'
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/customers/my/invoices/4715a28b-6765-468d-a1f3-e7bbd72907e7/csv
+  response:
+    content: 'product,group_description,description,hours,start,end,USD,project_name,category
+
+      Droplets,,fra1-front1 (s-2vcpu-4gb),79,2018-11-27 16:36:54 +0000,2018-12-01
+      00:00:00 +0000,$2.35,,iaas
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Cache-Control:
+      - max-age=3600, private
+      Connection:
+      - keep-alive
+      Content-Disposition:
+      - attachment; filename="DigitalOcean Invoice 2018 Nov (4495407-374470054).csv"
+      Content-Length:
+      - '183'
+      Content-Type:
+      - text/csv
+      Date:
+      - Mon, 31 May 2021 11:34:07 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Grpc-Metadata-Content-Type:
+      - application/grpc
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4989'
+      Ratelimit-Reset:
+      - '1622459622'
+      Server:
+      - cloudflare
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
