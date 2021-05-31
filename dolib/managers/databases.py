@@ -147,7 +147,7 @@ class DatabasesManager(BaseManager):
     def migrate(self, id: str, region: str) -> None:
         self._client.request(
             endpoint="databases/{id}/migrate".format(id=id),
-            method="post",
+            method="put",
             json={"region": region},
         )
 
@@ -297,6 +297,6 @@ class AsyncDatabasesManager(AsyncBaseManager):
     async def migrate(self, id: str, region: str) -> None:
         await self._client.request(
             endpoint="databases/{id}/migrate".format(id=id),
-            method="post",
+            method="put",
             json={"region": region},
         )
