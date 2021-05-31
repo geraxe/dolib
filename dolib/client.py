@@ -121,6 +121,10 @@ class Client(BaseClient):
         response = self.request_raw(endpoint, method, params, json, data)
         if response.status_code in [httpx.codes.NO_CONTENT]:
             return {}
+        # PUT to /v2/databases/$DATABASE_ID/migrate return 202 with empty body
+        elif response.status_code == httpx.codes.ACCEPTED and response.content == b"":
+            return {}
+
         return response.json()
 
     def fetch_all(
@@ -242,6 +246,9 @@ class AsyncClient(BaseClient):
     ) -> t.Dict[str, t.Any]:
         response = await self.request_raw(endpoint, method, params, json, data)
         if response.status_code in [httpx.codes.NO_CONTENT]:
+            return {}
+        # PUT to /v2/databases/$DATABASE_ID/migrate return 202 with empty body
+        elif response.status_code == httpx.codes.ACCEPTED and response.content == b"":
             return {}
         return response.json()
 
