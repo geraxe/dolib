@@ -453,6 +453,20 @@ class Project(BaseModel):
 
 
 class Registry(BaseModel):
+    class Subscription(BaseModel):
+        class Tier(BaseModel):
+            name: str
+            slug: str
+            included_repositories: int
+            included_storage_bytes: int
+            allow_storage_overage: bool
+            included_bandwidth_bytes: int
+            monthly_price_in_cents: int
+
+        tier: Tier
+        created_at: Optional[datetime]
+        updated_at: Optional[datetime]
+
     class Repository(BaseModel):
         class Tag(BaseModel):
             registry_name: str
@@ -478,6 +492,7 @@ class Registry(BaseModel):
         updated_at: datetime
 
     name: str
+    subscription_tier_slug: Optional[str]
     created_at: Optional[datetime]
 
 

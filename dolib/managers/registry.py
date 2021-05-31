@@ -1,4 +1,4 @@
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 from .. import models
 from .base import AsyncBaseManager, BaseManager
@@ -16,12 +16,22 @@ class RegistryManager(BaseManager):
         return models.Registry(**res["registry"])
 
     def create(self, registry: models.Registry) -> models.Registry:
+        raise DeprecationWarning(
+            "This function is deprecated. Use registry.configure instead."
+        )
+
+    def configure(
+        self, registry: models.Registry
+    ) -> Tuple[models.Registry, models.Registry.Subscription]:
         res = self._client.request(
             endpoint="registry",
             method="post",
-            data=registry.json(include={"name"}),
+            data=registry.json(include={"name", "subscription_tier_slug"}),
         )
-        return models.Registry(**res["registry"])
+        return (
+            models.Registry(**res["registry"]),
+            models.Registry.Subscription(**res["subscription"]),
+        )
 
     def delete(self, registry: models.Registry) -> None:
         # may be in future account will be have multiple repository
@@ -29,6 +39,13 @@ class RegistryManager(BaseManager):
             endpoint="registry",
             method="delete",
         )
+
+    def subscription(self) -> models.Registry.Subscription:
+        res = self._client.request(
+            endpoint="registry",
+            method="get",
+        )
+        return models.Registry.Subscription(**res["subscription"])
 
     def docker_credentials(
         self, read_write: bool = None, expiry_seconds: int = None
@@ -45,9 +62,11 @@ class RegistryManager(BaseManager):
         )
         return res
 
-    def validate_name(self, name: str) -> None:
+    def validate_name(self, name: str, subscription_tier_slug: str) -> None:
         self._client.request(
-            endpoint="registry/validate-name", method="post", json={"name": name}
+            endpoint="registry/validate-name",
+            method="post",
+            json={"name": name, "subscription_tier_slug": subscription_tier_slug},
         )
 
     def repositories(self, name: str) -> List[models.Registry.Repository]:
@@ -118,12 +137,22 @@ class AsyncRegistryManager(AsyncBaseManager):
         return models.Registry(**res["registry"])
 
     async def create(self, registry: models.Registry) -> models.Registry:
+        raise DeprecationWarning(
+            "This function is deprecated. Use registry.configure instead."
+        )
+
+    async def configure(
+        self, registry: models.Registry
+    ) -> Tuple[models.Registry, models.Registry.Subscription]:
         res = await self._client.request(
             endpoint="registry",
             method="post",
-            data=registry.json(include={"name"}),
+            data=registry.json(include={"name", "subscription_tier_slug"}),
         )
-        return models.Registry(**res["registry"])
+        return (
+            models.Registry(**res["registry"]),
+            models.Registry.Subscription(**res["subscription"]),
+        )
 
     async def delete(self, registry: models.Registry) -> None:
         # may be in future account will be have multiple repository
@@ -131,6 +160,13 @@ class AsyncRegistryManager(AsyncBaseManager):
             endpoint="registry",
             method="delete",
         )
+
+    async def subscription(self) -> models.Registry.Subscription:
+        res = await self._client.request(
+            endpoint="registry",
+            method="get",
+        )
+        return models.Registry.Subscription(**res["subscription"])
 
     async def docker_credentials(
         self, read_write: bool = None, expiry_seconds: int = None
@@ -147,9 +183,11 @@ class AsyncRegistryManager(AsyncBaseManager):
         )
         return res
 
-    async def validate_name(self, name: str) -> None:
+    async def validate_name(self, name: str, subscription_tier_slug: str) -> None:
         await self._client.request(
-            endpoint="registry/validate-name", method="post", json={"name": name}
+            endpoint="registry/validate-name",
+            method="post",
+            json={"name": name, "subscription_tier_slug": subscription_tier_slug},
         )
 
     async def repositories(self, name: str) -> List[models.Registry.Repository]:
