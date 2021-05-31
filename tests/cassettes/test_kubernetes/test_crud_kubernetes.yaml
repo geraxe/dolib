@@ -1,0 +1,756 @@
+interactions:
+- request:
+    body: '{"name": "dolib-test-cluster", "region": "fra1", "version": "1.20.2-do.0",
+      "node_pools": [{"id": null, "size": "s-1vcpu-2gb", "name": "test-nodes", "count":
+      1, "tags": null, "labels": null, "auto_scale": null, "min_nodes": null, "max_nodes":
+      null, "nodes": null}], "auto_upgrade": null, "vpc_uuid": null, "tags": null,
+      "maintenance_policy": null}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '346'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: POST
+    uri: https://api.digitalocean.com/v2/kubernetes/clusters
+  response:
+    content: '{"kubernetes_cluster":{"id":"4562853d-b0f8-4d46-aa00-e1804e59ffb0","name":"dolib-test-cluster","region":"fra1","version":"1.20.2-do.0","cluster_subnet":"10.244.0.0/16","service_subnet":"10.245.0.0/16","vpc_uuid":"b21d4ee5-5e72-4056-b6f2-82e364789990","ipv4":"","endpoint":"","tags":["k8s","k8s:4562853d-b0f8-4d46-aa00-e1804e59ffb0"],"node_pools":[{"id":"d26dda82-cb52-4204-a7cd-dd9838165450","name":"test-nodes","size":"s-1vcpu-2gb","count":1,"tags":["k8s","k8s:4562853d-b0f8-4d46-aa00-e1804e59ffb0","k8s:worker"],"labels":null,"taints":[],"auto_scale":false,"min_nodes":0,"max_nodes":0,"nodes":[{"id":"834671d1-03ac-4ee9-bf26-894351c5d416","name":"","status":{"state":"provisioning"},"droplet_id":"","created_at":"2021-05-31T20:14:56Z","updated_at":"2021-05-31T20:14:56Z"}]}],"maintenance_policy":{"start_time":"17:00","duration":"4h0m0s","day":"any"},"auto_upgrade":false,"status":{"state":"provisioning","message":"provisioning"},"created_at":"2021-05-31T20:14:56Z","updated_at":"2021-05-31T20:14:56Z","surge_upgrade":false,"registry_enabled":false}}
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1054'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 31 May 2021 20:14:56 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4977'
+      Ratelimit-Reset:
+      - '1622488830'
+      Server:
+      - cloudflare
+      Vary:
+      - Accept-Encoding
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+    http_version: HTTP/1.1
+    status_code: 201
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/kubernetes/clusters?per_page=200
+  response:
+    content: '{"kubernetes_clusters":[{"id":"4562853d-b0f8-4d46-aa00-e1804e59ffb0","name":"dolib-test-cluster","region":"fra1","version":"1.20.2-do.0","cluster_subnet":"10.244.0.0/16","service_subnet":"10.245.0.0/16","vpc_uuid":"b21d4ee5-5e72-4056-b6f2-82e364789990","ipv4":"","endpoint":"","tags":["k8s","k8s:4562853d-b0f8-4d46-aa00-e1804e59ffb0"],"node_pools":[{"id":"d26dda82-cb52-4204-a7cd-dd9838165450","name":"test-nodes","size":"s-1vcpu-2gb","count":1,"tags":["k8s","k8s:4562853d-b0f8-4d46-aa00-e1804e59ffb0","k8s:worker"],"labels":null,"taints":[],"auto_scale":false,"min_nodes":0,"max_nodes":0,"nodes":[{"id":"834671d1-03ac-4ee9-bf26-894351c5d416","name":"","status":{"state":"provisioning"},"droplet_id":"","created_at":"2021-05-31T20:14:56Z","updated_at":"2021-05-31T20:14:56Z"}]}],"maintenance_policy":{"start_time":"17:00","duration":"4h0m0s","day":"any"},"auto_upgrade":false,"status":{"state":"provisioning","message":"provisioning"},"created_at":"2021-05-31T20:14:56Z","updated_at":"2021-05-31T20:16:27Z","surge_upgrade":false,"registry_enabled":false}],"meta":{"total":1},"links":{}}
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1087'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 31 May 2021 20:16:29 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4976'
+      ratelimit-reset:
+      - '1622488830'
+      vary:
+      - Accept-Encoding
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/kubernetes/clusters/4562853d-b0f8-4d46-aa00-e1804e59ffb0
+  response:
+    content: '{"kubernetes_cluster":{"id":"4562853d-b0f8-4d46-aa00-e1804e59ffb0","name":"dolib-test-cluster","region":"fra1","version":"1.20.2-do.0","cluster_subnet":"10.244.0.0/16","service_subnet":"10.245.0.0/16","vpc_uuid":"b21d4ee5-5e72-4056-b6f2-82e364789990","ipv4":"","endpoint":"","tags":["k8s","k8s:4562853d-b0f8-4d46-aa00-e1804e59ffb0"],"node_pools":[{"id":"d26dda82-cb52-4204-a7cd-dd9838165450","name":"test-nodes","size":"s-1vcpu-2gb","count":1,"tags":["k8s","k8s:4562853d-b0f8-4d46-aa00-e1804e59ffb0","k8s:worker"],"labels":null,"taints":[],"auto_scale":false,"min_nodes":0,"max_nodes":0,"nodes":[{"id":"834671d1-03ac-4ee9-bf26-894351c5d416","name":"","status":{"state":"provisioning"},"droplet_id":"","created_at":"2021-05-31T20:14:56Z","updated_at":"2021-05-31T20:14:56Z"}]}],"maintenance_policy":{"start_time":"17:00","duration":"4h0m0s","day":"any"},"auto_upgrade":false,"status":{"state":"provisioning","message":"provisioning"},"created_at":"2021-05-31T20:14:56Z","updated_at":"2021-05-31T20:16:27Z","surge_upgrade":false,"registry_enabled":false}}
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1054'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 31 May 2021 20:16:29 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4975'
+      ratelimit-reset:
+      - '1622488830'
+      vary:
+      - Accept-Encoding
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"size": "s-1vcpu-2gb", "name": "test-nodes2", "count": 1, "labels": null,
+      "auto_scale": null, "min_nodes": null, "max_nodes": null}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '132'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: POST
+    uri: https://api.digitalocean.com/v2/kubernetes/clusters/4562853d-b0f8-4d46-aa00-e1804e59ffb0/node_pools
+  response:
+    content: '{"node_pool":{"id":"3565a3a5-d415-49b5-9186-a2e7a7254d4b","name":"test-nodes2","size":"s-1vcpu-2gb","count":1,"tags":["k8s","k8s:4562853d-b0f8-4d46-aa00-e1804e59ffb0","k8s:worker"],"labels":null,"taints":[],"auto_scale":false,"min_nodes":0,"max_nodes":0,"nodes":[{"id":"2a7c184a-e678-456f-aa69-b096f23f2eef","name":"","status":{"state":"provisioning"},"droplet_id":"","created_at":"2021-05-31T20:41:33Z","updated_at":"2021-05-31T20:41:33Z"}]}}
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '444'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 31 May 2021 20:41:33 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4987'
+      ratelimit-reset:
+      - '1622490244'
+      vary:
+      - Accept-Encoding
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+    http_version: HTTP/1.1
+    status_code: 201
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/kubernetes/clusters/4562853d-b0f8-4d46-aa00-e1804e59ffb0/node_pools/3565a3a5-d415-49b5-9186-a2e7a7254d4b
+  response:
+    content: '{"node_pool":{"id":"3565a3a5-d415-49b5-9186-a2e7a7254d4b","name":"test-nodes2","size":"s-1vcpu-2gb","count":1,"tags":["k8s","k8s:4562853d-b0f8-4d46-aa00-e1804e59ffb0","k8s:worker"],"labels":null,"taints":[],"auto_scale":false,"min_nodes":0,"max_nodes":0,"nodes":[{"id":"2a7c184a-e678-456f-aa69-b096f23f2eef","name":"","status":{"state":"provisioning"},"droplet_id":"","created_at":"2021-05-31T20:41:33Z","updated_at":"2021-05-31T20:41:33Z"}]}}
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '444'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 31 May 2021 20:41:34 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4986'
+      ratelimit-reset:
+      - '1622490244'
+      vary:
+      - Accept-Encoding
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"name": "test-nodes2-renamed", "count": 1, "labels": null, "auto_scale":
+      false, "min_nodes": 0, "max_nodes": 0}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '112'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: PUT
+    uri: https://api.digitalocean.com/v2/kubernetes/clusters/4562853d-b0f8-4d46-aa00-e1804e59ffb0/node_pools/3565a3a5-d415-49b5-9186-a2e7a7254d4b
+  response:
+    content: '{"node_pool":{"id":"3565a3a5-d415-49b5-9186-a2e7a7254d4b","name":"test-nodes2-renamed","size":"s-1vcpu-2gb","count":1,"tags":["k8s","k8s:4562853d-b0f8-4d46-aa00-e1804e59ffb0","k8s:worker"],"labels":null,"taints":[],"auto_scale":false,"min_nodes":0,"max_nodes":0,"nodes":[{"id":"2a7c184a-e678-456f-aa69-b096f23f2eef","name":"test-nodes2-8gka7","status":{"state":"running"},"droplet_id":"248452942","created_at":"2021-05-31T20:41:33Z","updated_at":"2021-05-31T20:42:23Z"}]}}
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '473'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 31 May 2021 20:45:26 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4986'
+      Ratelimit-Reset:
+      - '1622490657'
+      Server:
+      - cloudflare
+      Vary:
+      - Accept-Encoding
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+    http_version: HTTP/1.1
+    status_code: 202
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/kubernetes/clusters/4562853d-b0f8-4d46-aa00-e1804e59ffb0/node_pools?per_page=200
+  response:
+    content: '{"node_pools":[{"id":"d26dda82-cb52-4204-a7cd-dd9838165450","name":"test-nodes","size":"s-1vcpu-2gb","count":1,"tags":["k8s","k8s:4562853d-b0f8-4d46-aa00-e1804e59ffb0","k8s:worker"],"labels":null,"taints":[],"auto_scale":false,"min_nodes":0,"max_nodes":0,"nodes":[{"id":"834671d1-03ac-4ee9-bf26-894351c5d416","name":"test-nodes-8gkbc","status":{"state":"running"},"droplet_id":"248451170","created_at":"2021-05-31T20:14:56Z","updated_at":"2021-05-31T20:18:30Z"}]},{"id":"3565a3a5-d415-49b5-9186-a2e7a7254d4b","name":"test-nodes2-renamed","size":"s-1vcpu-2gb","count":1,"tags":["k8s","k8s:4562853d-b0f8-4d46-aa00-e1804e59ffb0","k8s:worker"],"labels":null,"taints":[],"auto_scale":false,"min_nodes":0,"max_nodes":0,"nodes":[{"id":"2a7c184a-e678-456f-aa69-b096f23f2eef","name":"test-nodes2-8gka7","status":{"state":"running"},"droplet_id":"248452942","created_at":"2021-05-31T20:41:33Z","updated_at":"2021-05-31T20:42:23Z"}]}]}
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '925'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 31 May 2021 20:45:27 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4985'
+      Ratelimit-Reset:
+      - '1622490657'
+      Server:
+      - cloudflare
+      Vary:
+      - Accept-Encoding
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"name": "dolib-test-cluster-renamed", "auto_upgrade": false, "tags": ["k8s",
+      "k8s:4562853d-b0f8-4d46-aa00-e1804e59ffb0"], "maintenance_policy": {"start_time":
+      "17:00", "duration": "4h0m0s", "day": "any"}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '205'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: PUT
+    uri: https://api.digitalocean.com/v2/kubernetes/clusters/4562853d-b0f8-4d46-aa00-e1804e59ffb0
+  response:
+    content: '{"kubernetes_cluster":{"id":"4562853d-b0f8-4d46-aa00-e1804e59ffb0","name":"dolib-test-cluster-renamed","region":"fra1","version":"1.20.2-do.0","cluster_subnet":"10.244.0.0/16","service_subnet":"10.245.0.0/16","vpc_uuid":"b21d4ee5-5e72-4056-b6f2-82e364789990","ipv4":"167.172.187.98","endpoint":"https://4562853d-b0f8-4d46-aa00-e1804e59ffb0.k8s.ondigitalocean.com","tags":["k8s","k8s:4562853d-b0f8-4d46-aa00-e1804e59ffb0"],"node_pools":[{"id":"d26dda82-cb52-4204-a7cd-dd9838165450","name":"test-nodes","size":"s-1vcpu-2gb","count":1,"tags":["k8s","k8s:4562853d-b0f8-4d46-aa00-e1804e59ffb0","k8s:worker"],"labels":null,"taints":[],"auto_scale":false,"min_nodes":0,"max_nodes":0,"nodes":[{"id":"834671d1-03ac-4ee9-bf26-894351c5d416","name":"test-nodes-8gkbc","status":{"state":"running"},"droplet_id":"248451170","created_at":"2021-05-31T20:14:56Z","updated_at":"2021-05-31T20:18:30Z"}]},{"id":"3565a3a5-d415-49b5-9186-a2e7a7254d4b","name":"test-nodes2-renamed","size":"s-1vcpu-2gb","count":1,"tags":["k8s","k8s:4562853d-b0f8-4d46-aa00-e1804e59ffb0","k8s:worker"],"labels":null,"taints":[],"auto_scale":false,"min_nodes":0,"max_nodes":0,"nodes":[{"id":"2a7c184a-e678-456f-aa69-b096f23f2eef","name":"test-nodes2-8gka7","status":{"state":"running"},"droplet_id":"248452942","created_at":"2021-05-31T20:41:33Z","updated_at":"2021-05-31T20:42:23Z"}]}],"maintenance_policy":{"start_time":"17:00","duration":"4h0m0s","day":"any"},"auto_upgrade":false,"status":{"state":"running"},"created_at":"2021-05-31T20:14:56Z","updated_at":"2021-05-31T20:45:35Z","surge_upgrade":false,"registry_enabled":false}}
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 31 May 2021 20:47:23 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4984'
+      Ratelimit-Reset:
+      - '1622490657'
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+    http_version: HTTP/1.1
+    status_code: 202
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: DELETE
+    uri: https://api.digitalocean.com/v2/kubernetes/clusters/4562853d-b0f8-4d46-aa00-e1804e59ffb0/node_pools/3565a3a5-d415-49b5-9186-a2e7a7254d4b
+  response:
+    content: ''
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Date:
+      - Mon, 31 May 2021 20:52:28 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4983'
+      Ratelimit-Reset:
+      - '1622490753'
+      Server:
+      - cloudflare
+      Vary:
+      - Accept-Encoding
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+    http_version: HTTP/1.1
+    status_code: 204
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/kubernetes/clusters/4562853d-b0f8-4d46-aa00-e1804e59ffb0/kubeconfig
+  response:
+    content: "apiVersion: v1\nclusters:\n- cluster:\n    certificate-authority-data:
+      LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lDQm5Vd0RRWUpLb1pJaHZjTkFRRUxCUUF3TXpFVk1CTUdBMVVFQ2hNTVJHbG4KYVhSaGJFOWpaV0Z1TVJvd0dBWURWUVFERXhGck9ITmhZWE1nUTJ4MWMzUmxjaUJEUVRBZUZ3MHlNVEExTXpFeQpNREUwTlRkYUZ3MDBNVEExTXpFeU1ERTBOVGRhTURNeEZUQVRCZ05WQkFvVERFUnBaMmwwWVd4UFkyVmhiakVhCk1CZ0dBMVVFQXhNUmF6aHpZV0Z6SUVOc2RYTjBaWElnUTBFd2dnRWlNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUIKRHdBd2dnRUtBb0lCQVFESkxCR2dmUnFSandyY0RyaDZUV1lzMU9hVDUwVEs2bmR0STJQbHEzTzBmVUZJOXJQNApOWUsvbWhhUHVmL2lOa3RMSlNYSjBUNVJDdzhUb3ovY2VRdTlqbytUTlhiOWtDUjBlL2dPVVJNMWVoK0wrSElQCmRiOFhWT2c1djRwbEZjVkFENHhDS3g1ZUMzN3lrM0JLY3RONDJLWUhneWdtMWI4anptRXlZZzR3ZEROdmlvYXMKUVpGem9oblpGKzRQbU05M0hudWZvMnFuK2psWjc5aTB5UENiWkN1a1lYa2w5OXpkZ3h1WnFoM3JkbStkOTN6SApqL0t3WkhubSt5V0RIL09zRmZCTEZIaksrc2xta1lYOGwzY3R0ZWt1eDVpeVZFaTRRMkprVjVQVEhWQk44T29UCjlFcDBXbHJoWHlSYm1VVTdkSmNXODRUTUp0VitYYll1bzZ6OUFnTUJBQUdqUlRCRE1BNEdBMVVkRHdFQi93UUUKQXdJQmhqQVNCZ05WSFJNQkFmOEVDREFHQVFIL0FnRUFNQjBHQTFVZERnUVdCQlNuSDdCVTBkbGhVKzRwVm5YSgpwbkZzd05OdUJ6QU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFQQ0xjeC94WXcwbjI5VzJTUE9mOWlTdm1tbVdrCnJ5ZEZpWElkUXZXdnZtUEorVTJsVmM4SWpXa3ZwNlVPVTkyc0hVYUZPd2FqSjFET1duYmRoTzVaMHEvRXdSWXIKVlhycHpQSlh3dzRISzhLYzJYZjNLcHAzWmJYZWZPY2pHZzZXLzREb2xRZVU1UGtyUDB3Y0hVMUlwcEpuRmJaVwpMVDZWNkdUeUpNck5qQy94MHRVSG45MlRSdlF2YUM5blZ5bEJFTGJxSC9yem96eWtwZk1aNXRNOFVoQ1haSzU2CjR6TkZyVFh6bitOR2ZKaC9Db1hHaGdpUkxBa052YWRxdU5ZcGw0V253RlZaRWdZOG5rYktYUW51UFJnbFZBUTUKOHdMTFJZZ1E5aEZ3cEVhc3VFTWtLbXNaZTl5cjViNmtNNG1xQThWUjR3V1NwaWo0d0xqVzZ0NFJydz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K\n
+      \   server: https://4562853d-b0f8-4d46-aa00-e1804e59ffb0.k8s.ondigitalocean.com\n
+      \ name: do-fra1-dolib-test-cluster-renamed\ncontexts:\n- context:\n    cluster:
+      do-fra1-dolib-test-cluster-renamed\n    user: do-fra1-dolib-test-cluster-renamed-admin\n
+      \ name: do-fra1-dolib-test-cluster-renamed\ncurrent-context: do-fra1-dolib-test-cluster-renamed\nkind:
+      Config\npreferences: {}\nusers:\n- name: do-fra1-dolib-test-cluster-renamed-admin\n
+      \ user:\n    token: f403943b9a92fe7cd527b3b03bb7c28bb1d19c3f941227bf851f3ec3d917695a\n"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/yaml
+      Date:
+      - Mon, 31 May 2021 20:52:29 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4982'
+      Ratelimit-Reset:
+      - '1622490753'
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/kubernetes/clusters/4562853d-b0f8-4d46-aa00-e1804e59ffb0/credentials
+  response:
+    content: '{"server":"https://4562853d-b0f8-4d46-aa00-e1804e59ffb0.k8s.ondigitalocean.com","certificate_authority_data":"LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJBZ0lDQm5Vd0RRWUpLb1pJaHZjTkFRRUxCUUF3TXpFVk1CTUdBMVVFQ2hNTVJHbG4KYVhSaGJFOWpaV0Z1TVJvd0dBWURWUVFERXhGck9ITmhZWE1nUTJ4MWMzUmxjaUJEUVRBZUZ3MHlNVEExTXpFeQpNREUwTlRkYUZ3MDBNVEExTXpFeU1ERTBOVGRhTURNeEZUQVRCZ05WQkFvVERFUnBaMmwwWVd4UFkyVmhiakVhCk1CZ0dBMVVFQXhNUmF6aHpZV0Z6SUVOc2RYTjBaWElnUTBFd2dnRWlNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUIKRHdBd2dnRUtBb0lCQVFESkxCR2dmUnFSandyY0RyaDZUV1lzMU9hVDUwVEs2bmR0STJQbHEzTzBmVUZJOXJQNApOWUsvbWhhUHVmL2lOa3RMSlNYSjBUNVJDdzhUb3ovY2VRdTlqbytUTlhiOWtDUjBlL2dPVVJNMWVoK0wrSElQCmRiOFhWT2c1djRwbEZjVkFENHhDS3g1ZUMzN3lrM0JLY3RONDJLWUhneWdtMWI4anptRXlZZzR3ZEROdmlvYXMKUVpGem9oblpGKzRQbU05M0hudWZvMnFuK2psWjc5aTB5UENiWkN1a1lYa2w5OXpkZ3h1WnFoM3JkbStkOTN6SApqL0t3WkhubSt5V0RIL09zRmZCTEZIaksrc2xta1lYOGwzY3R0ZWt1eDVpeVZFaTRRMkprVjVQVEhWQk44T29UCjlFcDBXbHJoWHlSYm1VVTdkSmNXODRUTUp0VitYYll1bzZ6OUFnTUJBQUdqUlRCRE1BNEdBMVVkRHdFQi93UUUKQXdJQmhqQVNCZ05WSFJNQkFmOEVDREFHQVFIL0FnRUFNQjBHQTFVZERnUVdCQlNuSDdCVTBkbGhVKzRwVm5YSgpwbkZzd05OdUJ6QU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFQQ0xjeC94WXcwbjI5VzJTUE9mOWlTdm1tbVdrCnJ5ZEZpWElkUXZXdnZtUEorVTJsVmM4SWpXa3ZwNlVPVTkyc0hVYUZPd2FqSjFET1duYmRoTzVaMHEvRXdSWXIKVlhycHpQSlh3dzRISzhLYzJYZjNLcHAzWmJYZWZPY2pHZzZXLzREb2xRZVU1UGtyUDB3Y0hVMUlwcEpuRmJaVwpMVDZWNkdUeUpNck5qQy94MHRVSG45MlRSdlF2YUM5blZ5bEJFTGJxSC9yem96eWtwZk1aNXRNOFVoQ1haSzU2CjR6TkZyVFh6bitOR2ZKaC9Db1hHaGdpUkxBa052YWRxdU5ZcGw0V253RlZaRWdZOG5rYktYUW51UFJnbFZBUTUKOHdMTFJZZ1E5aEZ3cEVhc3VFTWtLbXNaZTl5cjViNmtNNG1xQThWUjR3V1NwaWo0d0xqVzZ0NFJydz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K","client_certificate_data":null,"client_key_data":null,"token":"747c9f9b7d0a8ad05adfe049453073a4a6b0a2610356e713611e6cb0dadcbdba","expires_at":"2021-06-07T20:52:29Z"}
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 31 May 2021 20:52:29 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4981'
+      Ratelimit-Reset:
+      - '1622490753'
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: GET
+    uri: https://api.digitalocean.com/v2/kubernetes/options
+  response:
+    content: '{"options":{"regions":[{"name":"New York 1","slug":"nyc1"},{"name":"Singapore
+      1","slug":"sgp1"},{"name":"London 1","slug":"lon1"},{"name":"New York 3","slug":"nyc3"},{"name":"Amsterdam
+      3","slug":"ams3"},{"name":"Frankfurt 1","slug":"fra1"},{"name":"Toronto 1","slug":"tor1"},{"name":"Bangalore
+      1","slug":"blr1"},{"name":"San Francisco 3","slug":"sfo3"}],"versions":[{"slug":"1.20.2-do.0","kubernetes_version":"1.20.2"},{"slug":"1.19.6-do.0","kubernetes_version":"1.19.6"},{"slug":"1.18.14-do.0","kubernetes_version":"1.18.14"}],"sizes":[{"name":"s-1vcpu-2gb","slug":"s-1vcpu-2gb"},{"name":"s-1vcpu-2gb-amd","slug":"s-1vcpu-2gb-amd"},{"name":"s-1vcpu-2gb-intel","slug":"s-1vcpu-2gb-intel"},{"name":"s-2vcpu-2gb","slug":"s-2vcpu-2gb"},{"name":"s-2vcpu-2gb-amd","slug":"s-2vcpu-2gb-amd"},{"name":"s-2vcpu-2gb-intel","slug":"s-2vcpu-2gb-intel"},{"name":"s-2vcpu-4gb","slug":"s-2vcpu-4gb"},{"name":"s-2vcpu-4gb-amd","slug":"s-2vcpu-4gb-amd"},{"name":"s-2vcpu-4gb-intel","slug":"s-2vcpu-4gb-intel"},{"name":"s-4vcpu-8gb","slug":"s-4vcpu-8gb"},{"name":"c-2-4GiB","slug":"c-2"},{"name":"s-4vcpu-8gb-amd","slug":"s-4vcpu-8gb-amd"},{"name":"s-4vcpu-8gb-intel","slug":"s-4vcpu-8gb-intel"},{"name":"g-2vcpu-8gb","slug":"g-2vcpu-8gb"},{"name":"gd-2vcpu-8gb","slug":"gd-2vcpu-8gb"},{"name":"s-8vcpu-16gb","slug":"s-8vcpu-16gb"},{"name":"m-2vcpu-16gb","slug":"m-2vcpu-16gb"},{"name":"c-4-8GiB","slug":"c-4"},{"name":"s-8vcpu-16gb-amd","slug":"s-8vcpu-16gb-amd"},{"name":"s-8vcpu-16gb-intel","slug":"s-8vcpu-16gb-intel"},{"name":"m3-2vcpu-16gb","slug":"m3-2vcpu-16gb"},{"name":"g-4vcpu-16gb","slug":"g-4vcpu-16gb"},{"name":"m6-2vcpu-16gb","slug":"m6-2vcpu-16gb"},{"name":"gd-4vcpu-16gb","slug":"gd-4vcpu-16gb"},{"name":"so1_5-2vcpu-16gb","slug":"so1_5-2vcpu-16gb"},{"name":"m-4vcpu-32gb","slug":"m-4vcpu-32gb"},{"name":"c-8-16GiB","slug":"c-8"},{"name":"m3-4vcpu-32gb","slug":"m3-4vcpu-32gb"},{"name":"g-8vcpu-32gb","slug":"g-8vcpu-32gb"},{"name":"m6-4vcpu-32gb","slug":"m6-4vcpu-32gb"},{"name":"gd-8vcpu-32gb","slug":"gd-8vcpu-32gb"},{"name":"so1_5-4vcpu-32gb","slug":"so1_5-4vcpu-32gb"},{"name":"m-8vcpu-64gb","slug":"m-8vcpu-64gb"},{"name":"c-16","slug":"c-16"},{"name":"m3-8vcpu-64gb","slug":"m3-8vcpu-64gb"},{"name":"g-16vcpu-64gb","slug":"g-16vcpu-64gb"},{"name":"m6-8vcpu-64gb","slug":"m6-8vcpu-64gb"},{"name":"gd-16vcpu-64gb","slug":"gd-16vcpu-64gb"},{"name":"so1_5-8vcpu-64gb","slug":"so1_5-8vcpu-64gb"},{"name":"m-16vcpu-128gb","slug":"m-16vcpu-128gb"},{"name":"c-32-64GiB","slug":"c-32"},{"name":"m3-16vcpu-128gb","slug":"m3-16vcpu-128gb"},{"name":"m-24vcpu-192gb","slug":"m-24vcpu-192gb"},{"name":"g-32vcpu-128gb","slug":"g-32vcpu-128gb"},{"name":"m6-16vcpu-128gb","slug":"m6-16vcpu-128gb"},{"name":"gd-32vcpu-128gb","slug":"gd-32vcpu-128gb"},{"name":"m3-24vcpu-192gb","slug":"m3-24vcpu-192gb"},{"name":"g-40vcpu-160gb","slug":"g-40vcpu-160gb"},{"name":"so1_5-16vcpu-128gb","slug":"so1_5-16vcpu-128gb"},{"name":"m-32vcpu-256gb","slug":"m-32vcpu-256gb"},{"name":"gd-40vcpu-160gb","slug":"gd-40vcpu-160gb"},{"name":"m6-24vcpu-192gb","slug":"m6-24vcpu-192gb"},{"name":"m3-32vcpu-256gb","slug":"m3-32vcpu-256gb"},{"name":"so1_5-24vcpu-192gb","slug":"so1_5-24vcpu-192gb"},{"name":"m6-32vcpu-256gb","slug":"m6-32vcpu-256gb"},{"name":"so1_5-32vcpu-256gb","slug":"so1_5-32vcpu-256gb"}]}}
+
+      '
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 31 May 2021 20:52:30 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4980'
+      ratelimit-reset:
+      - '1622490753'
+      vary:
+      - Accept-Encoding
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"cluster_uuids": ["4562853d-b0f8-4d46-aa00-e1804e59ffb0"]}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '59'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: POST
+    uri: https://api.digitalocean.com/v2/kubernetes/registry
+  response:
+    content: ''
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Date:
+      - Mon, 31 May 2021 21:20:43 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4984'
+      ratelimit-reset:
+      - '1622492685'
+      vary:
+      - Accept-Encoding
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+    http_version: HTTP/1.1
+    status_code: 204
+- request:
+    body: '{"cluster_uuids": ["4562853d-b0f8-4d46-aa00-e1804e59ffb0"]}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-length:
+      - '59'
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: DELETE
+    uri: https://api.digitalocean.com/v2/kubernetes/registry
+  response:
+    content: ''
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Date:
+      - Mon, 31 May 2021 21:20:45 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      ratelimit-limit:
+      - '5000'
+      ratelimit-remaining:
+      - '4983'
+      ratelimit-reset:
+      - '1622492685'
+      vary:
+      - Accept-Encoding
+      x-gateway:
+      - Edge-Gateway
+      x-response-from:
+      - service
+    http_version: HTTP/1.1
+    status_code: 204
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - ''
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      host:
+      - api.digitalocean.com
+      user-agent:
+      - dolib/0.2.1.dev28+gfa491c1.d20210530
+    method: DELETE
+    uri: https://api.digitalocean.com/v2/kubernetes/clusters/4562853d-b0f8-4d46-aa00-e1804e59ffb0
+  response:
+    content: ''
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      Connection:
+      - keep-alive
+      Date:
+      - Mon, 31 May 2021 21:26:10 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ratelimit-Limit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4980'
+      Ratelimit-Reset:
+      - '1622493682'
+      Server:
+      - cloudflare
+      Vary:
+      - Accept-Encoding
+      X-Gateway:
+      - Edge-Gateway
+      X-Response-From:
+      - service
+    http_version: HTTP/1.1
+    status_code: 204
+version: 1
