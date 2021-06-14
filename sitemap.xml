@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://geraxe.github.io/dolib/</loc>
-     <lastmod>2021-04-25</lastmod>
+     <lastmod>2021-06-14</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://geraxe.github.io/dolib/install/</loc>
-     <lastmod>2021-04-25</lastmod>
+     <loc>https://geraxe.github.io/dolib/quickstart/</loc>
+     <lastmod>2021-06-14</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://geraxe.github.io/dolib/usage/client/</loc>
-     <lastmod>2021-04-25</lastmod>
+     <lastmod>2021-06-14</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://geraxe.github.io/dolib/usage/models/</loc>
-     <lastmod>2021-04-25</lastmod>
+     <lastmod>2021-06-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
