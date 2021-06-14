@@ -23,13 +23,13 @@ theme:
 
 nav:
 - Overview: index.md
-- install.md
+- QuickStart: quickstart.md
 - Usage:
   - usage/client.md
   - usage/models.md
 
 markdown_extensions:
-- markdown_include.include:
-    base_path: docs
+#- markdown_include.include:
+#    base_path: docs
 - pymdownx.highlight
 - pymdownx.extra

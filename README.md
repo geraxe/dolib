@@ -11,7 +11,7 @@ DOLib is a fully featured python 3.6+ library for Digital Ocean, which provides 
 
 ## Documentation
 
-Comming soon.
+Documentation in progress. You can see this <a href="https://geraxe.github.io/dolib/" class="external-link" target="_blank">Documentation</a>
 
 ## Requirements
 
