@@ -5,6 +5,7 @@
 .mypy_cache/
 build/
 dist/
+site/
 *.egg/
 .coverage
 coverage.xml
