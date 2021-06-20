@@ -426,6 +426,11 @@ class LoadBalancer(BaseModel):
     created_at: Optional[datetime]
 
 
+class OneClickApp(BaseModel):
+    slug: str
+    type: str
+
+
 class Project(BaseModel):
     class Resource(BaseModel):
         class Links(BaseModel):

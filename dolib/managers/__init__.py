@@ -12,6 +12,7 @@ from .images import AsyncImagesManager, ImagesManager
 from .invoices import AsyncInvoicesManager, InvoicesManager
 from .kubernetes import AsyncKubernetesManager, KubernetesManager
 from .load_balancers import AsyncLoadBalancersManager, LoadBalancersManager
+from .oneclicks import AsyncOneClicksManager, OneClicksManager
 from .projects import AsyncProjectsManager, ProjectsManager
 from .regions import AsyncRegionsManager, RegionsManager
 from .registry import AsyncRegistryManager, RegistryManager
@@ -36,6 +37,7 @@ __all__ = [
     "InvoicesManager",
     "KubernetesManager",
     "LoadBalancersManager",
+    "OneClicksManager",
     "ProjectsManager",
     "RegionsManager",
     "RegistryManager",
@@ -58,6 +60,7 @@ __all__ = [
     "AsyncInvoicesManager",
     "AsyncKubernetesManager",
     "AsyncLoadBalancersManager",
+    "AsyncOneClicksManager",
     "AsyncProjectsManager",
     "AsyncRegionsManager",
     "AsyncRegistryManager",
@@ -87,6 +90,7 @@ __sync_managers__ = [
     "InvoicesManager",
     "KubernetesManager",
     "LoadBalancersManager",
+    "OneClicksManager",
     "ProjectsManager",
     "RegionsManager",
     "RegistryManager",
@@ -111,6 +115,7 @@ __async_managers__ = [
     "AsyncInvoicesManager",
     "AsyncKubernetesManager",
     "AsyncLoadBalancersManager",
+    "AsyncOneClicksManager",
     "AsyncProjectsManager",
     "AsyncRegionsManager",
     "AsyncRegistryManager",

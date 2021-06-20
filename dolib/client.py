@@ -56,6 +56,7 @@ class Client(BaseClient):
     invoices: t.Optional[mn.InvoicesManager] = None
     kubernetes: t.Optional[mn.KubernetesManager] = None
     load_balancers: t.Optional[mn.LoadBalancersManager] = None
+    one_clicks: t.Optional[mn.OneClicksManager] = None
     projects: t.Optional[mn.ProjectsManager] = None
     regions: t.Optional[mn.RegionsManager] = None
     registry: t.Optional[mn.RegistryManager] = None
@@ -181,6 +182,7 @@ class AsyncClient(BaseClient):
     invoices: t.Optional[mn.AsyncInvoicesManager] = None
     kubernetes: t.Optional[mn.AsyncKubernetesManager] = None
     load_balancers: t.Optional[mn.AsyncLoadBalancersManager] = None
+    one_clicks: t.Optional[mn.AsyncOneClicksManager] = None
     projects: t.Optional[mn.AsyncProjectsManager] = None
     regions: t.Optional[mn.AsyncRegionsManager] = None
     registry: t.Optional[mn.AsyncRegistryManager] = None
