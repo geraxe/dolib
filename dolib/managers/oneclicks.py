@@ -14,7 +14,7 @@ class OneClicksManager(BaseManager):
 
     def filter(self, app_type: str = None) -> List[models.OneClickApp]:
         params = {}
-        if app_type in ["kubernetes", "droplet"]:
+        if app_type is not None:
             params["type"] = app_type
         res = self._client.fetch_all(
             endpoint="1-clicks",
@@ -34,7 +34,7 @@ class AsyncOneClicksManager(AsyncBaseManager):
 
     async def filter(self, app_type: str = None) -> List[models.OneClickApp]:
         params = {}
-        if app_type in ["kubernetes", "droplet"]:
+        if app_type is not None:
             params["type"] = app_type
         res = await self._client.fetch_all(
             endpoint="1-clicks",
