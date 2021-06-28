@@ -19,6 +19,7 @@ def test_crud_one_clicks(client: Client) -> None:
     # filter one click app
     filtered_apps = client.one_clicks.filter(app_type="droplet")
     assert isinstance(filtered_apps, list)
+    assert len(filtered_apps) > 0
     for app in filtered_apps:
         assert app.type == "droplet"
 
@@ -40,5 +41,6 @@ async def test_async_crud_one_clicks(async_client: AsyncClient) -> None:
     # filter one click app
     filtered_apps = await async_client.one_clicks.filter(app_type="droplet")
     assert isinstance(filtered_apps, list)
+    assert len(filtered_apps) > 0
     for app in filtered_apps:
         assert app.type == "droplet"
