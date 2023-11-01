@@ -40,7 +40,9 @@ class ImagesManager(BaseManager):
         res = self._client.request(
             endpoint="images",
             method="post",
-            data=image.json(include={"name", "url", "region", "distribution", "tags"}),
+            data=image.model_dump_json(
+                include={"name", "url", "region", "distribution", "description", "tags"}
+            ),
         )
         return models.Image(**res["image"])
 
@@ -48,7 +50,7 @@ class ImagesManager(BaseManager):
         res = self._client.request(
             endpoint="images/{id}".format(id=image.id),
             method="put",
-            data=image.json(include={"name", "distribution", "description"}),
+            data=image.model_dump_json(include={"name", "distribution", "description"}),
         )
         return models.Image(**res["image"])
 
@@ -138,7 +140,9 @@ class AsyncImagesManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="images",
             method="post",
-            data=image.json(include={"name", "url", "region", "distribution", "tags"}),
+            data=image.model_dump_json(
+                include={"name", "url", "region", "distribution", "description", "tags"}
+            ),
         )
         return models.Image(**res["image"])
 
@@ -146,7 +150,7 @@ class AsyncImagesManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="images/{id}".format(id=image.id),
             method="put",
-            data=image.json(include={"name", "distribution", "description"}),
+            data=image.model_dump_json(include={"name", "distribution", "description"}),
         )
         return models.Image(**res["image"])
 

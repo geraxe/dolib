@@ -1,9 +1,10 @@
 import uuid
 from datetime import datetime
 from decimal import Decimal
-from typing import Any, Dict, List, Optional, Union
+from enum import Enum
+from typing import List, Optional, Union
 
-from pydantic import BaseModel, EmailStr, validator
+from pydantic import BaseModel, EmailStr
 
 
 class Region(BaseModel):
@@ -64,8 +65,8 @@ class Balance(BaseModel):
 class BillingHistory(BaseModel):
     description: str
     amount: str
-    invoice_id: Optional[str]
-    invoice_uuid: Optional[uuid.UUID]
+    invoice_id: Optional[str] = None
+    invoice_uuid: Optional[uuid.UUID] = None
     date: datetime
     type: str
 
@@ -92,20 +93,6 @@ class Certificate(BaseModel):
     created_at: Optional[datetime]
     dns_names: Optional[List[str]]
     state: Optional[str]
-
-    @validator("type")
-    def check_type_enum(cls, v: str) -> str:
-        if v not in ["lets_encrypt", "custom"]:
-            raise ValueError('only "lets_encrypt" and "custom" type supported')
-        return v
-
-    @validator("dns_names", always=True)
-    def check_dns_names(
-        cls, v: List[str], values: Dict[str, Any], **kwargs: Any
-    ) -> List[str]:
-        if "type" in values and values["type"] == "lets_encrypt" and v is None:
-            raise ValueError('must be specified if type = "lets_encrypt"')
-        return v
 
 
 class DBCluster(BaseModel):
@@ -184,22 +171,46 @@ class Invoice(BaseModel):
 
 
 class Image(BaseModel):
-    id: Optional[int]
+    class Distribution(Enum):
+        ALMALINUX = "AlmaLinux"
+        ARCH_LINUX = "Arch Linux"
+        CENTOS = "CentOS"
+        COREOS = "CoreOS"
+        DEBIAN = "Debian"
+        FEDORA = "Fedora"
+        FEDORA_ATOMIC = "Fedora Atomic"
+        FREEBSD = "FreeBSD"
+        GENTOO = "Gentoo"
+        OPENSUSE = "openSUSE"
+        RANCHEROS = "RancherOS"
+        ROCKY_LINUX = "Rocky Linux"
+        UBUNTU = "Ubuntu"
+        UNKNOWN = "Unknown"
+
+    class Type(Enum):
+        APPLICATION = "application"
+        BASE = "base"
+        SNAPSHOT = "snapshot"
+        BACKUP = "backup"
+        CUSTOM = "custom"
+        ADMIN = "admin"
+
+    id: Optional[int] = None
     name: str
-    region: Optional[str]
-    url: Optional[str]
-    type: Optional[str]
-    distribution: Optional[str]
-    slug: Optional[str]
-    public: Optional[bool]
-    regions: Optional[List[str]]
-    created_at: Optional[datetime]
-    min_disk_size: Optional[int]
-    size_gigabytes: Optional[float]
-    description: Optional[str]
-    tags: Optional[List[str]]
-    status: Optional[str]
-    error_message: Optional[str]
+    region: Optional[str] = None
+    url: Optional[str] = None
+    type: Optional[Type] = None
+    distribution: Optional[Distribution] = None
+    slug: Optional[str] = None
+    public: Optional[bool] = None
+    regions: Optional[List[str]] = None
+    created_at: Optional[datetime] = None
+    min_disk_size: Optional[int] = None
+    size_gigabytes: Optional[float] = None
+    description: Optional[str] = None
+    tags: Optional[List[str]] = None
+    status: Optional[str] = None
+    error_message: Optional[str] = None
 
 
 class Domain(BaseModel):
