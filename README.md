@@ -7,7 +7,7 @@
 
 ## Description
 
-DOLib is a fully featured python 3.6+ library for Digital Ocean, which provides sync and async APIs. This library supports all Digital Ocean API methods and simple in use. Enjoy!
+DOLib is a fully featured python 3.8+ library for Digital Ocean, which provides sync and async APIs. This library supports all Digital Ocean API methods and simple in use. Enjoy!
 
 ## Documentation
 
