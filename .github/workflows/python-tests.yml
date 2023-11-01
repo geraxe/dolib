@@ -18,12 +18,11 @@ jobs:
           - macOS
           - Windows
         python-version:
+          - 3.12
           - 3.11
           - 3.10
           - 3.9
           - 3.8
-          - 3.7
-          - 3.6
     env:
       PY_COLORS: 1
       PYTEST_ADDOPTS: --strict --cov --cov-report=term-missing --cov-report=xml
