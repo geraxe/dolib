@@ -7,7 +7,6 @@ from dolib.models import CDNEndpoint
 @pytest.mark.vcr()
 @pytest.mark.block_network()
 def test_crud_cdns(client: Client) -> None:
-
     endpoint = CDNEndpoint(
         origin="e183e06c-0252-4e0c-85bb-2fe17eb87169.ams3.digitaloceanspaces.com",
         ttl=1800,
@@ -43,7 +42,6 @@ def test_crud_cdns(client: Client) -> None:
 @pytest.mark.block_network()
 @pytest.mark.asyncio
 async def test_async_crud_cdns(async_client: AsyncClient) -> None:
-
     endpoint = CDNEndpoint(
         origin="e183e06c-0252-4e0c-85bb-2fe17eb87169.ams3.digitaloceanspaces.com",
         ttl=1800,

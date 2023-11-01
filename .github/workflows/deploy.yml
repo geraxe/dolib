@@ -15,16 +15,18 @@ jobs:
           - macOS
           - Windows
         python-version:
-          - 3.9
-          - 3.8
-          - 3.7
-          - 3.6
+          - "3.12"
+          - "3.11"
+          - "3.10"
+          - "3.9"
+          - "3.8"
+
     env:
       PY_COLORS: 1
     steps:
       - uses: actions/checkout@master
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install test dependencies
@@ -41,7 +43,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.x'
       - name: Install dependencies
@@ -49,13 +51,13 @@ jobs:
       - name: Build
         run: python setup.py sdist bdist_wheel
       - name: Publish to Test PyPI
-        uses: pypa/gh-action-pypi-publish@v1.2.2
+        uses: pypa/gh-action-pypi-publish@v1.8.10
         with:
           user: __token__
           password: ${{ secrets.TESTPYPI_TOKEN }}
           repository_url: https://test.pypi.org/legacy/
       - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.2.2
+        uses: pypa/gh-action-pypi-publish@v1.8.10
         with:
           user: __token__
           password: ${{ secrets.PYPI_TOKEN }}

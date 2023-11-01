@@ -42,7 +42,6 @@ class BaseClient:
 
 
 class Client(BaseClient):
-
     account: t.Optional[mn.AccountManager] = None
     actions: t.Optional[mn.ActionsManager] = None
     cdn_endpoints: t.Optional[mn.CDNEndpointsManager] = None
@@ -125,7 +124,7 @@ class Client(BaseClient):
         # PUT to /v2/databases/$DATABASE_ID/migrate return 202 with empty body
         elif response.status_code == httpx.codes.ACCEPTED and response.content == b"":
             return {}
-
+        print(response.json())
         return response.json()
 
     def fetch_all(
@@ -164,11 +163,11 @@ class Client(BaseClient):
             response = res.json()
             result += response[key]
 
+        print(result)
         return result
 
 
 class AsyncClient(BaseClient):
-
     account: t.Optional[mn.AsyncAccountManager] = None
     actions: t.Optional[mn.AsyncActionsManager] = None
     cdn_endpoints: t.Optional[mn.AsyncCDNEndpointsManager] = None

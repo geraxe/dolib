@@ -36,3 +36,4 @@ def client() -> Client:
 async def async_client() -> AsyncClient:
     async with AsyncClient(token="fake_token") as async_client:
         return async_client
+        # yield async_client

@@ -33,7 +33,7 @@ class DatabasesManager(BaseManager):
         res = self._client.request(
             endpoint="databases",
             method="post",
-            data=database.json(
+            data=database.model_dump_json(
                 include={
                     "name",
                     "engine",
@@ -64,7 +64,7 @@ class DatabasesManager(BaseManager):
         res = self._client.request(
             endpoint="databases/{id}/replicas".format(id=id),
             method="post",
-            data=replica.json(
+            data=replica.model_dump_json(
                 include={"name", "region", "size", "tags", "private_network_uuid"}
             ),
         )
@@ -94,7 +94,7 @@ class DatabasesManager(BaseManager):
         res = self._client.request(
             endpoint="databases/{id}/users".format(id=id),
             method="post",
-            data=user.json(include={"name", "mysql_settings"}),
+            data=user.model_dump_json(include={"name", "mysql_settings"}),
         )
         return models.DBCluster.User(**res["user"])
 
@@ -120,7 +120,9 @@ class DatabasesManager(BaseManager):
 
     def add_db(self, id: str, db: models.DBCluster.DB) -> models.DBCluster.DB:
         res = self._client.request(
-            endpoint="databases/{id}/dbs".format(id=id), method="post", data=db.json()
+            endpoint="databases/{id}/dbs".format(id=id),
+            method="post",
+            data=db.model_dump_json(),
         )
         return models.DBCluster.DB(**res["db"])
 
@@ -181,7 +183,7 @@ class AsyncDatabasesManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="databases",
             method="post",
-            data=database.json(
+            data=database.model_dump_json(
                 include={
                     "name",
                     "engine",
@@ -212,7 +214,7 @@ class AsyncDatabasesManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="databases/{id}/replicas".format(id=id),
             method="post",
-            data=replica.json(
+            data=replica.model_dump_json(
                 include={"name", "region", "size", "tags", "private_network_uuid"}
             ),
         )
@@ -244,7 +246,7 @@ class AsyncDatabasesManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="databases/{id}/users".format(id=id),
             method="post",
-            data=user.json(include={"name", "mysql_settings"}),
+            data=user.model_dump_json(include={"name", "mysql_settings"}),
         )
         return models.DBCluster.User(**res["user"])
 
@@ -270,7 +272,9 @@ class AsyncDatabasesManager(AsyncBaseManager):
 
     async def add_db(self, id: str, db: models.DBCluster.DB) -> models.DBCluster.DB:
         res = await self._client.request(
-            endpoint="databases/{id}/dbs".format(id=id), method="post", data=db.json()
+            endpoint="databases/{id}/dbs".format(id=id),
+            method="post",
+            data=db.model_dump_json(),
         )
         return models.DBCluster.DB(**res["db"])
 

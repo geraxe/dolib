@@ -22,7 +22,7 @@ class CertificatesManager(BaseManager):
         res = self._client.request(
             endpoint="certificates",
             method="post",
-            data=certificate.json(
+            data=certificate.model_dump_json(
                 include={
                     "name",
                     "private_key",
@@ -59,7 +59,7 @@ class AsyncCertificatesManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="certificates",
             method="post",
-            data=certificate.json(
+            data=certificate.model_dump_json(
                 include={
                     "name",
                     "private_key",

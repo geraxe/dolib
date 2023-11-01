@@ -20,7 +20,9 @@ class VPCsManager(BaseManager):
         res = self._client.request(
             endpoint="vpcs",
             method="post",
-            data=vpc.json(include={"name", "description", "region", "ip_range"}),
+            data=vpc.model_dump_json(
+                include={"name", "description", "region", "ip_range"}
+            ),
         )
         return models.VPC(**res["vpc"])
 
@@ -28,7 +30,7 @@ class VPCsManager(BaseManager):
         res = self._client.request(
             endpoint="vpcs/{id}".format(id=vpc.id),
             method="put",
-            data=vpc.json(include={"name", "description", "default"}),
+            data=vpc.model_dump_json(include={"name", "description", "default"}),
         )
         return models.VPC(**res["vpc"])
 
@@ -60,7 +62,9 @@ class AsyncVPCsManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="vpcs",
             method="post",
-            data=vpc.json(include={"name", "description", "region", "ip_range"}),
+            data=vpc.model_dump_json(
+                include={"name", "description", "region", "ip_range"}
+            ),
         )
         return models.VPC(**res["vpc"])
 
@@ -68,7 +72,7 @@ class AsyncVPCsManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="vpcs/{id}".format(id=vpc.id),
             method="put",
-            data=vpc.json(include={"name", "description", "default"}),
+            data=vpc.model_dump_json(include={"name", "description", "default"}),
         )
         return models.VPC(**res["vpc"])
 

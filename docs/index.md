@@ -10,7 +10,7 @@ DOLib
 [![Coverage](https://codecov.io/gh/geraxe/dolib/branch/master/graph/badge.svg)](https://codecov.io/gh/geraxe/dolib)
 
 
-DOLib is a fully featured python 3.6+ library for Digital Ocean, which provides sync and async APIs. This library supports all Digital Ocean API methods and simple in use. Enjoy!
+DOLib is a fully featured python 3.8+ library for Digital Ocean, which provides sync and async APIs. This library supports all Digital Ocean API methods and simple in use. Enjoy!
 
 You can easily use the sync Client
 
@@ -73,5 +73,5 @@ Easy install from PyPI:
 pip install dolib
 ```
 
-*dolib* required python 3.6, 3.7, 3.8, or 3.9, [pydantic](https://pypi.org/project/pydantic/), and
+*dolib* required python 3.8+, [pydantic](https://pypi.org/project/pydantic/), and
 [`httpx`](https://pypi.org/project/httpx/)

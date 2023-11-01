@@ -31,7 +31,7 @@ class DropletsManager(BaseManager):
         res = self._client.request(
             endpoint="droplets",
             method="post",
-            data=droplet.json(
+            data=droplet.model_dump_json(
                 include={
                     "name",
                     "region",
@@ -143,7 +143,6 @@ class DropletsManager(BaseManager):
         return self._action(id, "password_reset")
 
     def resize(self, id: str, size: str, disk: bool = None) -> models.Action:
-
         post_json: Dict[str, Any] = {
             "type": "resize",
             "size": size,
@@ -246,7 +245,7 @@ class AsyncDropletsManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="droplets",
             method="post",
-            data=droplet.json(
+            data=droplet.model_dump_json(
                 include={
                     "name",
                     "region",
@@ -358,7 +357,6 @@ class AsyncDropletsManager(AsyncBaseManager):
         return await self._action(id, "password_reset")
 
     async def resize(self, id: str, size: str, disk: bool = None) -> models.Action:
-
         post_json: Dict[str, Any] = {
             "type": "resize",
             "size": size,

@@ -7,7 +7,6 @@ from dolib.models import Invoice
 @pytest.mark.vcr
 @pytest.mark.block_network()
 def test_crud_invoices(client: Client) -> None:
-
     # list invoices
     invoices = client.invoices.all()
     assert len(invoices) > 0
