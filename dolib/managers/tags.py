@@ -33,7 +33,6 @@ class TagsManager(BaseManager):
         )
 
     def tag_resources(self, name: str, resources: List[models.Tag.Resource]) -> None:
-
         post_json = {"resources": [res.dict() for res in resources]}
 
         self._client.request(
@@ -43,7 +42,6 @@ class TagsManager(BaseManager):
         )
 
     def untag_resources(self, name: str, resources: List[models.Tag.Resource]) -> None:
-
         post_json = {"resources": [res.dict() for res in resources]}
 
         self._client.request(
@@ -84,7 +82,6 @@ class AsyncTagsManager(AsyncBaseManager):
     async def tag_resources(
         self, name: str, resources: List[models.Tag.Resource]
     ) -> None:
-
         post_json = {"resources": [res.dict() for res in resources]}
 
         await self._client.request(
@@ -96,7 +93,6 @@ class AsyncTagsManager(AsyncBaseManager):
     async def untag_resources(
         self, name: str, resources: List[models.Tag.Resource]
     ) -> None:
-
         post_json = {"resources": [res.dict() for res in resources]}
 
         await self._client.request(

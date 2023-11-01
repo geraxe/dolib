@@ -66,7 +66,6 @@ class KubernetesManager(BaseManager):
     def add_node_pool(
         self, id: str, pool: models.K8SCluster.Pool
     ) -> models.K8SCluster.Pool:
-
         res = self._client.request(
             endpoint="kubernetes/clusters/{id}/node_pools".format(id=id),
             method="post",
@@ -217,7 +216,6 @@ class AsyncKubernetesManager(AsyncBaseManager):
     async def add_node_pool(
         self, id: str, pool: models.K8SCluster.Pool
     ) -> models.K8SCluster.Pool:
-
         res = await self._client.request(
             endpoint="kubernetes/clusters/{id}/node_pools".format(id=id),
             method="post",

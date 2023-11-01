@@ -1,17 +1,19 @@
 import sys
+from importlib.metadata import PackageNotFoundError
 from unittest.mock import MagicMock, patch
 
 import pytest
 from httpx import HTTPStatusError
-from pkg_resources import DistributionNotFound
 
 from dolib import AsyncClient, Client
 from dolib.client import BaseClient
 
 
-@patch("pkg_resources.get_distribution", side_effect=DistributionNotFound)
+@patch("importlib.metadata.version", side_effect=PackageNotFoundError)
 def test_version(mock: MagicMock) -> None:
-    del sys.modules["dolib.__version__"]
+    if "dolib.__version__" in sys.modules:
+        del sys.modules["dolib.__version__"]
+
     from dolib.__version__ import __version__
 
     assert __version__ is None
@@ -27,7 +29,6 @@ def test_base_client() -> None:
 @pytest.mark.vcr
 @pytest.mark.block_network()
 def test_client(client: Client) -> None:
-
     # without ratelimits in header
     client.request_raw(endpoint="account/keys", method="get")
     assert client._ratelimit_limit is None
@@ -56,7 +57,6 @@ def test_client(client: Client) -> None:
 @pytest.mark.block_network()
 @pytest.mark.asyncio
 async def test_async_client(async_client: AsyncClient) -> None:
-
     # without ratelimits in header
     await async_client.request_raw(endpoint="account/keys", method="get")
     assert async_client._ratelimit_limit is None

@@ -7,7 +7,6 @@ from dolib.models import Snapshot
 @pytest.mark.vcr
 @pytest.mark.block_network()
 def test_crud_snapshots(client: Client) -> None:
-
     # list snapshots
     snapshots = client.snapshots.all()
     snapshots_count = len(snapshots)
@@ -31,7 +30,6 @@ def test_crud_snapshots(client: Client) -> None:
 @pytest.mark.block_network()
 @pytest.mark.asyncio
 async def test_async_crud_snapshots(async_client: AsyncClient) -> None:
-
     # list snapshots
     snapshots = await async_client.snapshots.all()
     snapshots_count = len(snapshots)

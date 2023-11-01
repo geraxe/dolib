@@ -84,7 +84,6 @@ class VolumesManager(BaseManager):
         return [models.Snapshot(**snapshot) for snapshot in res]
 
     def create_snapshot(self, id: str, snapshot: models.Snapshot) -> models.Snapshot:
-
         res = self._client.request(
             endpoint="volumes/{id}/snapshots".format(id=id),
             method="post",
@@ -183,7 +182,6 @@ class AsyncVolumesManager(AsyncBaseManager):
     async def create_snapshot(
         self, id: str, snapshot: models.Snapshot
     ) -> models.Snapshot:
-
         res = await self._client.request(
             endpoint="volumes/{id}/snapshots".format(id=id),
             method="post",
