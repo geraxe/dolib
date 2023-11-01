@@ -22,7 +22,7 @@ class CDNEndpointsManager(BaseManager):
         res = self._client.request(
             endpoint="cdn/endpoints",
             method="post",
-            data=endpoint.json(
+            data=endpoint.model_dump_json(
                 include={"origin", "ttl", "certificate_id", "custom_domain"}
             ),
         )
@@ -32,7 +32,9 @@ class CDNEndpointsManager(BaseManager):
         res = self._client.request(
             endpoint="cdn/endpoints/{id}".format(id=endpoint.id),
             method="put",
-            data=endpoint.json(include={"ttl", "certificate_id", "custom_domain"}),
+            data=endpoint.model_dump_json(
+                include={"ttl", "certificate_id", "custom_domain"}
+            ),
         )
         return models.CDNEndpoint(**res["endpoint"])
 
@@ -70,7 +72,7 @@ class AsyncCDNEndpointsManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="cdn/endpoints",
             method="post",
-            data=endpoint.json(
+            data=endpoint.model_dump_json(
                 include={"origin", "ttl", "certificate_id", "custom_domain"}
             ),
         )
@@ -80,7 +82,9 @@ class AsyncCDNEndpointsManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="cdn/endpoints/{id}".format(id=endpoint.id),
             method="put",
-            data=endpoint.json(include={"ttl", "certificate_id", "custom_domain"}),
+            data=endpoint.model_dump_json(
+                include={"ttl", "certificate_id", "custom_domain"}
+            ),
         )
         return models.CDNEndpoint(**res["endpoint"])
 

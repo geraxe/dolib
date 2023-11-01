@@ -26,7 +26,7 @@ class RegistryManager(BaseManager):
         res = self._client.request(
             endpoint="registry",
             method="post",
-            data=registry.json(include={"name", "subscription_tier_slug"}),
+            data=registry.model_dump_json(include={"name", "subscription_tier_slug"}),
         )
         return (
             models.Registry(**res["registry"]),
@@ -147,7 +147,7 @@ class AsyncRegistryManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="registry",
             method="post",
-            data=registry.json(include={"name", "subscription_tier_slug"}),
+            data=registry.model_dump_json(include={"name", "subscription_tier_slug"}),
         )
         return (
             models.Registry(**res["registry"]),

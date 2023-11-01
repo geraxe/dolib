@@ -22,7 +22,7 @@ class LoadBalancersManager(BaseManager):
         res = self._client.request(
             endpoint="load_balancers",
             method="post",
-            data=load_balancer.json(),
+            data=load_balancer.model_dump_json(),
         )
         return models.LoadBalancer(**res["load_balancer"])
 
@@ -33,7 +33,7 @@ class LoadBalancersManager(BaseManager):
         res = self._client.request(
             endpoint="load_balancers/{id}".format(id=load_balancer.id),
             method="put",
-            data=load_balancer.json(
+            data=load_balancer.model_dump_json(
                 include={
                     "name",
                     "size",
@@ -78,7 +78,9 @@ class LoadBalancersManager(BaseManager):
     def add_forwarding_rules(
         self, id: str, forwarding_rules: List[models.LoadBalancer.ForwardingRule]
     ) -> None:
-        post_json = {"forwarding_rules": [rule.dict() for rule in forwarding_rules]}
+        post_json = {
+            "forwarding_rules": [rule.model_dump() for rule in forwarding_rules]
+        }
         self._client.request(
             endpoint="load_balancers/{id}/forwarding_rules".format(id=id),
             method="post",
@@ -90,7 +92,9 @@ class LoadBalancersManager(BaseManager):
         id: str,
         forwarding_rules: List[models.LoadBalancer.ForwardingRule],
     ) -> None:
-        post_json = {"forwarding_rules": [rule.dict() for rule in forwarding_rules]}
+        post_json = {
+            "forwarding_rules": [rule.model_dump() for rule in forwarding_rules]
+        }
         self._client.request(
             endpoint="load_balancers/{id}/forwarding_rules".format(id=id),
             method="delete",
@@ -118,7 +122,7 @@ class AsyncLoadBalancersManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="load_balancers",
             method="post",
-            data=load_balancer.json(),
+            data=load_balancer.model_dump_json(),
         )
         return models.LoadBalancer(**res["load_balancer"])
 
@@ -129,7 +133,7 @@ class AsyncLoadBalancersManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="load_balancers/{id}".format(id=load_balancer.id),
             method="put",
-            data=load_balancer.json(
+            data=load_balancer.model_dump_json(
                 include={
                     "name",
                     "size",
@@ -174,7 +178,9 @@ class AsyncLoadBalancersManager(AsyncBaseManager):
     async def add_forwarding_rules(
         self, id: str, forwarding_rules: List[models.LoadBalancer.ForwardingRule]
     ) -> None:
-        post_json = {"forwarding_rules": [rule.dict() for rule in forwarding_rules]}
+        post_json = {
+            "forwarding_rules": [rule.model_dump() for rule in forwarding_rules]
+        }
         await self._client.request(
             endpoint="load_balancers/{id}/forwarding_rules".format(id=id),
             method="post",
@@ -186,7 +192,9 @@ class AsyncLoadBalancersManager(AsyncBaseManager):
         id: str,
         forwarding_rules: List[models.LoadBalancer.ForwardingRule],
     ) -> None:
-        post_json = {"forwarding_rules": [rule.dict() for rule in forwarding_rules]}
+        post_json = {
+            "forwarding_rules": [rule.model_dump() for rule in forwarding_rules]
+        }
         await self._client.request(
             endpoint="load_balancers/{id}/forwarding_rules".format(id=id),
             method="delete",

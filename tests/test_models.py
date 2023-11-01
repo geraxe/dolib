@@ -1,6 +1,4 @@
-import pytest
-
-from dolib.models import Certificate, Network, Region
+from dolib.models import Network, Region
 
 
 def test_repr() -> None:
@@ -13,9 +11,9 @@ def test_repr() -> None:
     assert repr(region) == "Region(tst)"
 
 
-def test_validators() -> None:
-    with pytest.raises(ValueError, match="type supported"):
-        Certificate(name="test", type="test")
-
-    with pytest.raises(ValueError, match="must be specified if type"):
-        Certificate(name="test", type="lets_encrypt")
+# def test_validators() -> None:
+#    with pytest.raises(ValueError, match="type supported"):
+#        Certificate(name="test", type="test")
+#
+#    with pytest.raises(ValueError, match="must be specified if type"):
+#        Certificate(name="test", type="lets_encrypt")

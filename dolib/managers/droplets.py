@@ -31,7 +31,7 @@ class DropletsManager(BaseManager):
         res = self._client.request(
             endpoint="droplets",
             method="post",
-            data=droplet.json(
+            data=droplet.model_dump_json(
                 include={
                     "name",
                     "region",
@@ -245,7 +245,7 @@ class AsyncDropletsManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="droplets",
             method="post",
-            data=droplet.json(
+            data=droplet.model_dump_json(
                 include={
                     "name",
                     "region",

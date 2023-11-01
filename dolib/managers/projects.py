@@ -20,7 +20,7 @@ class ProjectsManager(BaseManager):
         res = self._client.request(
             endpoint="projects",
             method="post",
-            data=project.json(
+            data=project.model_dump_json(
                 include={"name", "description", "purpose", "environment"}
             ),
         )
@@ -30,7 +30,7 @@ class ProjectsManager(BaseManager):
         res = self._client.request(
             endpoint="projects/{id}".format(id=project.id),
             method="put",
-            data=project.json(
+            data=project.model_dump_json(
                 include={"name", "description", "purpose", "environment", "is_default"}
             ),
         )
@@ -77,7 +77,7 @@ class AsyncProjectsManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="projects",
             method="post",
-            data=project.json(
+            data=project.model_dump_json(
                 include={"name", "description", "purpose", "environment"}
             ),
         )
@@ -87,7 +87,7 @@ class AsyncProjectsManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="projects/{id}".format(id=project.id),
             method="put",
-            data=project.json(
+            data=project.model_dump_json(
                 include={"name", "description", "purpose", "environment", "is_default"}
             ),
         )

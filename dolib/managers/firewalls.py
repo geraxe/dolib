@@ -22,7 +22,7 @@ class FirewallsManager(BaseManager):
         res = self._client.request(
             endpoint="firewalls",
             method="post",
-            data=firewall.json(
+            data=firewall.model_dump_json(
                 include={
                     "name",
                     "inbound_rules",
@@ -38,7 +38,7 @@ class FirewallsManager(BaseManager):
         res = self._client.request(
             endpoint="firewalls/{id}".format(id=firewall.id),
             method="put",
-            data=firewall.json(
+            data=firewall.model_dump_json(
                 include={
                     "name",
                     "inbound_rules",
@@ -95,9 +95,9 @@ class FirewallsManager(BaseManager):
 
         post_json = {}
         if inbound_rules is not None:
-            post_json["inbound_rules"] = [rule.dict() for rule in inbound_rules]
+            post_json["inbound_rules"] = [rule.model_dump() for rule in inbound_rules]
         if outbound_rules is not None:
-            post_json["outbound_rules"] = [rule.dict() for rule in outbound_rules]
+            post_json["outbound_rules"] = [rule.model_dump() for rule in outbound_rules]
 
         self._client.request(
             endpoint="firewalls/{id}/rules".format(id=id),
@@ -117,9 +117,9 @@ class FirewallsManager(BaseManager):
 
         post_json = {}
         if inbound_rules is not None:
-            post_json["inbound_rules"] = [rule.dict() for rule in inbound_rules]
+            post_json["inbound_rules"] = [rule.model_dump() for rule in inbound_rules]
         if outbound_rules is not None:
-            post_json["outbound_rules"] = [rule.dict() for rule in outbound_rules]
+            post_json["outbound_rules"] = [rule.model_dump() for rule in outbound_rules]
 
         self._client.request(
             endpoint="firewalls/{id}/rules".format(id=id),
@@ -146,7 +146,7 @@ class AsyncFirewallsManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="firewalls",
             method="post",
-            data=firewall.json(
+            data=firewall.model_dump_json(
                 include={
                     "name",
                     "inbound_rules",
@@ -162,7 +162,7 @@ class AsyncFirewallsManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="firewalls/{id}".format(id=firewall.id),
             method="put",
-            data=firewall.json(
+            data=firewall.model_dump_json(
                 include={
                     "name",
                     "inbound_rules",
@@ -219,9 +219,9 @@ class AsyncFirewallsManager(AsyncBaseManager):
 
         post_json = {}
         if inbound_rules is not None:
-            post_json["inbound_rules"] = [rule.dict() for rule in inbound_rules]
+            post_json["inbound_rules"] = [rule.model_dump() for rule in inbound_rules]
         if outbound_rules is not None:
-            post_json["outbound_rules"] = [rule.dict() for rule in outbound_rules]
+            post_json["outbound_rules"] = [rule.model_dump() for rule in outbound_rules]
 
         await self._client.request(
             endpoint="firewalls/{id}/rules".format(id=id),
@@ -241,9 +241,9 @@ class AsyncFirewallsManager(AsyncBaseManager):
 
         post_json = {}
         if inbound_rules is not None:
-            post_json["inbound_rules"] = [rule.dict() for rule in inbound_rules]
+            post_json["inbound_rules"] = [rule.model_dump() for rule in inbound_rules]
         if outbound_rules is not None:
-            post_json["outbound_rules"] = [rule.dict() for rule in outbound_rules]
+            post_json["outbound_rules"] = [rule.model_dump() for rule in outbound_rules]
 
         await self._client.request(
             endpoint="firewalls/{id}/rules".format(id=id),

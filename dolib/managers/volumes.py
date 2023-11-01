@@ -20,7 +20,7 @@ class VolumesManager(BaseManager):
         res = self._client.request(
             endpoint="volumes",
             method="post",
-            data=volume.json(),
+            data=volume.model_dump_json(),
         )
         return models.Volume(**res["volume"])
 
@@ -87,7 +87,7 @@ class VolumesManager(BaseManager):
         res = self._client.request(
             endpoint="volumes/{id}/snapshots".format(id=id),
             method="post",
-            data=snapshot.json(include={"name", "tags"}),
+            data=snapshot.model_dump_json(include={"name", "tags"}),
         )
         return models.Snapshot(**res["snapshot"])
 
@@ -116,7 +116,7 @@ class AsyncVolumesManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="volumes",
             method="post",
-            data=volume.json(),
+            data=volume.model_dump_json(),
         )
         return models.Volume(**res["volume"])
 
@@ -185,7 +185,7 @@ class AsyncVolumesManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="volumes/{id}/snapshots".format(id=id),
             method="post",
-            data=snapshot.json(include={"name", "tags"}),
+            data=snapshot.model_dump_json(include={"name", "tags"}),
         )
         return models.Snapshot(**res["snapshot"])
 

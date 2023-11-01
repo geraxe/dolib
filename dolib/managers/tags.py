@@ -22,7 +22,7 @@ class TagsManager(BaseManager):
         res = self._client.request(
             endpoint="tags",
             method="post",
-            data=tag.json(include={"name"}),
+            data=tag.model_dump_json(include={"name"}),
         )
         return models.Tag(**res["tag"])
 
@@ -33,7 +33,7 @@ class TagsManager(BaseManager):
         )
 
     def tag_resources(self, name: str, resources: List[models.Tag.Resource]) -> None:
-        post_json = {"resources": [res.dict() for res in resources]}
+        post_json = {"resources": [res.model_dump() for res in resources]}
 
         self._client.request(
             endpoint="tags/{name}/resources".format(name=name),
@@ -42,7 +42,7 @@ class TagsManager(BaseManager):
         )
 
     def untag_resources(self, name: str, resources: List[models.Tag.Resource]) -> None:
-        post_json = {"resources": [res.dict() for res in resources]}
+        post_json = {"resources": [res.model_dump() for res in resources]}
 
         self._client.request(
             endpoint="tags/{name}/resources".format(name=name),
@@ -69,7 +69,7 @@ class AsyncTagsManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="tags",
             method="post",
-            data=tag.json(include={"name"}),
+            data=tag.model_dump_json(include={"name"}),
         )
         return models.Tag(**res["tag"])
 
@@ -82,7 +82,7 @@ class AsyncTagsManager(AsyncBaseManager):
     async def tag_resources(
         self, name: str, resources: List[models.Tag.Resource]
     ) -> None:
-        post_json = {"resources": [res.dict() for res in resources]}
+        post_json = {"resources": [res.model_dump() for res in resources]}
 
         await self._client.request(
             endpoint="tags/{name}/resources".format(name=name),
@@ -93,7 +93,7 @@ class AsyncTagsManager(AsyncBaseManager):
     async def untag_resources(
         self, name: str, resources: List[models.Tag.Resource]
     ) -> None:
-        post_json = {"resources": [res.dict() for res in resources]}
+        post_json = {"resources": [res.model_dump() for res in resources]}
 
         await self._client.request(
             endpoint="tags/{name}/resources".format(name=name),

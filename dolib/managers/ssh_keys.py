@@ -23,7 +23,7 @@ class SSHKeysManager(BaseManager):
         res = self._client.request(
             endpoint="account/keys",
             method="post",
-            data=key.json(include={"name", "public_key"}),
+            data=key.model_dump_json(include={"name", "public_key"}),
         )
         return models.SSHKey(**res["ssh_key"])
 
@@ -32,7 +32,7 @@ class SSHKeysManager(BaseManager):
         res = self._client.request(
             endpoint="account/keys/{id}".format(id=key.id),
             method="put",
-            data=key.json(include={"name"}),
+            data=key.model_dump_json(include={"name"}),
         )
         return models.SSHKey(**res["ssh_key"])
 
@@ -62,7 +62,7 @@ class AsyncSSHKeysManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="account/keys",
             method="post",
-            data=key.json(include={"name", "public_key"}),
+            data=key.model_dump_json(include={"name", "public_key"}),
         )
         return models.SSHKey(**res["ssh_key"])
 
@@ -71,7 +71,7 @@ class AsyncSSHKeysManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="account/keys/{id}".format(id=key.id),
             method="put",
-            data=key.json(include={"name"}),
+            data=key.model_dump_json(include={"name"}),
         )
         return models.SSHKey(**res["ssh_key"])
 

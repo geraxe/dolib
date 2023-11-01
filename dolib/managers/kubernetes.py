@@ -24,7 +24,7 @@ class KubernetesManager(BaseManager):
         res = self._client.request(
             endpoint="kubernetes/clusters",
             method="post",
-            data=cluster.json(
+            data=cluster.model_dump_json(
                 include={
                     "name",
                     "region",
@@ -43,7 +43,7 @@ class KubernetesManager(BaseManager):
         self._client.request(
             endpoint="kubernetes/clusters/{id}".format(id=cluster.id),
             method="put",
-            data=cluster.json(
+            data=cluster.model_dump_json(
                 include={"name", "auto_upgrade", "tags", "maintenance_policy"}
             ),
         )
@@ -69,7 +69,7 @@ class KubernetesManager(BaseManager):
         res = self._client.request(
             endpoint="kubernetes/clusters/{id}/node_pools".format(id=id),
             method="post",
-            data=pool.json(
+            data=pool.model_dump_json(
                 include={
                     "size",
                     "name",
@@ -100,7 +100,7 @@ class KubernetesManager(BaseManager):
                 id=id, pool_id=pool.id
             ),
             method="put",
-            data=pool.json(
+            data=pool.model_dump_json(
                 include={
                     "name",
                     "count",
@@ -174,7 +174,7 @@ class AsyncKubernetesManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="kubernetes/clusters",
             method="post",
-            data=cluster.json(
+            data=cluster.model_dump_json(
                 include={
                     "name",
                     "region",
@@ -193,7 +193,7 @@ class AsyncKubernetesManager(AsyncBaseManager):
         await self._client.request(
             endpoint="kubernetes/clusters/{id}".format(id=cluster.id),
             method="put",
-            data=cluster.json(
+            data=cluster.model_dump_json(
                 include={"name", "auto_upgrade", "tags", "maintenance_policy"}
             ),
         )
@@ -219,7 +219,7 @@ class AsyncKubernetesManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="kubernetes/clusters/{id}/node_pools".format(id=id),
             method="post",
-            data=pool.json(
+            data=pool.model_dump_json(
                 include={
                     "size",
                     "name",
@@ -250,7 +250,7 @@ class AsyncKubernetesManager(AsyncBaseManager):
                 id=id, pool_id=pool.id
             ),
             method="put",
-            data=pool.json(
+            data=pool.model_dump_json(
                 include={
                     "name",
                     "count",

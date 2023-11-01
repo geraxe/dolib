@@ -22,7 +22,7 @@ class DomainsManager(BaseManager):
         res = self._client.request(
             endpoint="domains",
             method="post",
-            data=domain.json(include={"name"}),
+            data=domain.model_dump_json(include={"name"}),
         )
         return models.Domain(**res["domain"])
 
@@ -52,7 +52,7 @@ class DomainsManager(BaseManager):
         res = self._client.request(
             endpoint="domains/{name}/records".format(name=name),
             method="post",
-            data=record.json(),
+            data=record.model_dump_json(),
         )
         return models.Domain.Record(**res["domain_record"])
 
@@ -64,7 +64,7 @@ class DomainsManager(BaseManager):
                 name=name, record_id=record.id
             ),
             method="put",
-            data=record.json(),
+            data=record.model_dump_json(),
         )
         return models.Domain.Record(**res["domain_record"])
 
@@ -74,7 +74,7 @@ class DomainsManager(BaseManager):
                 name=name, record_id=record.id
             ),
             method="delete",
-            data=record.json(),
+            data=record.model_dump_json(),
         )
 
 
@@ -96,7 +96,7 @@ class AsyncDomainsManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="domains",
             method="post",
-            data=domain.json(include={"name"}),
+            data=domain.model_dump_json(include={"name"}),
         )
         return models.Domain(**res["domain"])
 
@@ -126,7 +126,7 @@ class AsyncDomainsManager(AsyncBaseManager):
         res = await self._client.request(
             endpoint="domains/{name}/records".format(name=name),
             method="post",
-            data=record.json(),
+            data=record.model_dump_json(),
         )
         return models.Domain.Record(**res["domain_record"])
 
@@ -138,7 +138,7 @@ class AsyncDomainsManager(AsyncBaseManager):
                 name=name, record_id=record.id
             ),
             method="put",
-            data=record.json(),
+            data=record.model_dump_json(),
         )
         return models.Domain.Record(**res["domain_record"])
 
@@ -148,5 +148,5 @@ class AsyncDomainsManager(AsyncBaseManager):
                 name=name, record_id=record.id
             ),
             method="delete",
-            data=record.json(),
+            data=record.model_dump_json(),
         )

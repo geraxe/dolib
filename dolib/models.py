@@ -20,7 +20,7 @@ class Region(BaseModel):
 
 class Network(BaseModel):
     ip_address: str
-    netmask: str
+    netmask: Union[str, int]
     gateway: str
     type: str
 
@@ -48,11 +48,11 @@ class Action(BaseModel):
     status: str
     type: str
     started_at: datetime
-    completed_at: Optional[datetime]
-    resource_id: Optional[int]
+    completed_at: Optional[datetime] = None
+    resource_id: Optional[int] = None
     resource_type: str
-    region: Optional[Region]
-    region_slug: Optional[str]
+    region: Optional[Region] = None
+    region_slug: Optional[str] = None
 
 
 class Balance(BaseModel):
@@ -72,27 +72,27 @@ class BillingHistory(BaseModel):
 
 
 class CDNEndpoint(BaseModel):
-    id: Optional[uuid.UUID]
+    id: Optional[uuid.UUID] = None
     origin: str
-    endpoint: Optional[str]
-    created_at: Optional[datetime]
-    ttl: Optional[int]
-    certificate_id: Optional[str]
-    custom_domain: Optional[str]
+    endpoint: Optional[str] = None
+    created_at: Optional[datetime] = None
+    ttl: Optional[int] = None
+    certificate_id: Optional[str] = None
+    custom_domain: Optional[str] = None
 
 
 class Certificate(BaseModel):
-    id: Optional[uuid.UUID]
+    id: Optional[uuid.UUID] = None
     name: str
     type: str
-    private_key: Optional[str]
-    leaf_certificate: Optional[str]
-    certificate_chain: Optional[str]
-    not_after: Optional[datetime]
-    sha1_fingerprint: Optional[str]
-    created_at: Optional[datetime]
-    dns_names: Optional[List[str]]
-    state: Optional[str]
+    private_key: Optional[str] = None
+    leaf_certificate: Optional[str] = None
+    certificate_chain: Optional[str] = None
+    not_after: Optional[datetime] = None
+    sha1_fingerprint: Optional[str] = None
+    created_at: Optional[datetime] = None
+    dns_names: Optional[List[str]] = None
+    state: Optional[str] = None
 
 
 class DBCluster(BaseModel):
@@ -107,14 +107,14 @@ class DBCluster(BaseModel):
 
     class User(BaseModel):
         name: str
-        role: Optional[str]
-        password: Optional[str]
-        mysql_settings: Optional[dict]
+        role: Optional[str] = None
+        password: Optional[str] = None
+        mysql_settings: Optional[dict] = None
 
     class DB(BaseModel):
         name: str
 
-    id: Optional[uuid.UUID]
+    id: Optional[uuid.UUID] = None
 
     # required params
     name: str
@@ -124,50 +124,50 @@ class DBCluster(BaseModel):
     num_nodes: int
 
     # optional params
-    version: Optional[str]
-    connection: Optional[Connection]
-    private_connection: Optional[Connection]
-    users: Optional[List[User]]
-    db_names: Optional[List[str]]
-    status: Optional[str]
-    maintenance_window: Optional[dict]
-    created_at: Optional[datetime]
-    tags: Optional[List[str]]
-    private_network_uuid: Optional[uuid.UUID]
+    version: Optional[str] = None
+    connection: Optional[Connection] = None
+    private_connection: Optional[Connection] = None
+    users: Optional[List[User]] = None
+    db_names: Optional[List[str]] = None
+    status: Optional[str] = None
+    maintenance_window: Optional[dict] = None
+    created_at: Optional[datetime] = None
+    tags: Optional[List[str]] = None
+    private_network_uuid: Optional[uuid.UUID] = None
 
 
 class DBReplica(BaseModel):
     name: str
-    size: Optional[str]
-    connection: Optional[DBCluster.Connection]
-    private_connection: Optional[DBCluster.Connection]
-    region: Optional[str]
-    status: Optional[str]
-    created_at: Optional[datetime]
-    tags: Optional[List[str]]
-    private_network_uuid: Optional[uuid.UUID]
+    size: Optional[str] = None
+    connection: Optional[DBCluster.Connection] = None
+    private_connection: Optional[DBCluster.Connection] = None
+    region: Optional[str] = None
+    status: Optional[str] = None
+    created_at: Optional[datetime] = None
+    tags: Optional[List[str]] = None
+    private_network_uuid: Optional[uuid.UUID] = None
 
 
 class Invoice(BaseModel):
     class Item(BaseModel):
         product: str
-        resource_uuid: Optional[uuid.UUID]
-        resource_id: Optional[str]
-        group_description: Optional[str]
+        resource_uuid: Optional[uuid.UUID] = None
+        resource_id: Optional[str] = None
+        group_description: Optional[str] = None
         description: str
         amount: Decimal
         duration: str
         duration_unit: str
         start_time: datetime
         end_time: datetime
-        project_name: Optional[str]
+        project_name: Optional[str] = None
 
-    invoice_uuid: Optional[uuid.UUID]
-    amount: Optional[Decimal]
-    invoice_period: Optional[str]
-    billing_period: Optional[str]
-    updated_at: Optional[datetime]
-    invoice_items: Optional[List[Item]]
+    invoice_uuid: Optional[uuid.UUID] = None
+    amount: Optional[Decimal] = None
+    invoice_period: Optional[str] = None
+    billing_period: Optional[str] = None
+    updated_at: Optional[datetime] = None
+    invoice_items: Optional[List[Item]] = None
 
 
 class Image(BaseModel):
@@ -215,20 +215,20 @@ class Image(BaseModel):
 
 class Domain(BaseModel):
     class Record(BaseModel):
-        id: Optional[int]
+        id: Optional[int] = None
         type: str
-        name: Optional[str]
-        data: Optional[str]
-        priority: Optional[int]
-        port: Optional[int]
-        ttl: Optional[int]
-        weight: Optional[int]
-        flags: Optional[int]
-        tag: Optional[str]
+        name: Optional[str] = None
+        data: Optional[str] = None
+        priority: Optional[int] = None
+        port: Optional[int] = None
+        ttl: Optional[int] = None
+        weight: Optional[int] = None
+        flags: Optional[int] = None
+        tag: Optional[str] = None
 
     name: str
-    ttl: Optional[int]
-    zone_file: Optional[str]
+    ttl: Optional[int] = None
+    zone_file: Optional[str] = None
 
 
 class Droplet(BaseModel):
@@ -256,7 +256,7 @@ class Droplet(BaseModel):
         start: datetime
         end: datetime
 
-    id: Optional[int]
+    id: Optional[int] = None
 
     # required params
     name: str
@@ -265,37 +265,37 @@ class Droplet(BaseModel):
     image: Union[int, str, Image]
 
     # optional params
-    ssh_keys: Optional[List[Union[int, str]]]
-    backups: Optional[bool]
-    ipv6: Optional[bool]
-    private_networking: Optional[bool]
-    monitoring: Optional[bool]
-    vpc_uuid: Optional[uuid.UUID]
-    user_data: Optional[str]
-    volumes: Optional[List[str]]
-    tags: Optional[List[str]]
+    ssh_keys: Optional[List[Union[int, str]]] = None
+    backups: Optional[bool] = None
+    ipv6: Optional[bool] = None
+    private_networking: Optional[bool] = None
+    monitoring: Optional[bool] = None
+    vpc_uuid: Optional[uuid.UUID] = None
+    user_data: Optional[str] = None
+    volumes: Optional[List[str]] = None
+    tags: Optional[List[str]] = None
 
-    memory: Optional[int]
-    vcpus: Optional[int]
-    disk: Optional[int]
-    locked: Optional[bool]
-    created_at: Optional[datetime]
-    status: Optional[str]
-    backup_ids: Optional[List[int]]
-    snapshot_ids: Optional[List[int]]
-    features: Optional[List[str]]
-    size_slug: Optional[str]
-    networks: Optional[Networks]
-    kernel: Optional[Kernel]
-    next_backup_window: Optional[BackupWindow]
-    volume_ids: Optional[List[str]]
+    memory: Optional[int] = None
+    vcpus: Optional[int] = None
+    disk: Optional[int] = None
+    locked: Optional[bool] = None
+    created_at: Optional[datetime] = None
+    status: Optional[str] = None
+    backup_ids: Optional[List[int]] = None
+    snapshot_ids: Optional[List[int]] = None
+    features: Optional[List[str]] = None
+    size_slug: Optional[str] = None
+    networks: Optional[Networks] = None
+    kernel: Optional[Kernel] = None
+    next_backup_window: Optional[BackupWindow] = None
+    volume_ids: Optional[List[str]] = None
 
 
 class FirewallTargets(BaseModel):
-    addresses: Optional[List[str]]
-    droplet_ids: Optional[List[int]]
-    load_balancer_uids: Optional[List[str]]
-    tags: Optional[List[str]]
+    addresses: Optional[List[str]] = None
+    droplet_ids: Optional[List[int]] = None
+    load_balancer_uids: Optional[List[str]] = None
+    tags: Optional[List[str]] = None
 
 
 class Firewall(BaseModel):
@@ -314,25 +314,25 @@ class Firewall(BaseModel):
         removing: str
         status: str
 
-    id: Optional[uuid.UUID]
+    id: Optional[uuid.UUID] = None
 
     # required params
     name: str
 
     # optional params
-    status: Optional[str]
-    created_at: Optional[datetime]
-    pending_changes: Optional[List[Changes]]
-    inbound_rules: Optional[List[InboundRule]]
-    outbound_rules: Optional[List[OutboundRule]]
-    droplet_ids: Optional[List[int]]
-    tags: Optional[List[str]]
+    status: Optional[str] = None
+    created_at: Optional[datetime] = None
+    pending_changes: Optional[List[Changes]] = None
+    inbound_rules: Optional[List[InboundRule]] = None
+    outbound_rules: Optional[List[OutboundRule]] = None
+    droplet_ids: Optional[List[int]] = None
+    tags: Optional[List[str]] = None
 
 
 class FloatingIP(BaseModel):
-    ip: Optional[str]
-    region: Optional[Union[str, Region]]
-    droplet: Optional[Droplet]
+    ip: Optional[str] = None
+    region: Optional[Union[str, Region]] = None
+    droplet: Optional[Droplet] = None
 
 
 class K8SCluster(BaseModel):
@@ -345,26 +345,26 @@ class K8SCluster(BaseModel):
             class Status(BaseModel):
                 state: str
 
-            id: Optional[uuid.UUID]
+            id: Optional[uuid.UUID] = None
             name: str
             status: Status
             created_at: datetime
             updated_at: datetime
 
-        id: Optional[uuid.UUID]
+        id: Optional[uuid.UUID] = None
 
         size: str
         name: str
         count: int
 
-        tags: Optional[List[str]]
-        labels: Optional[Labels]
-        auto_scale: Optional[bool]
-        min_nodes: Optional[int]
-        max_nodes: Optional[int]
-        nodes: Optional[List[Node]]
+        tags: Optional[List[str]] = None
+        labels: Optional[Labels] = None
+        auto_scale: Optional[bool] = None
+        min_nodes: Optional[int] = None
+        max_nodes: Optional[int] = None
+        nodes: Optional[List[Node]] = None
 
-    id: Optional[str]
+    id: Optional[str] = None
 
     # required params
     name: str
@@ -373,16 +373,16 @@ class K8SCluster(BaseModel):
     node_pools: List[Pool]
 
     # optional params
-    endpoint: Optional[str]
-    auto_upgrade: Optional[bool]
-    ipv4: Optional[str]
-    cluster_subnet: Optional[str]
-    service_subnet: Optional[str]
-    vpc_uuid: Optional[uuid.UUID]
-    tags: Optional[List[str]]
-    maintenance_policy: Optional[dict]
-    created_at: Optional[str]
-    updated_at: Optional[str]
+    endpoint: Optional[str] = None
+    auto_upgrade: Optional[bool] = None
+    ipv4: Optional[str] = None
+    cluster_subnet: Optional[str] = None
+    service_subnet: Optional[str] = None
+    vpc_uuid: Optional[uuid.UUID] = None
+    tags: Optional[List[str]] = None
+    maintenance_policy: Optional[dict] = None
+    created_at: Optional[str] = None
+    updated_at: Optional[str] = None
 
 
 class LoadBalancer(BaseModel):
@@ -394,8 +394,8 @@ class LoadBalancer(BaseModel):
         target_port: int
 
         # optional params
-        certificate_id: Optional[str]
-        tls_passthrough: Optional[bool]
+        certificate_id: Optional[str] = None
+        tls_passthrough: Optional[bool] = None
 
     class HealthCheck(BaseModel):
         # required params
@@ -403,18 +403,18 @@ class LoadBalancer(BaseModel):
         port: int
 
         # optional params
-        path: Optional[str]
-        check_interval_seconds: Optional[int]
-        response_timeout_seconds: Optional[int]
-        unhealthy_threshold: Optional[int]
-        healthy_threshold: Optional[int]
+        path: Optional[str] = None
+        check_interval_seconds: Optional[int] = None
+        response_timeout_seconds: Optional[int] = None
+        unhealthy_threshold: Optional[int] = None
+        healthy_threshold: Optional[int] = None
 
     class StickySessions(BaseModel):
         type: str
-        cookie_name: Optional[str]
-        cookie_ttl_seconds: Optional[int]
+        cookie_name: Optional[str] = None
+        cookie_ttl_seconds: Optional[int] = None
 
-    id: Optional[str]
+    id: Optional[str] = None
 
     # required params
     name: str
@@ -422,19 +422,19 @@ class LoadBalancer(BaseModel):
     forwarding_rules: List[ForwardingRule]
 
     # optional params
-    size: Optional[str]
-    ip: Optional[str]
-    algorithm: Optional[str]
-    status: Optional[str]
-    health_check: Optional[HealthCheck]
-    sticky_sessions: Optional[StickySessions]
-    tag: Optional[str]
-    droplet_ids: Optional[List[int]]
-    redirect_http_to_https: Optional[bool]
-    enable_proxy_protocol: Optional[bool]
-    enable_backend_keepalive: Optional[bool]
-    vpc_uuid: Optional[str]
-    created_at: Optional[datetime]
+    size: Optional[str] = None
+    ip: Optional[str] = None
+    algorithm: Optional[str] = None
+    status: Optional[str] = None
+    health_check: Optional[HealthCheck] = None
+    sticky_sessions: Optional[StickySessions] = None
+    tag: Optional[str] = None
+    droplet_ids: Optional[List[int]] = None
+    redirect_http_to_https: Optional[bool] = None
+    enable_proxy_protocol: Optional[bool] = None
+    enable_backend_keepalive: Optional[bool] = None
+    vpc_uuid: Optional[str] = None
+    created_at: Optional[datetime] = None
 
 
 class OneClickApp(BaseModel):
@@ -448,24 +448,24 @@ class Project(BaseModel):
             self: str
 
         urn: str
-        assigned_at: Optional[datetime]
-        links: Optional[Links]
-        status: Optional[str]
+        assigned_at: Optional[datetime] = None
+        links: Optional[Links] = None
+        status: Optional[str] = None
 
-    id: Optional[str]
+    id: Optional[str] = None
 
     # required params
     name: str
     purpose: str
 
     # optional params
-    owner_uuid: Optional[str]
-    owner_id: Optional[int]
-    description: Optional[str]
-    environment: Optional[str]
-    is_default: Optional[bool]
-    created_at: Optional[datetime]
-    updated_at: Optional[datetime]
+    owner_uuid: Optional[str] = None
+    owner_id: Optional[int] = None
+    description: Optional[str] = None
+    environment: Optional[str] = None
+    is_default: Optional[bool] = None
+    created_at: Optional[datetime] = None
+    updated_at: Optional[datetime] = None
 
 
 class Registry(BaseModel):
@@ -480,8 +480,8 @@ class Registry(BaseModel):
             monthly_price_in_cents: int
 
         tier: Tier
-        created_at: Optional[datetime]
-        updated_at: Optional[datetime]
+        created_at: Optional[datetime] = None
+        updated_at: Optional[datetime] = None
 
     class Repository(BaseModel):
         class Tag(BaseModel):
@@ -508,25 +508,25 @@ class Registry(BaseModel):
         updated_at: datetime
 
     name: str
-    subscription_tier_slug: Optional[str]
-    created_at: Optional[datetime]
+    subscription_tier_slug: Optional[str] = None
+    created_at: Optional[datetime] = None
 
 
 class Snapshot(BaseModel):
-    id: Optional[str]
+    id: Optional[Union[str, int]] = None
     name: str
-    created_at: Optional[datetime]
-    regions: Optional[List[str]]
-    resource_id: Optional[str]
-    resource_type: Optional[str]
-    min_disk_size: Optional[int]
-    size_gigabytes: Optional[float]
-    tags: Optional[List[str]]
+    created_at: Optional[datetime] = None
+    regions: Optional[List[str]] = None
+    resource_id: Optional[str] = None
+    resource_type: Optional[str] = None
+    min_disk_size: Optional[int] = None
+    size_gigabytes: Optional[float] = None
+    tags: Optional[List[str]] = None
 
 
 class SSHKey(BaseModel):
-    id: Optional[int]
-    fingerprint: Optional[str]
+    id: Optional[int] = None
+    fingerprint: Optional[str] = None
     public_key: str
     name: str
 
@@ -539,10 +539,10 @@ class Tag(BaseModel):
     class TagStat(BaseModel):
         class Count(BaseModel):
             count: int
-            last_tagged_uri: Optional[str]
+            last_tagged_uri: Optional[str] = None
 
         count: int
-        last_tagged_uri: Optional[str]
+        last_tagged_uri: Optional[str] = None
         droplets: Count
         images: Count
         volumes: Count
@@ -550,11 +550,11 @@ class Tag(BaseModel):
         databases: Count
 
     name: str
-    resources: Optional[TagStat]
+    resources: Optional[TagStat] = None
 
 
 class Volume(BaseModel):
-    id: Optional[str]
+    id: Optional[str] = None
 
     # required params
     name: str
@@ -562,12 +562,12 @@ class Volume(BaseModel):
     size_gigabytes: int
 
     # optional params
-    droplet_ids: Optional[List[int]]
-    description: Optional[str]
-    created_at: Optional[datetime]
-    filesystem_type: Optional[str]
-    filesystem_label: Optional[str]
-    tags: Optional[List[str]]
+    droplet_ids: Optional[List[int]] = None
+    description: Optional[str] = None
+    created_at: Optional[datetime] = None
+    filesystem_type: Optional[str] = None
+    filesystem_label: Optional[str] = None
+    tags: Optional[List[str]] = None
 
 
 class VPC(BaseModel):
@@ -576,15 +576,15 @@ class VPC(BaseModel):
         urn: str
         created_at: datetime
 
-    id: Optional[str]
+    id: Optional[str] = None
 
     # required params
     name: str
     region: str
 
     # optional params
-    urn: Optional[str]
-    ip_range: Optional[str]
-    description: Optional[str]
-    default: Optional[bool]
-    created_at: Optional[datetime]
+    urn: Optional[str] = None
+    ip_range: Optional[str] = None
+    description: Optional[str] = None
+    default: Optional[bool] = None
+    created_at: Optional[datetime] = None
